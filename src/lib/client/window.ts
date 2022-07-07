@@ -18,8 +18,8 @@ export const ww = createSize('innerWidth');
 /**
  * Svelte store that tracks the window height.
  */
-
 export const wh = createSize('innerHeight');
+
 /**
  * Svelte store that tracks the window size.
  */
