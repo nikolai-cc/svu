@@ -1,7 +1,9 @@
 import { listen, noop, timeout } from "$lib/meta"
 
 /** 
- * Dispatches an event or calls a handler if released within 'duration' milliseconds. Starts checking after optional 'delay' milliseconds.
+ * Dispatches an event or calls a handler if released within 'duration' milliseconds.
+ * Starts checking after optional 'delay' milliseconds.
+ * Usage: <element use:timedclick={{ duration: 500, delay: 100 }} on:timedclick={ () => console.log('hello') } />
  */
 export const timedclick = (node: HTMLElement, options: {duration: number, delay: number, fn?: Function} | number) => {
     let duration = typeof options === 'number' ? options : options.duration

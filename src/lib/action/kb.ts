@@ -3,8 +3,9 @@ import { listen, noop } from '$lib/meta'
 export type keyMap = { [key: string]: Function }
 
 /**
- * Svelte action to execute functions on keydown. Usage: <element use:keydown={{ 'Enter': handler() }} />
+ * Executes functions on keydown. Pass in a map of key names to functions.
  * TODO: allow modifiers
+ * Usage: <element use:keydown={{ 'Enter': handler() }} />
  */
 export const keydown = (node: HTMLElement, keys: keyMap) => {
     const execute = (e: KeyboardEvent) => { keys[e.key]?.(e) }
@@ -17,8 +18,9 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
 }
 
 /**
- * Svelte action to execute functions on keyup. Usage: <element use:keydown={{ 'Enter': handler() }} />
+ * Executes functions on keyup. Pass in a map of key names to functions.
  * TODO: allow modifiers
+ * Usage: <element use:keydown={{ 'Enter': handler() }} />
  */
 export const keyup = (node: HTMLElement, keys: keyMap) => { 
     const execute = (e: KeyboardEvent) => { keys[e.key]?.(e) }

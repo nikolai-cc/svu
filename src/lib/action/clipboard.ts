@@ -1,7 +1,10 @@
 import { listen } from "$lib/meta"
 
-/** Copy the textContent of the element (or a specified target) to clipboard on click. */
-export const copy = (node: HTMLElement, target: HTMLElement) => {
+/**
+ * Copies the textContent of the element (or a specified target) to clipboard on click.
+ * Usage: <element use:copy={ target } />
+ */
+export const copy = (node: HTMLElement, target?: HTMLElement) => {
     let object = target ?? node;
     const copyObject = () => {
         let text = (object instanceof HTMLInputElement) ? object.value : object.textContent || '';
@@ -16,8 +19,11 @@ export const copy = (node: HTMLElement, target: HTMLElement) => {
     }
 }
 
-/** Paste the textContent of the clipboard into the textContent of the element (or a specified target)  on click. */
-export const paste = (node: HTMLElement, target: HTMLElement) => {
+/**
+ * Pastes the textContent of the clipboard into the textContent of the element (or a specified target)  on click.
+ * Usage: <element use:paste={ target } />
+ */
+export const paste = (node: HTMLElement, target?: HTMLElement) => {
     let object = target ?? node;
 
     const pasteObject = async () => { 

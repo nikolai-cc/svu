@@ -2,14 +2,15 @@ import { listen, noop, timeout } from "$lib/meta"
 
 /** 
  * Dispatches a press event or calls a handler if pressed down for duration milliseconds.
+ * Usage: <element use:press={{ duration: 500 }} on:press={ () => console.log('hello') } />
  */
-export const press = (node: HTMLElement, options: {duration: number, fn?: Function} | number) => {
+export const press = (node: HTMLElement, options: {duration: number, handler?: Function} | number) => {
     let duration = typeof options === 'number' ? options : options.duration
-    let fn = typeof options === 'number' ? noop : options.fn || noop
+    let handler = typeof options === 'number' ? noop : options.handler || noop
 
     const start = () => {
         const dispatch = () => {
-            fn()
+            handler()
             node.dispatchEvent(new CustomEvent('press', { detail: duration }))
             
             unlistenUp();
@@ -24,9 +25,9 @@ export const press = (node: HTMLElement, options: {duration: number, fn?: Functi
     const unlisten = listen(node, 'pointerdown', start)
 
     return {
-        update: (options: {duration: number, fn?: Function} | number) => {
+        update: (options: {duration: number, handler?: Function} | number) => {
             duration = typeof options === 'number' ? options : options.duration
-            fn = typeof options === 'number' ? noop : options.fn || noop
+            handler = typeof options === 'number' ? noop : options.handler || noop
         },
         destroy: unlisten,
     }

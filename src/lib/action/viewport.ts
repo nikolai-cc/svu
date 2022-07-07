@@ -1,3 +1,7 @@
+/**
+ * Dispatches 'viewport:enter' and 'viewport:leave' events when the element enters or leaves the viewport.
+ * Usage: <element use:viewport on:viewport:enter={() => console.log('hello!')} />
+*/
 export const viewport = (node: HTMLElement, options?: { root?: HTMLElement, rootMargin?: string, treshold?: number }) => {
     options =  {
         root: options?.root,

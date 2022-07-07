@@ -15,7 +15,8 @@ const FOCUSABLE = `
 `
 
 /**
- * Trap focus within an element.
+ * Traps focus within an element. Only works on focusable elements.
+ * Usage: <element use:focustrap />
  */
  export const focustrap = (node: HTMLElement) => {
     const focusable: HTMLElement[] = Array.from(node.querySelectorAll(FOCUSABLE))

@@ -1,7 +1,7 @@
-import { listen } from '$lib/meta'
+import { listen, noop } from '$lib/meta'
 
 /**
- * Svelte action to execute a function when clicking anywhere but on the target node.
+ * Executes a function when clicking anywhere but on the target node.
  * Also dispatches the `clickoutside` event on the target node.
  * Usage: <element use:clickoutside={ handler() } />
  */

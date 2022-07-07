@@ -1,7 +1,8 @@
 import { noop } from "$lib/meta"
 
 /**
- * Focus element when it mounts. Only works on focusable elements.
+ * Focuses element when it mounts. Only works on focusable elements.
+ * Usage: <element use:focus />
  */
 export const focus = (node: HTMLElement) => {
     node && node.focus()

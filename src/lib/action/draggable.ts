@@ -1,5 +1,11 @@
 import { listen } from "$lib/meta"
 
+/**
+ * Allows positioning of an element by dragging it from the element or an optional handle.
+ * Emits 'drag:start', 'drag:move', 'drag:end' events. Update the `pos` property to change programmatically.
+ * Uses translate3d to improve performance.
+ * Usage: <element use:draggable={ pos: { x: 0, y: 0 } } />
+ */
 export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: number }, handle?: HTMLElement } = {}) => {
     let {
         pos = { x: 0, y: 0 },
@@ -14,6 +20,8 @@ export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: nu
         node.setPointerCapture(e.pointerId);
 
         origin = { x: e.clientX, y: e.clientY }
+
+        node.dispatchEvent(new CustomEvent('drag:start'));
     
         const drag = (e: PointerEvent) => {
             e.preventDefault()
@@ -25,6 +33,8 @@ export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: nu
             draw();
 
             origin = { x: e.clientX, y: e.clientY }
+
+            node.dispatchEvent(new CustomEvent('drag:move', { detail: { pos } }));
         }
     
         const endDrag = (e: PointerEvent) => {
@@ -33,6 +43,8 @@ export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: nu
             node.releasePointerCapture(e.pointerId);
             unlistenMove();
             unlistenUp();
+
+            node.dispatchEvent(new CustomEvent('drag:end', { detail: { pos } }));
         }
 
         const unlistenMove = listen(document, "pointermove", drag as EventListener);

@@ -1,15 +1,17 @@
 import { listen, noop } from '$lib/meta';
 
 /**
- * Executes an optional fuction on the onclose event, and displays an 'are you sure' modal. Pass in a condition to only execute when that condition is met.
+ * Executes an optional fuction on the onclose event, and displays an 'are you sure' modal.
+ * Pass in a condition to only execute when that condition is met.
+ * Usage: <element use:onclose={{ handler, condition }} />
  */
-export const onclose = (_node: HTMLElement, options: {fn?: Function, condition?: boolean} = {}) => {
-    let fn = options.fn
+export const onclose = (_node: HTMLElement, options: {handler?: Function, condition?: boolean} = {}) => {
+    let handler = options.handler
     let condition = options.condition ?? true
     
     const confirm = (e: BeforeUnloadEvent) => {
         if (!condition) return
-        fn && fn(e);
+        handler && handler(e);
         e.preventDefault()
         return e.returnValue = "Are you sure you want to close this window?"
     }
@@ -17,8 +19,8 @@ export const onclose = (_node: HTMLElement, options: {fn?: Function, condition?:
     let unlisten = listen(window, 'beforeunload', confirm) || noop;
 
     return {
-        update: (options: {fn?: Function, condition?: boolean} = {}) => {
-            fn = options.fn
+        update: (options: {handler?: Function, condition?: boolean} = {}) => {
+            handler = options.handler
             condition = options.condition ?? true
         },
         destroy: () => unlisten()
