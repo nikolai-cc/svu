@@ -1,0 +1,11 @@
+:root, html, body {
+    font-family: 'Recursive', system-ui, sans-serif;
+}
+
+.cardboard {
+    background-image: url('img/cardboard.png');
+}
+
+.graphpaper {
+    background-image: url('img/graphpaper.png');
+}
