@@ -1,12 +1,16 @@
 import { listen } from "$lib/meta"
 
-/** Download the textContent of the element (or a specified target) to clipboard. */
+/**
+ * Downloads the textContent of the element (or a specified target) into a .txt file on click.
+ * Usage: <element use:download={{ name: 'Document.txt' }} />
+ */
 export const download = (node: HTMLElement, options?: { target?: HTMLElement, name?: string } | HTMLElement) => {
     let object = (options instanceof HTMLElement) ? options : options?.target ?? node;
     let name = (options instanceof HTMLElement) ? "download.txt" : options?.name ?? "download.txt";
 
     const downloadObject = () => { 
-        const blob = new Blob([object.textContent || ''], { type: "text/plain" });
+        const text = (object instanceof HTMLInputElement) ? object.value : object.textContent || '';
+        const blob = new Blob([text], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.style.display = "none";
