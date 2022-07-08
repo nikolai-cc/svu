@@ -1,0 +1,72 @@
+# Active
+
+The action/active module contains a single action: `active`. This action adds a class to an element when the URL of the page matches a given pattern.
+If used on an element with an 'href' attribute, it uses it's value by default.
+
+The main usecase is to add a different link-styling to the currently active page in an navigation component.
+
+## Usage
+
+```svelte
+<script>
+	import active from 'svutil/action';
+</script>
+
+<nav>
+	<a use:active href="/">Home</a>
+	<a use:active href="/docs">Docs</a>
+	<a use:active href="/contact">Contact</a>
+</nav>
+
+<style>
+	:global(a.active) {
+		color: red;
+	}
+</style>
+```
+
+## Options
+
+Pass in options with `<a use:active={options}>`
+
+`options` is an object with the following parameters:
+
+### `className`
+
+The className that is added to the active element.
+
+- Optional: yes
+- Type: `string`
+- Default value: `'active'`
+
+### `includeDescendants`
+
+If this is set to false, the className is added on an exact match to the path. If it's set to true, it's added on routes that include the path or any of its descendants.
+
+- Optional: yes
+- Type: `boolean`
+- Default value: `false`
+
+### `path`
+
+The path to match the URL to.
+
+- Optional: yes
+- Type: string
+- Default: same as `href` attribute if present, otherwise `'/'`
+
+## Events
+
+This action dispatches no events.
+
+## Caveats
+
+Since the class is added programatically, the svelte compiler does not know about it and it is not scoped to the component.
+The styling has to be done in a global css folder or with the `:global(.className)` selector.
+You'll have to make sure to pick a `className` that does not interfere with any other styles in your app.
+
+The current matcher is a simple string comparison, which is prone to errors.
+
+## Alternatives
+
+If you run into any issues above, it is quite trivial to write your own alternative.
