@@ -1,5 +1,4 @@
 import { page } from '$app/stores';
-import { noop } from '$lib/meta';
 import { get } from 'svelte/store';
 
 /**
@@ -14,13 +13,15 @@ export const active = (node: HTMLElement, options?: { className?: string, includ
         path = node.getAttribute('href') ?? '/'
     } = options ?? {};
 
-    const pathName = get(page).url.pathname;
-
-    if (includeDescendants ? pathName.includes(path) : pathName === path) {
-        node.classList.add(className);
-    } else {
-        node.classList.remove(className);
-    }
+    page.subscribe($page => {
+        const pathName = $page.url.pathname;
+    
+        if (includeDescendants ? pathName.includes(path) : pathName === path) {
+            node.classList.add(className);
+        } else {
+            node.classList.remove(className);
+        }
+    })
 
     return {
         update: (options: { className?: string, includeDescendants?: boolean, path?: string }) => {
@@ -34,6 +35,6 @@ export const active = (node: HTMLElement, options?: { className?: string, includ
                 node.classList.remove(className);
             }
         },
-        destroy: noop
+        destroy: () => (node.classList.remove(className))
     }
 }
