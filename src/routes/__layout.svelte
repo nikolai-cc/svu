@@ -32,6 +32,7 @@
 	import 'greset';
 	import '$docs/css/fonts.css';
 	import '$docs/css/global.css';
+	import '$docs/css/prism.css';
 
 	import Sidebar from '$docs/Sidebar.svelte';
 </script>
