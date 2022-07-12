@@ -30,7 +30,7 @@
 	]}
 />
 
-<article>
+<article class="flow">
 	<slot />
 </article>
 
