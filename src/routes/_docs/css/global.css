@@ -1,11 +1,57 @@
+:root {
+    --bg: rgb(213, 218, 218);
+    --fg: rgb(0, 0, 0);
+    --dark: rgb(15, 30, 10);
+    --light: rgb(55, 165, 20);
+}
+
+html {
+    background-color: var(--bg);
+    background-image: url('/img/cardboard.png');
+}
+
 :root, html, body {
     font-family: 'Recursive', system-ui, sans-serif;
+    font-variation-settings: "MONO" 0, "CASL" 0.3, "wght" 350;
+    line-height: 1.5;
+    color: var(--fg);
+    height: --webkit-fill-available;
+    overflow: hidden;
 }
 
-.cardboard {
-    background-image: url('img/cardboard.png');
+h1, h2, h3, h4, h5 {
+    font-variation-settings: "CASL" 1, "wght" 600;
 }
 
-.graphpaper {
-    background-image: url('img/graphpaper.png');
+a {
+    color: var(--fg);
+    text-decoration: none;
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 500;
+    transition: font-variation-settings 0.2s ease-out;
+}
+
+a:hover, a.active {
+    font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800;
+}
+
+a:active {
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 1000;
+}
+
+a.active {
+    color: var(--light);
+}
+
+pre, code {
+    font-family: 'Recursive', system-ui, sans-serif;
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 400;
+    color: var(--light);
+    background-color: var(--dark);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+}
+
+pre {
+    border-radius: 0.5rem;
+    padding: 1rem;
 }
