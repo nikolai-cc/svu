@@ -14,46 +14,54 @@
 
 <script lang="ts">
 	export let categories: string[];
+	const pages = [
+		{
+			name: 'getting started',
+			href: '/quickstart'
+		},
+		{
+			name: 'features',
+			href: '/features'
+		},
+		{
+			name: 'changelog',
+			href: '/changelog'
+		}
+	];
 
 	import 'greset';
 	import '$docs/css/fonts.css';
 	import '$docs/css/global.css';
+
+	import Sidebar from '$docs/Sidebar.svelte';
 </script>
 
-<aside>
-	<nav>
-		<ul>
-			<li>
-				<a href="/">home</a>
-			</li>
-			<li>
-				<a href="/quickstart">getting started</a>
-			</li>
-			<li>
-				<a href="/features">features</a>
-			</li>
-			<li>
-				<a href="/changelog">changelog</a>
-			</li>
-			<li>---</li>
-			{#each categories as category}
-				<li>
-					<a href={`/docs/${category}`}>{category}</a>
-				</li>
-			{/each}
-		</ul>
-	</nav>
-</aside>
-
 <main>
+	<Sidebar links={pages}>
+		<a href="/" class="logo">
+			<code>/s </code>
+		</a>
+	</Sidebar>
+	<Sidebar
+		links={[
+			...categories.map((category) => ({
+				name: category,
+				href: `/docs/${category}`
+			}))
+		]}
+	/>
 	<slot />
 </main>
 
 <style>
-	aside {
-		margin: 1rem;
-	}
 	main {
-		margin: 1rem;
+		display: flex;
+		flex-direction: row;
+		overflow: hidden;
+	}
+
+	.logo {
+		display: block;
+		text-align: center;
 	}
 </style>

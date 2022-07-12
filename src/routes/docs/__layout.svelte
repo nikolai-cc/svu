@@ -8,7 +8,7 @@
 
 		return {
 			props: {
-				path,
+				path: path.split('/')[2],
 				chapters: json.chapters
 			}
 		};
@@ -16,19 +16,19 @@
 </script>
 
 <script lang="ts">
+	import Sidebar from '$docs/Sidebar.svelte';
 	export let path: string;
 	export let chapters: string[];
 </script>
 
-<nav>
-	<ul>
-		{#each chapters as chapter}
-			<li>
-				<a href={`${path}/${chapter}`}>{chapter}</a>
-			</li>
-		{/each}
-	</ul>
-</nav>
+<Sidebar
+	links={[
+		...chapters.map((chapter) => ({
+			name: chapter,
+			href: `/docs/${path}/${chapter}`
+		}))
+	]}
+/>
 
 <article>
 	<slot />
@@ -36,6 +36,16 @@
 
 <style>
 	article {
-		margin: 1rem;
+		max-height: 100vh;
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		width: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 </style>
