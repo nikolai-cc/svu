@@ -1,0 +1,7 @@
+# Localstore
+
+A writable store that is synced with localstorage.
+
+## Caveats
+
+This store is still incomplete.
