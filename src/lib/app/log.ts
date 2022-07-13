@@ -17,3 +17,5 @@ export const count = (label?: string): void => { dev && console.count(label) }
 export const countReset = (label?: string): void => { dev && console.countReset(label) }
 export const dir = (item?: any, options?: any): void => { dev && console.dir(item, options) }
 export const dirxml = (...data: any): void => { dev && console.dirxml([...data]) }
+
+export const clear = (): void => { dev && console.clear() }
