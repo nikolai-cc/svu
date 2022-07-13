@@ -5,7 +5,7 @@ import { listen } from '$lib/meta';
  * If the element is an input element, it selects the value, otherwise it selects all child nodes.
  * Usage: <element use:select={ target } />
  */
-export const select = (node: HTMLElement, target: HTMLElement) => {
+export const select = (node: HTMLElement, target?: HTMLElement) => {
     let object = target ?? node;
 
     const selectObject = () => {
