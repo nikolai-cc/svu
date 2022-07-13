@@ -8,14 +8,14 @@ A common usage is to close modals by clicking on the background.
 
 ```svelte
 <script>
-	import clickoutside from 'svutil/action';
+	import { clickoutside } from 'svutil/action';
 
 	let modal = true;
 </script>
 
 {#if modal}
 	<div use:clickoutside={() => (modal = false)}>
-		<!-- modal content here -->
+		<!-- your awesome modal content here -->
 	</div>
 {/if}
 ```
@@ -44,4 +44,4 @@ Emitted every time the user clicks on any part of the website other than the ele
 
 ## Alternatives
 
-Write your own.
+–
