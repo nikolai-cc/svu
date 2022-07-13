@@ -64,3 +64,10 @@ pre {
 .flow > :where(:not(:last-child)) {
     margin-bottom: var(--flow-spacer, 1rem);
 }
+
+:not(nav) > ul {
+    list-style: inside;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg);
+}
