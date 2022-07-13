@@ -1,0 +1,39 @@
+# Title
+
+description
+
+## Usage
+
+common usecase
+
+```svelte
+<!-- code example -->
+```
+
+## Options
+
+this has the following options:
+
+### `option`
+
+changes the behaviour of this thing
+
+- Optional: yes
+- Type: `any`
+- Default value: `'default`
+
+## Events
+
+this dispatches one event:
+
+### `event`
+
+emitted every time something happens
+
+## Caveats
+
+caveats
+
+## Alternatives
+
+–
