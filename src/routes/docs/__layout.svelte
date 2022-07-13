@@ -17,8 +17,11 @@
 
 <script lang="ts">
 	import Sidebar from '$docs/Sidebar.svelte';
+	import { setContext } from 'svelte';
 	export let path: string;
 	export let chapters: string[];
+
+	setContext('chapters', chapters);
 </script>
 
 <Sidebar
