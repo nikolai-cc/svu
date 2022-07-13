@@ -4,11 +4,11 @@ This action adds a class to an element when the URL of the page matches a given 
 
 ## Usage
 
-A common usecase is to add a different styling to the link of the currently active page in a navigation component.
+A common usecase is to add a different styling to the link of the currently active page in a navigation component. This is how it's used in the navigation in these.
 
 ```svelte
 <script>
-	import active from 'svutil/action';
+	import { active } from 'svutil/action';
 </script>
 
 <nav>
@@ -68,4 +68,4 @@ The current matcher is a simple string comparison, which is prone to errors.
 
 ## Alternatives
 
-Write your own.
+–
