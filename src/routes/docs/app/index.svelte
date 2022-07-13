@@ -5,15 +5,15 @@
 	let chapters = getContext('chapters');
 </script>
 
-<h1>Action</h1>
+<h1>App</h1>
 
-<p>Lights, camera, use:action!</p>
+<p>App related stores and utils.</p>
 
 <ul>
 	{#each chapters as chapter}
 		<li>
 			<a href="{$page.url.pathname}/{chapter}">
-				use:{chapter}
+				{chapter}
 			</a>
 		</li>
 	{/each}

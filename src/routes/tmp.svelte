@@ -16,6 +16,9 @@
 		press
 	} from '$lib/action';
 
+	import { log, info, error } from '$lib/app';
+	import { console } from '$lib/app';
+
 	let target: HTMLElement;
 	let input: HTMLElement;
 	let render = false;
@@ -23,6 +26,8 @@
 	let height = 2000;
 
 	let observed = 'in';
+	let multipress = 'multipress';
+	let timedClick = '500-1000ms please';
 </script>
 
 <article>
@@ -32,10 +37,31 @@
 	<button
 		use:timedclick={{ delay: 500, duration: 500 }}
 		use:press={{ duration: 1000 }}
-		on:timedclick={() => console.log('hello world')}
-		on:press={() => console.log('too long!')}
+		on:timedclick:armed={() => console.info('armed')}
+		on:timedclick={() => log('hello world')}
+		on:press={() => error('too long!')}
 	>
 		Press for a length between 500 and 1000ms
+	</button>
+
+	<button
+		on:pointerdown={() => (multipress = '......0ms')}
+		use:press={{ duration: 500, handler: () => (multipress = '...500ms') }}
+		use:press={{ duration: 1000, handler: () => (multipress = '..1000ms') }}
+		use:press={{ duration: 1500, handler: () => (multipress = '..1500ms') }}
+		use:press={{ duration: 2000, handler: () => (multipress = 'DONE!!!!') }}
+		on:pointerup={() => (multipress = 'multipress')}
+	>
+		{multipress}
+	</button>
+
+	<button
+		use:timedclick={{ delay: 500, duration: 500 }}
+		on:timedclick:armed={() => (timedClick = 'release now!')}
+		on:timedclick:aborted={() => (timedClick = 'try again')}
+		on:timedclick={() => (timedClick = 'DONE!!!!')}
+	>
+		{timedClick}
 	</button>
 
 	<input type="checkbox" bind:checked={render} />
@@ -68,16 +94,29 @@
 
 	<input type="number" bind:value={height} />
 
+	<br />
+
+	<input type="text" value="Hi, mom!" use:select />
+
 	<div
 		style:height="{height}px"
 		style:padding-top="{height / 2}px"
 		style:background-color="palegoldenrod"
 	>
 		<p
-			use:viewport
-			on:viewport:enter={() => (observed = 'in')}
-			on:viewport:leave={() => (observed = 'outside')}
-			style:margin-top="{height / 2}px"
+			class="watchme"
+			use:viewport={{
+				// threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+				threshold: 0
+			}}
+			on:viewport:enter={(e) => {
+				console.log('enter', e);
+				observed = 'in';
+			}}
+			on:viewport:leave={(e) => {
+				console.log('leave', e);
+				observed = 'outside';
+			}}
 		>
 			I am afraid I'm being watched.
 		</p>
@@ -107,14 +146,15 @@
 		overflow-x: hidden;
 	}
 
-	:global(.active) {
-		background-color: red;
-		font-weight: bold;
-	}
-
 	.observer {
 		position: fixed;
 		bottom: 10px;
 		right: 10px;
+	}
+
+	.watchme {
+		background-color: rebeccapurple;
+		color: white;
+		height: 100px;
 	}
 </style>
