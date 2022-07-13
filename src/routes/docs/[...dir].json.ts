@@ -1,4 +1,4 @@
-import { ls } from '$lib/server';
+import { ls } from '$docs/server';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export const get = async ({ params }: RequestEvent) => {
