@@ -34,7 +34,7 @@ export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: nu
 
             origin = { x: e.clientX, y: e.clientY }
 
-            node.dispatchEvent(new CustomEvent('drag:move', { detail: { pos } }));
+            node.dispatchEvent(new CustomEvent('drag:update', { detail: { pos } }));
         }
     
         const endDrag = (e: PointerEvent) => {
@@ -56,12 +56,16 @@ export const draggable = (node: HTMLElement, options: { pos?: { x: number, y: nu
     }
 
     const unlisten = listen(handle, 'pointerdown', startDrag as EventListener);
+    const unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
 
     return {
         update: (options: { pos?: { x: number, y: number }, handle?: HTMLElement }) => {
             pos = options.pos ?? pos;
             draw();
         },
-        destroy: unlisten
+        destroy: () => {
+            unlisten();
+            unlistenTouchStart();
+        }
     }
 }
