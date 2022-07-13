@@ -1,0 +1,34 @@
+<script>
+    import {draggable} from '$lib/action';
+    let happy;
+    let dragStart = () => {
+        happy.innerText = '🤗';
+        happy.style.fontSize = '3rem';
+    }
+    let dragEnd = () => {
+        happy.innerText = 'Be happy!';
+        happy.style.fontSize = '1rem';
+    }
+</script>
+
+# Getting Started
+
+1. Install from npm:
+
+```bash
+npm i svutil
+```
+
+2. Import only what you need.
+
+```svelte
+<script>
+	import { draggable } from 'svutil/action';
+</script>
+
+<p use:draggable>Be Happy</p>
+```
+
+Find out wether you need one of our [actions](/docs/action), [custom stores](stores), [app-related stores](/docs/app), [client-related stores](/docs/client) and [components](/docs/components).
+
+3. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
