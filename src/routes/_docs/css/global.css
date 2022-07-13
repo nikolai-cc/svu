@@ -8,10 +8,17 @@
     --fg: rgb(0, 0, 0);
     --dark: rgb(15, 30, 10);
     --light: rgb(55, 165, 20);
+    --light-33: rgba(55, 165, 20, 0.33);
 }
 
 html {
     background-color: var(--bg);
+    background-image:
+        linear-gradient(var(--bg2) 2px, transparent 2px),
+        linear-gradient(90deg, var(--bg2) 2px, transparent 2px),
+        linear-gradient(var(--bg2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg2) 1px, var(--bg) 1px);
+    background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
 }
 
 :root, html, body {
@@ -63,6 +70,8 @@ h2 > code, h3 > code, h4 > code, h5 > code {
 pre {
     border-radius: 0.5rem;
     padding: 1rem;
+    background-image: radial-gradient(var(--light-33) 0.55px, var(--dark) 0.55px);
+    background-size: 12px 12px;
 }
 
 .flow > :where(:not(:last-child)) {
@@ -74,6 +83,8 @@ pre {
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--bg0);
+    background-image: radial-gradient(var(--bg3) 0.55px, var(--bg0) 0.55px);
+    background-size: 12px 12px;
 }
 
 ol {
