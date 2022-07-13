@@ -1,0 +1,47 @@
+# Keydown
+
+Execute a function on `keydown`. Pass in a map of key names to functions to execute the function on key.
+
+- See also: [use:keyup](/docs/action/keyup)
+
+## Usage
+
+A common use case is to add keyboard shortcuts, e.g. to close a modal with the escape key.
+
+```svelte
+<script>
+	import { keydown } from 'svutil/action';
+	let modal = true;
+	let close = () => (modal = false);
+</script>
+
+<div on:keydown={{ Escape: close }}>
+	<!-- your cool modal contents -->
+</div>
+```
+
+## Options
+
+This action has one option:
+
+### `keys`
+
+A map of keycodes to functions to execute.
+
+- Optional: no
+- Type: `{ [key: string]: Function }`
+- Default value: none
+
+## Events
+
+This action does not dispatch any events.
+
+## Caveats
+
+keyboard modifiers (shift, ctrl, alt, meta) are not yet supported.
+
+If you need to handle a function on keyup see [use:keyup](/docs/action/keyup). If you need something to happen while the key is pressed down you can use keydown and keyup in conjunction with each other.
+
+## Alternatives
+
+–
