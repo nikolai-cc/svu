@@ -1,0 +1,27 @@
+# Why
+
+Svelte and SvelteKit make web development easy and fun. No wonder it's the [most loved web framework][survey] in the world. Although Svelte, especially in conjunction with SvelteKit is fairly batteries-included, there are a bunch of small things they rightfully leave up to the developer.
+
+This package aims to be a collection of all of those small things that bring a little spark of joy to your next Svelte(Kit) app.
+
+## Principles
+
+Some design principles:
+
+- 🥇 `One dependency`
+
+  The utilities by themselves are too small to warrant their own package. In the past, I have manually copied them from project to project for exactly that reason.
+
+- 🔋 `Batteries Included`
+
+  Svutil comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
+
+- 🪶 `Small sizes please`
+
+  The library is fully tree shakeable so it's safe too include even if you need just one utillity. It won't harm your bundle size.
+
+- ❤️ `Pareto Principle`
+
+  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svutil. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
+
+[survey]: https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks
