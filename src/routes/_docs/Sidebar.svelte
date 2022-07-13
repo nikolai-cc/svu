@@ -28,7 +28,7 @@
 		transition: width 500ms ease-in-out;
 		padding-top: 0.5rem;
 		padding-bottom: 3rem;
-		background-color: var(--b, --bg);
+		background-color: var(--b, var(--bg));
 	}
 
 	nav::-webkit-scrollbar {
