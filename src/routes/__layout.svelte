@@ -38,7 +38,7 @@
 </script>
 
 <main>
-	<Sidebar links={pages}>
+	<Sidebar links={pages} --b="var(--bg4)">
 		<a href="/" class="logo">
 			<code>/s </code>
 		</a>
@@ -50,6 +50,7 @@
 				href: `/docs/${category}`
 			}))
 		]}
+		--b="var(--bg3)"
 	/>
 	<slot />
 </main>

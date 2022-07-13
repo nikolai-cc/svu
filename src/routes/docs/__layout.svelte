@@ -32,6 +32,7 @@
 			href: `/docs/${path}/${chapter}`
 		}))
 	]}
+	--b="var(--bg2)"
 />
 
 <Article>

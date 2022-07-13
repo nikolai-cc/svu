@@ -1,5 +1,8 @@
 :root {
     --bg: rgb(213, 218, 218);
+    --bg2: rgb(210, 215, 215);
+    --bg3: rgb(194, 200, 200);
+    --bg4: rgb(180, 185, 185);
     --fg: rgb(0, 0, 0);
     --dark: rgb(15, 30, 10);
     --light: rgb(55, 165, 20);
@@ -7,7 +10,6 @@
 
 html {
     background-color: var(--bg);
-    background-image: url('/img/cardboard.png');
 }
 
 :root, html, body {
