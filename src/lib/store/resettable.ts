@@ -4,7 +4,7 @@ import { clone } from "$lib/meta"
 /**
  * Resettable writable store. Allows any values (including objects).
  */
-export const resettable = (value: any, start: StartStopNotifier<any>) => {
+export const resettable = (value: any, start?: StartStopNotifier<any>) => {
     const { subscribe, update, set } = writable(clone(value), start);
     const reset = () => set(value);
     return { subscribe, update, set, reset };
