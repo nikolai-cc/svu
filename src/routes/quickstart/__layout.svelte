@@ -3,8 +3,5 @@
 </script>
 
 <Article>
-	<h1>
-		<code>/svutil</code>
-	</h1>
-	<p>Documentation home page.</p>
+	<slot />
 </Article>

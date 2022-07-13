@@ -16,6 +16,7 @@
 </script>
 
 <script lang="ts">
+	import Article from '$docs/Article.svelte';
 	import Sidebar from '$docs/Sidebar.svelte';
 	import { setContext } from 'svelte';
 	export let path: string;
@@ -33,22 +34,6 @@
 	]}
 />
 
-<article class="flow">
+<Article>
 	<slot />
-</article>
-
-<style>
-	article {
-		max-height: 100vh;
-		max-width: 1200px;
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 2rem;
-		padding-right: 2rem;
-		padding-top: 3rem;
-		padding-bottom: 3rem;
-		width: 100%;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-</style>
+</Article>

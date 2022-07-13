@@ -51,7 +51,7 @@ pre, code {
     border-radius: 0.25rem;
 }
 
-h1 > code, h2 > code, h3 > code, h4 > code, h5 > code {
+h2 > code, h3 > code, h4 > code, h5 > code {
     color: var(--fg);
     background: var(--bg);
 }
@@ -70,4 +70,17 @@ pre {
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--bg);
+}
+
+ol {
+    list-style: decimal;
+    list-style-position: inside;
+}
+
+li > p {
+    margin-bottom: 0.5rem;
+}
+
+li > p:last-child {
+    margin-bottom: 1rem;
 }
