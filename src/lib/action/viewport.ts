@@ -2,11 +2,11 @@
  * Dispatches 'viewport:enter' and 'viewport:leave' events when the element enters or leaves the viewport.
  * Usage: <element use:viewport on:viewport:enter={() => console.log('hello!')} />
 */
-export const viewport = (node: HTMLElement, options?: { root?: HTMLElement, rootMargin?: string, treshold?: number }) => {
+export const viewport = (node: HTMLElement, options?: { root?: HTMLElement, rootMargin?: string, threshold?: number }) => {
     options =  {
         root: options?.root,
         rootMargin: options?.rootMargin ?? '0px',
-        treshold: options?.treshold ?? 0.5
+        threshold: options?.threshold ?? 0
     }
 
     const callback = (entries: IntersectionObserverEntry[]) => {
