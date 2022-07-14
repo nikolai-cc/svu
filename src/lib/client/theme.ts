@@ -14,7 +14,6 @@ const create = () => {
 
     const handleChange = (mutationList: MutationRecord[]) => {
         mutationList.forEach(m => {
-            console.log('hello')
             const el = m.target as HTMLElement
             setStore(el.getAttribute('data-theme') ?? '');
         })
