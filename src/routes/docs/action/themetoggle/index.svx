@@ -6,7 +6,7 @@ Sets the `data-theme` attribute of the `html` element to a theme or the next of 
 
 ## Usage
 
-It's used to toggle the theme of this site between 'light' and 'dark'.
+It's commonly used to toggle the theme of a site between a predefined list. It's used in the theme toggle button at the top of this page.
 
 ```svelte
 <script>
