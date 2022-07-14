@@ -1,13 +1,17 @@
-<article class="flow">
-	<slot />
+<article>
+	<div class="container flow">
+		<slot />
+	</div>
 </article>
 
 <style>
-	article {
-		max-height: 100vh;
-		max-width: 1200px;
+	.container {
+		max-width: 800px;
 		margin-left: auto;
 		margin-right: auto;
+	}
+	article {
+		max-height: 100vh;
 		padding-left: 2rem;
 		padding-right: 2rem;
 		padding-top: 3rem;
