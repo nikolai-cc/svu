@@ -64,7 +64,7 @@ Since the class is added programatically, the svelte compiler does not know abou
 The styling has to be done in a global css file or with the `:global(.className)` selector.
 You'll have to make sure to pick a `className` that does not interfere with any other styles in your app.
 
-The current matcher is a simple string comparison, which is prone to errors.
+The current matcher for the `includeDescendants` route is a simple string comparison to the `url.pathname`, which can result in unwanted behaviour when there are multiple pages with the same name. For example: When we have both a link to `/foo` and to `/bar/foo/baz` in our nav, the link to `/foo` will be set to active when we're on the `/bar/foo/baz` route.
 
 ## Alternatives
 
