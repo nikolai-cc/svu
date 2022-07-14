@@ -13,6 +13,7 @@
 </script>
 
 <script lang="ts">
+	import { page } from '$app/stores';
 	export let categories: string[];
 	const pages = [
 		{
@@ -38,7 +39,7 @@
 </script>
 
 <main>
-	<Sidebar links={pages} --b="var(--bg4)">
+	<Sidebar expanded={$page.url.pathname === '/'} links={pages} --b="var(--bg4)">
 		<a href="/" class="logo">
 			<code>/s </code>
 		</a>

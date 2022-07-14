@@ -1,17 +1,25 @@
 <script lang="ts">
-	import { active } from '$lib/action';
+	import { active, clickoutside } from '$lib/action';
 	import { slide } from '$lib/transition';
 	export let links: { name: string; href: string }[];
+
+	export let expanded = false;
+	let toggle = () => (expanded = !expanded);
+	let collapse = () => (expanded = false);
 </script>
 
-<nav in:slide={{ delay: 100, duration: 250 }}>
+<nav in:slide={{ delay: 100, duration: 250 }} class:expanded use:clickoutside={collapse}>
 	<div class="header">
-		<slot />
+		<slot>
+			<button on:click={toggle}>
+				{expanded ? '⤵' : '⤴'}
+			</button>
+		</slot>
 	</div>
-	<ul>
+	<ul class:expanded>
 		{#each links as { href, name }}
-			<li>
-				<a {href} use:active={{ includeDescendants: true }}>{name}</a>
+			<li class:expanded>
+				<a {href} use:active={{ includeDescendants: true }} on:click>{name}</a>
 			</li>
 		{/each}
 	</ul>
@@ -34,6 +42,10 @@
 
 	nav::-webkit-scrollbar {
 		display: none;
+	}
+
+	nav.expanded {
+		width: 150px;
 	}
 
 	.header {
@@ -60,7 +72,13 @@
 
 	li {
 		writing-mode: vertical-rl;
-		transition: transform 500ms ease-in-out;
+		transition: transform 500ms ease-in-out, max-height 300ms ease-in-out;
+		max-height: 300px;
+	}
+
+	li.expanded {
+		transform: rotate(-90deg) translateY(-50px);
+		max-height: 24px;
 	}
 
 	a {
@@ -73,5 +91,15 @@
 
 	a:active::before {
 		content: '|';
+	}
+
+	button {
+		width: 100%;
+		height: 36px;
+		border: none;
+		background-color: var(--b, var(--bg));
+		color: var(--fg);
+		margin: 0 auto;
+		padding: 0;
 	}
 </style>
