@@ -16,12 +16,12 @@
 	export let categories: string[];
 	const pages = [
 		{
-			name: 'getting started',
-			href: '/quickstart'
+			name: 'why',
+			href: '/why'
 		},
 		{
-			name: 'features',
-			href: '/features'
+			name: 'getting started',
+			href: '/quickstart'
 		},
 		{
 			name: 'changelog',
