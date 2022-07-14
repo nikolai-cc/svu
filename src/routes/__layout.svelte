@@ -13,7 +13,9 @@
 </script>
 
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { theme } from '$lib/client';
+	import { themetoggle } from '$lib/action';
+
 	export let categories: string[];
 	const pages = [
 		{
@@ -52,10 +54,25 @@
 	<slot />
 </main>
 
+<button use:themetoggle={['dark', 'light']}>
+	{$theme === 'dark' ? '☀️' : '🌙'}
+</button>
+
 <style>
 	main {
 		display: flex;
 		flex-direction: row;
 		overflow: hidden;
+	}
+
+	button {
+		background: var(--dark);
+		border: 2px solid var(--fg);
+		padding: 0.25rem;
+		border-radius: 50%;
+		position: fixed;
+		top: 8px;
+		right: 16px;
+		font-size: 16px;
 	}
 </style>
