@@ -2,9 +2,9 @@
 
 This action dispatches an clickoutside Custom Event and executes an optional handler when the user clicks on any part of the website other than the element itself.
 
-A common usage is to close modals by clicking on the background.
-
 ## Usage
+
+A common usage is to close modals by clicking on the background. It's used to collapse the sidebar on this site.
 
 ```svelte
 <script>
