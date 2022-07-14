@@ -3,18 +3,26 @@
 	import { slide } from '$lib/transition';
 	export let links: { name: string; href: string }[];
 
-	export let expanded = false;
+	export let logo = false;
+
+	let expanded = false;
 	let toggle = () => (expanded = !expanded);
 	let collapse = () => (expanded = false);
 </script>
 
 <nav in:slide={{ delay: 100, duration: 250 }} class:expanded use:clickoutside={collapse}>
 	<div class="header">
-		<slot>
+		{#if logo}
+			<a href="/" class="logo" class:expanded on:click={toggle}>
+				<code>
+					<span>/s</span>{#if expanded}<span transition:slide={{ duration: 300 }}>vutil</span>{/if}
+				</code>
+			</a>
+		{:else}
 			<button on:click={toggle}>
 				{expanded ? '⤵' : '⤴'}
 			</button>
-		</slot>
+		{/if}
 	</div>
 	<ul class:expanded>
 		{#each links as { href, name }}
@@ -85,13 +93,23 @@
 		white-space: nowrap;
 	}
 
-	a::before {
+	a:not(.logo)::before {
 		content: '/';
 	}
 
 	a:active::before {
 		content: '|';
 	}
+
+	.logo {
+		display: block;
+		margin-left: 4px;
+		margin-right: auto;
+	}
+
+	/* .logo.expanded {
+		margin-left: 10px;
+	} */
 
 	button {
 		width: 100%;

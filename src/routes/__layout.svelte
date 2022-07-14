@@ -21,7 +21,7 @@
 			href: '/why'
 		},
 		{
-			name: 'getting started',
+			name: 'quickstart',
 			href: '/quickstart'
 		},
 		{
@@ -39,11 +39,7 @@
 </script>
 
 <main>
-	<Sidebar expanded={$page.url.pathname === '/'} links={pages} --b="var(--bg4)">
-		<a href="/" class="logo">
-			<code>/s </code>
-		</a>
-	</Sidebar>
+	<Sidebar links={pages} --b="var(--bg4)" logo />
 	<Sidebar
 		links={[
 			...categories.map((category) => ({
@@ -61,10 +57,5 @@
 		display: flex;
 		flex-direction: row;
 		overflow: hidden;
-	}
-
-	.logo {
-		display: block;
-		text-align: center;
 	}
 </style>
