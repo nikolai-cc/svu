@@ -29,6 +29,6 @@ npm i svutil
 <p use:draggable>Be Happy</p>
 ```
 
-Find out wether you need one of our [actions](/docs/action), [custom stores](stores), [app-related stores](/docs/app), [client-related stores](/docs/client) and [components](/docs/components).
+Find out wether you need one of our [actions](/docs/action), [custom stores](/docs/stores), [app-related stores](/docs/app), [client-related stores](/docs/client) and [components](/docs/components).
 
 3. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
