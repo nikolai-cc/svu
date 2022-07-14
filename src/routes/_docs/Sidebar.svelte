@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { active } from '$lib/action';
+	import { slide } from '$lib/transition';
 	export let links: { name: string; href: string }[];
 </script>
 
-<nav>
+<nav in:slide={{ delay: 100, duration: 250 }}>
 	<div class="header">
 		<slot />
 	</div>
