@@ -1,6 +1,17 @@
 {
   "name": "svutil",
-  "version": "0.0.1",
+  "description": "Svelte utilities to make your life better ✨",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolai-cc/svutil.git"
+  },
+  "author": "nikolai-cc (https://nikolai.cc)",
+  "license": "MIT",
+  "homepage": "svutil.vercel.app",
+  "bugs": {
+    "url": "https://github.com/nikolai-cc/svutil/issues"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -32,5 +43,6 @@
     "typescript": "^4.7.4",
     "vite": "^2.9.13"
   },
-  "type": "module"
+  "type": "module",
+  "sideEffects": false
 }
