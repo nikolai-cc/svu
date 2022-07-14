@@ -1,6 +1,5 @@
 import { cubicOut } from 'svelte/easing';
-import type { EasingFunction, TransitionConfig } from 'svelte/transition';
-import type { Transition } from 'svelte/types/compiler/interfaces';
+import type { EasingFunction } from 'svelte/transition';
 
 /**
  * Slide transition that supports multiple directions.
