@@ -105,11 +105,12 @@
 		display: block;
 		margin-left: 4px;
 		margin-right: auto;
+		transition: margin-left 500ms ease-in-out;
 	}
 
-	/* .logo.expanded {
+	.logo.expanded {
 		margin-left: 10px;
-	} */
+	}
 
 	button {
 		width: 100%;
