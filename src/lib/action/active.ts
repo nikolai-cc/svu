@@ -16,7 +16,7 @@ export const active = (node: HTMLElement, options?: { className?: string, includ
     page.subscribe($page => {
         const pathName = $page.url.pathname;
     
-        if (includeDescendants ? pathName.includes(path) : pathName === path) {
+        if (includeDescendants ? pathName === path || pathName.includes(path + '/') : pathName === path) {
             node.classList.add(className);
         } else {
             node.classList.remove(className);
