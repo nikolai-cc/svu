@@ -19,3 +19,18 @@ export const dir = (item?: any, options?: any): void => { dev && console.dir(ite
 export const dirxml = (...data: any): void => { dev && console.dirxml([...data]) }
 
 export const clear = (): void => { dev && console.clear() }
+
+export default {
+    log,
+    trace,
+    debug,
+    info,
+    warn,
+    error,
+    assert,
+    count,
+    countReset,
+    dir,
+    dirxml,
+    clear
+} 
