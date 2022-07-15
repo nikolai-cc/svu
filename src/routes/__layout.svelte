@@ -32,7 +32,7 @@
 		}
 	];
 
-	import 'greset';
+	import '$docs/css/reset.css';
 	import '$docs/css/fonts.css';
 	import '$docs/css/global.css';
 	import '$docs/css/prism.css';

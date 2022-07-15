@@ -1,0 +1,40 @@
+/* 
+    CSS reset
+    Based on https://elad2412.github.io/the-new-css-reset/
+*/
+
+*:where(:not(iframe, pre, canvas, img, svg, video):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  ol,
+  ul {
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  :where([contenteditable]) {
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    line-break: after-white-space;
+    -webkit-line-break: after-white-space;
+  }
+  
+  button {
+    cursor: pointer;
+    text-align: center;
+  }
