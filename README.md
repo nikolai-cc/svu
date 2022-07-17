@@ -1,6 +1,6 @@
-# Svutil
+# `/svu`
 
-Svutil is a collection of Svelte(Kit) utillities that make developing webapps even more easy and fun.
+`/svu` is a collection of Svelte(Kit) utillities that make developing webapps even more easy and fun.
 
 Read the docs at http://svutil.vercel.app
 
