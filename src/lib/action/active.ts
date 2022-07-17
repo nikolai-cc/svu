@@ -1,38 +1,48 @@
 import { page } from '$app/stores';
+import { get } from 'svelte/store';
+import type { ActionReturn } from 'svelte/action';
+
+export interface UseActiveOptions {
+    className?: string;
+    includeDescendants?: boolean;
+    path?: string;
+}
 
 /**
  * Adds a class to an element when the URL matches a path.
- * If used on a link it extracts the value of 'href' by default.
- * Usage: <a href="/docs" use:active />
+ * If used on a link it extracts the value of `href` by default.
+ * Usage: `<a href="/docs" use:active />`
  */
-export const active = (node: HTMLElement, options?: { className?: string, includeDescendants?: boolean, path?: string }) => {
+export const active = (node: HTMLElement, options?: UseActiveOptions): ActionReturn<UseActiveOptions> => {
     let {
         className = 'active',
         includeDescendants = false,
         path = node.getAttribute('href') ?? '/'
     } = options ?? {};
 
-    page.subscribe($page => {
-        const pathName = $page.url.pathname;
-    
+    className = className === '' ? 'active' : className
+
+    const addClass = (pathName: string) => {
         if (includeDescendants ? pathName === path || pathName.includes(path + '/') : pathName === path) {
             node.classList.add(className);
         } else {
-            node.classList.remove(className);
+            node.classList.contains(className) && node.classList.remove(className);
         }
+    }
+
+    page.subscribe($page => {
+        const pathName = $page.url.pathname;
+        addClass(pathName);
     })
 
     return {
-        update: (options: { className?: string, includeDescendants?: boolean, path?: string }) => {
-            className = options.className ?? 'active';
+        update: (options: UseActiveOptions) => {
+            node.classList.contains(className) && node.classList.remove(className);
+            className = (options.className === '') ? 'active' : options.className ?? 'active';
             includeDescendants = options.includeDescendants ?? false;
             path = options.path ?? node.getAttribute('href') ?? '/';
-        
-            if (includeDescendants ? pathName.includes(path) : pathName === path) {
-                node.classList.add(className);
-            } else {
-                node.classList.remove(className);
-            }
+            const pathName = get(page).url.pathname;
+            addClass(pathName);
         },
         destroy: () => (node.classList.remove(className))
     }
