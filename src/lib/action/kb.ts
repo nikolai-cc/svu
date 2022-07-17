@@ -1,4 +1,4 @@
-import { listen, noop } from '$lib/meta'
+import { listen, noop } from '$lib/meta/index.js'
 
 export type keyMap = { [key: string]: Function }
 

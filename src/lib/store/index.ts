@@ -1,2 +1,2 @@
-export * from './localstore';
-export * from './resettable';
+export * from './localstore.js';
+export * from './resettable.js';

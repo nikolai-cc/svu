@@ -1,1 +1,1 @@
-export { default as OnMount } from '../../components/OnMount.svelte'
+export { OnMount } from '../../components/index.js'

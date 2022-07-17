@@ -1,4 +1,4 @@
-import { listen, noop, timeout } from "$lib/meta"
+import { listen, noop, timeout } from "$lib/meta/index.js"
 
 /** 
  * Dispatches an event or calls a handler if released within 'duration' milliseconds.

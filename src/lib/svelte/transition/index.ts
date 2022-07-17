@@ -1,2 +1,2 @@
-export * from '../../transition/slide';
-export * from '../../transition/typewriter';
+export * from '../../transition/index.js';
+export * from '../../transition/index.js';

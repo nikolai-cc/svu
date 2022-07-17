@@ -1,4 +1,4 @@
-import { listen, noop } from '$lib/meta';
+import { listen, noop } from '$lib/meta/index.js';
 
 /**
  * Executes an optional fuction on the onclose event, and displays an 'are you sure' modal.

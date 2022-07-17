@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import { derived, writable } from 'svelte/store';
-import { listen } from '$lib/meta';
+import { listen } from '$lib/meta/index.js';
 
 const createSize = (prop: 'innerWidth' | 'innerHeight') => {
     const { subscribe, set } = writable(0);

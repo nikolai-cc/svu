@@ -10,5 +10,5 @@ export {
     countReset,
     dir,
     dirxml,
-    clear } from './log';
-export { default as console } from './log'
+    clear } from './log.js';
+export { default as console } from './log.js'

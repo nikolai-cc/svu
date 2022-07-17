@@ -1,2 +1,2 @@
-export * from './slide';
-export * from './typewriter';
+export * from './slide.js';
+export * from './typewriter.js';

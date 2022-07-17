@@ -1,4 +1,4 @@
-import { listen, noop } from "$lib/meta"
+import { listen, noop } from "$lib/meta/index.js"
 
 /**
  * Dispatches an event or calls a handler if an element is resized.
