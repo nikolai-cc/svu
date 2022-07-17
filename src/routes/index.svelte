@@ -3,13 +3,17 @@
 	import OnMount from '$lib/components/OnMount.svelte';
 	import { typewriter } from '$lib/transition';
 
-	const t = { delay: 500, speed: 150 };
+	const cini = { delay: 500, speed: 150 };
+	const cin = { speed: 150 };
+	const cout = { speed: 50 };
 </script>
 
 <Article>
 	<h1>
 		<code>
-			<span>/s</span><OnMount><span id="t" in:typewriter={t}>vutil</span></OnMount>
+			<span>/s</span><OnMount
+				><span id="t" in:typewriter={cini} out:typewriter={cout}>vu</span></OnMount
+			>
 		</code>
 	</h1>
 

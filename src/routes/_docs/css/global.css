@@ -64,6 +64,10 @@ a {
     transition: font-variation-settings 0.2s ease-out;
 }
 
+article a {
+    color: var(--light)
+}
+
 a:hover, a.active {
     font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800;
 }
