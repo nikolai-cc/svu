@@ -59,6 +59,5 @@
     "./svelte/store": "./svelte/store/index.js",
     "./svelte/transition": "./svelte/transition/index.js"
   },
-  "type": "module",
-  "sideEffects": false
+  "type": "module"
 }
