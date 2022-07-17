@@ -1,16 +1,16 @@
 {
-  "name": "@nikolai-cc/svutil",
-  "description": "Svelte utilities to make your life better ✨",
-  "version": "0.1.6",
+  "name": "svu",
+  "description": "Svultimate Svelte(Kit) Svutilities",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nikolai-cc/svutil.git"
+    "url": "git+https://github.com/nikolai-cc/svu.git"
   },
   "author": "nikolai-cc (https://nikolai.cc)",
   "license": "MIT",
-  "homepage": "svutil.vercel.app",
+  "homepage": "svu.vercel.app",
   "bugs": {
-    "url": "https://github.com/nikolai-cc/svutil/issues"
+    "url": "https://github.com/nikolai-cc/svu/issues"
   },
   "scripts": {
     "dev": "vite dev",
