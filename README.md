@@ -2,7 +2,7 @@
 
 `/svu` is a collection of Svelte(Kit) utillities that make developing webapps even more easy and fun.
 
-Read the docs at http://svutil.vercel.app
+Read the docs at http://svu.vercel.app
 
 ## Why
 
@@ -14,17 +14,17 @@ This package aims to be a collection of all of those small things that bring a l
 
 Check out the various parts of the docs:
 
-- [`/action`](http://svutil.vercel.app/docs/action): A huge collection of svelte:actions.
+- [`/action`](http://svu.vercel.app/docs/action): A huge collection of svelte:actions.
 
-- [`/app`](http://svutil.vercel.app/docs/app): App related utilities.
+- [`/app`](http://svu.vercel.app/docs/app): App related utilities.
 
-- [`/client`](http://svutil.vercel.app/docs/client): Client related stores and utils.
+- [`/client`](http://svu.vercel.app/docs/client): Client related stores and utils.
 
-- [`/components`](http://svutil.vercel.app/docs/components): Useful components.
+- [`/components`](http://svu.vercel.app/docs/components): Useful components.
 
-- [`/store`](http://svutil.vercel.app/docs/store): Custom stores.
+- [`/store`](http://svu.vercel.app/docs/store): Custom stores.
 
-- [`/transition`](http://svutil.vercel.app/docs/transition): Custom transition functions.
+- [`/transition`](http://svu.vercel.app/docs/transition): Custom transition functions.
 
 ## Principles
 
@@ -36,7 +36,7 @@ Some design principles:
 
 - 🔋 `Batteries Included`
 
-  Svutil comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
+  svu comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
 
 - 🪶 `Small sizes please`
 
@@ -44,12 +44,12 @@ Some design principles:
 
 - ❤️ `Pareto Principle`
 
-  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svutil. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
+  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svu. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
 
 ## Status
 
-Svutil started out as a collection of Svelte stuff I often use. Svutil is currently in alpha, while the API settles.
+svu started out as a collection of Svelte stuff I often use. svu is currently in alpha, while the API settles.
 
-Feel free to take it for a test drive! Be aware that some svutils are not fully production ready, and the API may change in the near future.
+Feel free to take it for a test drive! Be aware that some svus are not fully production ready, and the API may change in the near future.
 
 If you run into any issues, or have any questions or suggestions, feel free to open an issue on GitHub.
