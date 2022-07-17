@@ -8,7 +8,7 @@ A common usecase is to add a different styling to the link of the currently acti
 
 ```svelte
 <script>
-	import { active } from 'svutil/action';
+	import { active } from 'svu/action';
 </script>
 
 <nav>

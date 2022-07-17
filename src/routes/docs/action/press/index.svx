@@ -10,7 +10,7 @@ Most commonly used on button elements.
 
 ```svelte
 <script>
-	import { press } from 'svutil/action';
+	import { press } from 'svu/action';
 	let buttonText = 'Press me for 1s';
 	const changeText = () => (buttonText = 'You did it!');
 </script>

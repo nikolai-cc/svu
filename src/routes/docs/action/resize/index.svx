@@ -2,7 +2,7 @@
 
 Action that adds a `resize` event and optionally calls a handler function when an element is resized. This can be when the size is changed by the user, but also when children are added or removed. Uses ResizeObserver under the hood.
 
-Want to track the window size? Go for the `window` store in `svutil/client` or use the window.onresize event.
+Want to track the window size? Go for the `window` store in `svu/client` or use the window.onresize event.
 
 - See also [window](/docs/client/window)
 
@@ -12,7 +12,7 @@ It's commonly used to track the size of an element, but I guess you've figured t
 
 ```svelte
 <script>
-    import { resize } from 'svutil/resize';
+    import { resize } from 'svu/resize';
     let h = 40;
 </script>
 

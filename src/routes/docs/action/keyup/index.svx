@@ -10,7 +10,7 @@ A common use case is to add keyboard shortcuts, e.g. to close a modal with the e
 
 ```svelte
 <script>
-	import { keyup } from 'svutil/action';
+	import { keyup } from 'svu/action';
 	let modal = true;
 	let close = () => (modal = false);
 </script>

@@ -8,7 +8,7 @@ A common usecase is to mount a modal dialog to a top level element while keeping
 
 ```svelte
 <script>
-    import { portal } from 'svutil/action'
+    import { portal } from 'svu/action'
 </script>
 
 <div use:portal="#modal-container">

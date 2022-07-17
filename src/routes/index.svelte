@@ -18,12 +18,12 @@
 	</h1>
 
 	<p>
-		Svutil is a collection of Svelte(Kit) utillities that make developing webapps even more easy and
+		svu is a collection of Svelte(Kit) utillities that make developing webapps even more easy and
 		fun.
 	</p>
 
 	<p class="links">
-		<a href="/why">Why svutil</a> |
+		<a href="/why">Why svu</a> |
 		<a href="/quickstart">Getting Started</a> |
 		<a href="/changelog">Changelog</a>
 	</p>
@@ -31,13 +31,13 @@
 	<h3>Status</h3>
 
 	<p>
-		Svutil started out as a collection of Svelte stuff I often use. Svutil is currently in alpha,
-		while the API settles.
+		svu started out as a collection of Svelte stuff I often use. svu is currently in alpha, while
+		the API settles.
 	</p>
 
 	<p>
-		Feel free to take it for a test drive! Be aware that some svutils are not fully production
-		ready, and the API may change in the near future.
+		Feel free to take it for a test drive! Be aware that some svus are not fully production ready,
+		and the API may change in the near future.
 	</p>
 
 	<p>

@@ -8,7 +8,7 @@ A common usecase is to display a confirmation dialog when the user tries to clos
 
 ```svelte
 <script>
-	import { onclose } from 'svutil/action';
+	import { onclose } from 'svu/action';
 </script>
 ```
 

@@ -2,4 +2,4 @@
 
 ## 0.1.0
 
-Initial public version. Contains a collection of 27 svutils (most of which are actions) with documentation.
+Initial public version. Contains a collection of 27 svus (most of which are actions) with documentation.

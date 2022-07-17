@@ -11,7 +11,7 @@ This can be used for anything that needs the mouse position. Here is a purple sq
 ```svelte
 <script>
 	import { my } from '$lib/client';
-	import { mouse } from 'svutil/client';
+	import { mouse } from 'svu/client';
 </script>
 
 <div style:transform="translate3d({$mouse.x}px, {$mouse.y}px, 0)" />

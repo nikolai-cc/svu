@@ -1,6 +1,6 @@
 # Slide
 
-This is a drop-in replacement for Svelte's built-in `slide` transition with one difference: it supports horizontally sliding transitions. It transitions horizontally by default, so changing `import { slide } from 'svelte/transition'` to `import { slide } from 'svutil/transition'` will change the direction of your transition. You can change the `axis` option from `'x'` to `'y'` to change the direction back to vertical.
+This is a drop-in replacement for Svelte's built-in `slide` transition with one difference: it supports horizontally sliding transitions. It transitions horizontally by default, so changing `import { slide } from 'svelte/transition'` to `import { slide } from 'svu/transition'` will change the direction of your transition. You can change the `axis` option from `'x'` to `'y'` to change the direction back to vertical.
 
 ## Usage
 
@@ -8,7 +8,7 @@ It's used on this site to slide out the navigation when the user (that would be 
 
 ```svelte
 <script>
-    import { slide } from 'svutil/transition';
+    import { slide } from 'svu/transition';
 </script>
 
 {#if condition}

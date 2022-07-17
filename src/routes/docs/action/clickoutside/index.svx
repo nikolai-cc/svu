@@ -8,7 +8,7 @@ A common usage is to close modals by clicking on the background. It's used to co
 
 ```svelte
 <script>
-	import { clickoutside } from 'svutil/action';
+	import { clickoutside } from 'svu/action';
 
 	let modal = true;
 </script>

@@ -5,13 +5,13 @@
 
 `/svu` is a collection of Svelte(Kit) utillities that make developing webapps even more easy and fun.
 
-[Why svutil?](/why) | [Getting started](/quickstart) | [Changelog](/changelog)
+[Why svu?](/why) | [Getting started](/quickstart) | [Changelog](/changelog)
 
 ## Status
 
-Svutil started out as a collection of Svelte stuff I often use. Svutil is currently in alpha, while the API settles.
+svu started out as a collection of Svelte stuff I often use. svu is currently in alpha, while the API settles.
 
-Feel free to take it for a test drive! Be aware that some svutils are not fully production ready, and the API may change in the near future.
+Feel free to take it for a test drive! Be aware that some svus are not fully production ready, and the API may change in the near future.
 
 If you run into any issues, or have any questions or suggestions, feel free to open an issue on GitHub.
 

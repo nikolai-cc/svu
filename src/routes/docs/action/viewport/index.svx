@@ -8,7 +8,7 @@ Use it to check wether an element is inside the viewport.
 
 ```svelte
 <script>
-	import { viewport } from 'svutil/action';
+	import { viewport } from 'svu/action';
 </script>
 ```
 

@@ -10,7 +10,7 @@ A common usecase is to add fun!
 
 ```svelte
 <script>
-	import { draggable } from 'svutil/action';
+	import { draggable } from 'svu/action';
 </script>
 
 <div use:draggable>Drag me around!</div>

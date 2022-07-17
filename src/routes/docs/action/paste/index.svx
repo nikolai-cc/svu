@@ -10,7 +10,7 @@ A common use case is to add a _paste_ button in a form or editor.
 
 ```svelte
 <script>
-	import { paste } from 'svutil/action';
+	import { paste } from 'svu/action';
 	let input;
 </script>
 

@@ -10,7 +10,7 @@ Most commonly used on button elements.
 
 ```svelte
 <script>
-	import { timedclick } from 'svutil/action';
+	import { timedclick } from 'svu/action';
 	let timedClick = "let's go";
 </script>
 

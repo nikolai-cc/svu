@@ -12,7 +12,7 @@ It can be used in any place you would need to add `<svelte:window bind:innerWidt
 
 ```svelte
 <script>
-	import { ww, wh, sx, sy } from 'svutil/client';
+	import { ww, wh, sx, sy } from 'svu/client';
 </script>
 
 <p>

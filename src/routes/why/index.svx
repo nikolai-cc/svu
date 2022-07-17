@@ -14,7 +14,7 @@ Some design principles:
 
 - 🔋 `Batteries Included`
 
-  Svutil comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
+  svu comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
 
 - 🪶 `Small sizes please`
 
@@ -22,6 +22,6 @@ Some design principles:
 
 - ❤️ `Pareto Principle`
 
-  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svutil. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
+  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svu. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
 
 [survey]: https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks

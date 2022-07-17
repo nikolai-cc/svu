@@ -4,7 +4,7 @@ The resettable store is an extended svelte writable store that can be reset to i
 
 ```svelte
 <script>
-	import { resettable } from 'svutil/store';
+	import { resettable } from 'svu/store';
 	const store = resettable(100);
 </script>
 

@@ -4,7 +4,7 @@ The `<OnMount>` component is a component that renders its contents when the page
 
 ```svelte
 <script>
-	import OnMount from 'svutil/components';
+	import OnMount from 'svu/components';
 </script>
 
 <OnMount>

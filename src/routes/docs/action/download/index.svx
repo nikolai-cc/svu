@@ -8,7 +8,7 @@ A common usecase is to add a download button to your page.
 
 ```svelte
 <script>
-	import { download } from 'svutil/action';
+	import { download } from 'svu/action';
 	let target;
 </script>
 
@@ -45,7 +45,7 @@ This action does not emit any events.
 
 This currently only supports the 'text/plain' MIME type.
 
-You can not yet pass in the target by query selector, unlike most other svutils.
+You can not yet pass in the target by query selector, unlike most other svus.
 
 ## Alternatives
 

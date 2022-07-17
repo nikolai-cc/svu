@@ -9,8 +9,8 @@ Alternative logging functions, or drop-in replacement for `console.log`, but wit
 
 ```svelte
 <script>
-	import { log, error } from 'svutil/app'; // use as separate functions
-	import { console } from 'svutil/app'; // use as drop-in replacement
+	import { log, error } from 'svu/app'; // use as separate functions
+	import { console } from 'svu/app'; // use as drop-in replacement
 </script>
 
 <button on:click={() => log('log')}>log</button>

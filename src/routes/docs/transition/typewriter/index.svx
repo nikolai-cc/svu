@@ -4,11 +4,11 @@ This is the typewriter effect from the [Svelte Tutorial](https://svelte.dev/tuto
 
 ## Usage
 
-It's used on this site to give the `/svutil` text on the home page a typed effect.
+It's used on this site to give the `/svu` text on the home page a typed effect.
 
 ```svelte
 <script>
-	import { typewriter } from 'svutil/transition';
+	import { typewriter } from 'svu/transition';
 </script>
 
 {#if condition}

@@ -8,7 +8,7 @@ A common usecase is to focus the username field on loading of the login page.
 
 ```svelte
 <script>
-	import { focus } from 'svutil/action';
+	import { focus } from 'svu/action';
 </script>
 
 <input type="text" placeholder="Username" use:focus />

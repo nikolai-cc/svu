@@ -8,7 +8,7 @@ A common usecase is to trap focus within a modal dialog.
 
 ```svelte
 <script>
-	import { focustrap } from 'svutil/action';
+	import { focustrap } from 'svu/action';
 </script>
 ```
 

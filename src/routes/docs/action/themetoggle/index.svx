@@ -10,7 +10,7 @@ It's commonly used to toggle the theme of a site between a predefined list. It's
 
 ```svelte
 <script>
-    import { themetoggle } from 'svutil/action'
+    import { themetoggle } from 'svu/action'
 </script>
 
 <button use:themetoggle="['light', 'dark']">

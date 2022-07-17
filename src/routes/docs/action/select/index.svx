@@ -8,7 +8,7 @@ A common usecase is to select the content of a `<input>` element.
 
 ```svelte
 <script>
-	import { select } from 'svutil/action';
+	import { select } from 'svu/action';
 	let value = 'initial value';
 </script>
 
@@ -33,7 +33,7 @@ This action does not dispatch any events.
 
 ## Caveats
 
-This action does not yet support passing in a target using a query selector, unlike many other svutils.
+This action does not yet support passing in a target using a query selector, unlike many other svus.
 
 ## Alternatives
 

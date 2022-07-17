@@ -10,7 +10,7 @@ A common use case is to add a _click to copy_ button to a code block. You can se
 
 ```svelte
 <script>
-	import { copy } from 'svutil/action';
+	import { copy } from 'svu/action';
 </script>
 
 <button use:copy={'#code'}>Copy code block.</button>
