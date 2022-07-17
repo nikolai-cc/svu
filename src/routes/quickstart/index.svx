@@ -21,14 +21,14 @@ npm i svu
 
 2. For SvelteKit: add this to your vite.config.js:
 
-This tells Vite to treat this package as part of our application code. We need this because for some SvelteKit `/svu`'s we're using SvelteKit utilities like the `$app` syntax.
+This tells Vite to treat this package as part of our application code. We need this because for some SvelteKit `/svu`'s are using SvelteKit utilities like the `$app` syntax.
 
 ```js
 optimizeDeps: {
-    exclude: ['svu'],
+    exclude: ['svu', 'svu/*'],
 },
 ssr: {
-    noExternal: ['svu'],
+    noExternal: ['svu', 'svu/*'],
 },
 ```
 
