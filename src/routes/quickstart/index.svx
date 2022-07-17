@@ -16,14 +16,39 @@
 1. Install from npm:
 
 ```bash
-npm i svutil
+npm i svu
 ```
 
-2. Import only what you need.
+2. For SvelteKit: add this to your vite.config.js:
+
+This tells Vite to treat this package as part of our application code. We need this because for some SvelteKit `/svu`'s we're using SvelteKit utilities like the `$app` syntax.
+
+```js
+optimizeDeps: {
+    exclude: ['svu'],
+},
+ssr: {
+    noExternal: ['svu'],
+},
+```
+
+3. Import only what you need.
+
+For SvelteKit:
 
 ```svelte
 <script>
-	import { draggable } from 'svutil/action';
+	import { draggable } from 'svu/action';
+</script>
+
+<p use:draggable>Be Happy</p>
+```
+
+For Svelte:
+
+```svelte
+<script>
+	import { draggable } from 'svu/svelte/action';
 </script>
 
 <p use:draggable>Be Happy</p>
@@ -31,4 +56,4 @@ npm i svutil
 
 Find out wether you need one of our [actions](/docs/action), [custom stores](/docs/stores), [app-related stores](/docs/app), [client-related stores](/docs/client) and [components](/docs/components).
 
-3. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
+4. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
