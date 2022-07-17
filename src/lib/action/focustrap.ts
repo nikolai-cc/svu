@@ -1,5 +1,4 @@
-import { noop } from "$lib/meta"
-import { listen } from "svelte/internal"
+import { noop, listen } from "$lib/meta"
 
 // This list originates from: https://stackoverflow.com/a/30753870
 const FOCUSABLE = `

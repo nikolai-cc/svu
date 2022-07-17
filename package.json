@@ -51,7 +51,13 @@
     "./client": "./client/index.js",
     "./components": "./components/index.js",
     "./store": "./store/index.js",
-    "./transition": "./transition/index.js"
+    "./transition": "./transition/index.js",
+    "./svelte/action": "./svelte/action/index.mjs",
+    "./svelte/app": "./svelte/app/index.js",
+    "./svelte/client": "./svelte/client/index.js",
+    "./svelte/components": "./svelte/components/index.js",
+    "./svelte/store": "./svelte/store/index.js",
+    "./svelte/transition": "./svelte/transition/index.js"
   },
   "type": "module",
   "sideEffects": false

@@ -1,5 +1,4 @@
 import { page } from '$app/stores';
-import { get } from 'svelte/store';
 
 /**
  * Adds a class to an element when the URL matches a path.
