@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+Rename package in Docs and README. Fix path exports.
+
 ## 0.1.0
 
-Initial public version. Contains a collection of 27 svus (most of which are actions) with documentation.
+Initial public version. Renamed package from '@nikolai-cc/svutil' to 'svu' Contains a collection of 27 svus (most of which are actions) with documentation.
