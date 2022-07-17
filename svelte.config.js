@@ -16,9 +16,6 @@ const config = {
 		},
 		alias: {
 			$docs: 'src/routes/_docs/'
-		},
-		package: {
-			exports: () => {}
 		}
 	}
 };
