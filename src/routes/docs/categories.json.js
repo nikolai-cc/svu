@@ -1,6 +1,6 @@
 import { ls } from '$docs/server';
 
-export const get = async () => {
+export const GET = async () => {
 	const categories = await ls('./src/routes/docs', 'dirs');
 
 	return {

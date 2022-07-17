@@ -1,6 +1,6 @@
 import type { RequestEvent } from "@sveltejs/kit"
 
-export const get = async () => {
+export const GET = async () => {
     return {
         status: 303,
         headers: {
