@@ -3,7 +3,7 @@ import { listen, noop } from "$lib/meta"
 /**
  * Dispatches an event or calls a handler if an element is resized.
  * Usage: <element use:resize={{ handler: () => console.log('hello') }} />
- * For tracking <window> size it's best to use the window store from svutil/client.
+ * For tracking <window> size it's best to use the window store from svu/client.
 */
 export const resize = (node: HTMLElement, options?: { handler?: Function }) => {
     let handler = options?.handler || noop
