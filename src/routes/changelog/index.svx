@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+Undo path export change from 0.1.1. Turns out [this](https://github.com/sveltejs/kit/issues/2040) was the culprit.
+
 ## 0.1.1
 
 Rename package in Docs and README. Fix path exports.
