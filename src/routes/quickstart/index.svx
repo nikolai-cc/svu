@@ -16,7 +16,7 @@
 1. Install from npm:
 
 ```bash
-npm i svu
+npm i -D svu
 ```
 
 2. For SvelteKit: add this to your vite.config.js:

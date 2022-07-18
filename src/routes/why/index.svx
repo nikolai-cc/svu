@@ -8,7 +8,7 @@ This package aims to be a collection of all of those small things that bring a l
 
 Some design principles:
 
-- 🥇 `One dependency`
+- 🥇 `One dev dependency`
 
   The utilities by themselves are too small to warrant their own package. In the past, I have manually copied them from project to project for exactly that reason.
 
