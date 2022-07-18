@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.4
+
+- Fix exports
+- Add initial set of plain-svelte exports (e.g. for use in REPL).
+- Fix reactivity on use:active option (you can now pass in classes as variables).
+- Add some better types (a lot more work needs to be done here).
+- Add modifier support to keydown and keyup
+- Add mediaquery store
+- Add media /client stores
+- Add os and modKey /client stores
+- Docs content + fixes
+
 ## 0.1.3
 
 Fix Vite config
