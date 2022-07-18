@@ -4,9 +4,9 @@ A store that syncs to media query changes.
 Add in a `media` + `value` pair or a single 'media' value.
 Uses window.matchMedia under the hood.
 
-There are many predefined queries available from [svu/client](/client/media).
+There are many predefined queries available from [svu/client](/docs/client/media).
 
-- See also: [media](/client/media)
+- See also: [media](/docs/client/media)
 
 ```svelte
 <script>
