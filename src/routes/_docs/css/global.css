@@ -99,6 +99,7 @@ pre {
     padding: 1rem;
     background-image: radial-gradient(var(--light-33) 0.55px, var(--dark) 0.55px);
     background-size: 12px 12px;
+    overflow-x: auto;
 }
 
 .flow > :where(:not(:last-child)) {
