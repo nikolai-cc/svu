@@ -6,6 +6,7 @@ import { listen } from "$lib/meta/index.js"
  */
 export const copy = (node: HTMLElement, target?: HTMLElement | string) => {
     let object = (typeof target === 'string' ? document.querySelector(target) : target) ?? node;
+    
     const copyObject = () => {
         let text = (object instanceof HTMLInputElement || object instanceof HTMLTextAreaElement) ? object.value : object.textContent || '';
         navigator.clipboard.writeText(text)
@@ -14,7 +15,9 @@ export const copy = (node: HTMLElement, target?: HTMLElement | string) => {
     const unlisten = listen(node, 'click', copyObject);
 
     return {
-        update: (target: HTMLElement | string) => (typeof target === 'string' ? document.querySelector(target) : target) ?? node,
+        update: (target: HTMLElement | string) => {
+            object = (typeof target === 'string' ? document.querySelector(target) : target) ?? node;
+        },
         destroy: unlisten
     }
 }
@@ -35,7 +38,9 @@ export const paste = (node: HTMLElement, target?: HTMLElement | string) => {
     const unlisten = listen(node, 'click', pasteObject);
 
     return {
-        update: (target: HTMLElement | string) => (typeof target === 'string' ? document.querySelector(target) : target) ?? node,
+        update: (target: HTMLElement | string) => {
+            object = (typeof target === 'string' ? document.querySelector(target) : target) ?? node;
+        },
         destroy: unlisten
     }
 }
