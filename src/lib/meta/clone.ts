@@ -1,5 +1,5 @@
 /**
- * Function that deep clones any object up to a maximum recursion depth.
+ * Function that deep clones any object
  */
 export const clone = typeof structuredClone === 'function' ? structuredClone : _clone;
 

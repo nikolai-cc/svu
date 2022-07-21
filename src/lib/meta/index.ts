@@ -1,3 +1,4 @@
+export * from './async.js';
 export * from './clone.js';
 export * from './debounce.js';
 export * from './event.js';

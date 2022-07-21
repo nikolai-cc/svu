@@ -25,7 +25,10 @@ const sanitise = (keyString: string): string => {
 	return alt + ctrl + meta + shift + key;
 };
 
-function getSanitisedShortcutsFromKeyMap(keyMap: keyMap) {
+/**
+ * Takes a keyMap and returns it with its key strings sanitised.
+ */
+function sanitizeKeyMap(keyMap: keyMap) {
 	const shortcuts: keyMap = {};
 	for (const [key, fn] of Object.entries(keyMap)) {
 		shortcuts[sanitise(key)] = fn;
@@ -66,7 +69,7 @@ const encode = (e: KeyboardEvent): string => {
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
 export const keydown = (node: HTMLElement, keys: keyMap) => {
-	let shortcuts: keyMap = getSanitisedShortcutsFromKeyMap(keys);
+	let shortcuts: keyMap = sanitizeKeyMap(keys);
 
 	const execute = (e: KeyboardEvent) => {
 		shortcuts[encode(e)]?.(e);
@@ -76,7 +79,7 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
 
 	return {
 		update: (keys: keyMap) => {
-			shortcuts = getSanitisedShortcutsFromKeyMap(keys);
+			shortcuts = sanitizeKeyMap(keys);
 		},
 		destroy: unlisten
 	};
@@ -90,7 +93,7 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
 export const keyup = (node: HTMLElement, keys: keyMap) => {
-	let shortcuts = getSanitisedShortcutsFromKeyMap(keys);
+	let shortcuts = sanitizeKeyMap(keys);
 	const execute = (e: KeyboardEvent) => {
 		shortcuts[encode(e)]?.(e);
 	};
@@ -99,7 +102,7 @@ export const keyup = (node: HTMLElement, keys: keyMap) => {
 
 	return {
 		update: (keys: keyMap) => {
-			shortcuts = getSanitisedShortcutsFromKeyMap(keys);
+			shortcuts = sanitizeKeyMap(keys);
 		},
 		destroy: unlisten
 	};
