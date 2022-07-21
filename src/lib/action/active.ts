@@ -1,5 +1,5 @@
 import { page } from '$app/stores';
-import { get } from 'svelte/store';
+import { derived, get } from 'svelte/store';
 import type { ActionReturn } from 'svelte/action';
 
 export interface UseActiveOptions {
@@ -30,10 +30,10 @@ export const active = (node: HTMLElement, options?: UseActiveOptions): ActionRet
         }
     }
 
-    page.subscribe($page => {
-        const pathName = $page.url.pathname;
-        addClass(pathName);
-    })
+    // A derived store will only run the subscribe method if the derived value changes,
+    // so we avoid unecessary addClass() calls where the pathName was not changed
+    const pathNameStore = derived(page, $page => $page.url.pathname)
+    const unsubscribeFromPathNameStore = pathNameStore.subscribe(addClass)
 
     return {
         update: (options: UseActiveOptions) => {
@@ -41,9 +41,13 @@ export const active = (node: HTMLElement, options?: UseActiveOptions): ActionRet
             className = (options.className === '') ? 'active' : options.className ?? 'active';
             includeDescendants = options.includeDescendants ?? false;
             path = options.path ?? node.getAttribute('href') ?? '/';
-            const pathName = get(page).url.pathname;
+            // i think this might be redundant, because the we could reuse the subscription above
+            const pathName = get(pathNameStore)
             addClass(pathName);
         },
-        destroy: () => (node.classList.remove(className))
+        destroy: () => {
+            node.classList.remove(className);
+            unsubscribeFromPathNameStore()
+        }
     }
 }

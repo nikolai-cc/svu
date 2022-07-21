@@ -1,6 +1,8 @@
 /** noop */
 export const noop = () => {}
 /** execute function */
-export const run = (fn: Function) => fn();
+export const run = (fn: () => any) => fn();
 /** execute array of functions */
-export const run_all = (fns: Function[]) => fns.forEach(run)
+export const runAll = (fns: (() => any)[]) => {
+    for(const fn of fns) fn()
+}

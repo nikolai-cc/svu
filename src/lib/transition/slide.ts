@@ -17,15 +17,15 @@ export const slide = (node: Element, options: { delay?: number, duration?: numbe
 	const opacity = +style.opacity;
 	const width = parseFloat(style.width);
 	const height = parseFloat(style.height);
-	const padding_top = parseFloat(style.paddingTop);
-	const padding_bottom = parseFloat(style.paddingBottom);
-	const margin_top = parseFloat(style.marginTop);
-	const margin_bottom = parseFloat(style.marginBottom);
-	const border_top_width = parseFloat(style.borderTopWidth);
-	const border_bottom_width = parseFloat(style.borderBottomWidth);
+	const paddingTop = parseFloat(style.paddingTop);
+	const paddingBottom = parseFloat(style.paddingBottom);
+	const marginTop = parseFloat(style.marginTop);
+	const marginBottom = parseFloat(style.marginBottom);
+	const borderTopWidth = parseFloat(style.borderTopWidth);
+	const borderBottomWidth = parseFloat(style.borderBottomWidth);
 
-    let prop = direction === 'x' ? 'width' : 'height';
-    let value = direction === 'x' ? width : height;
+    const prop = direction === 'x' ? 'width' : 'height';
+    const value = direction === 'x' ? width : height;
 
     return {
         delay,
@@ -35,11 +35,11 @@ export const slide = (node: Element, options: { delay?: number, duration?: numbe
             'overflow: hidden;' +
             `opacity: ${Math.min(t * 20, 1) * opacity};` +
             `${prop}: ${t * value}px;` +
-            `padding-top: ${t * padding_top}px;` +
-            `padding-bottom: ${t * padding_bottom}px;` +
-            `margin-top: ${t * margin_top}px;` +
-            `margin-bottom: ${t * margin_bottom}px;` +
-            `border-top-width: ${t * border_top_width}px;` +
-            `border-bottom-width: ${t * border_bottom_width}px;`
+            `padding-top: ${t * paddingTop}px;` +
+            `padding-bottom: ${t * paddingBottom}px;` +
+            `margin-top: ${t * marginTop}px;` +
+            `margin-bottom: ${t * marginBottom}px;` +
+            `border-top-width: ${t * borderTopWidth}px;` +
+            `border-bottom-width: ${t * borderBottomWidth}px;`
     };
 }

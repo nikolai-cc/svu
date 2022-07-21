@@ -1,42 +1,36 @@
 /**
  * Function that deep clones any object up to a maximum recursion depth.
  */
-export const clone = (obj: any, depth: number = Infinity) => {
-    let parents: any[] = [];
-    let children: any[] = [];
+export const clone = typeof structuredClone === 'function' ? structuredClone : _clone
 
-    const _clone = (obj: any, depth: number) => {
-        if (typeof(obj) !== 'object' || depth === 0) { return obj }
-        
-        let child: any;
-        if (obj instanceof Map) { child = new Map() }
-        else if (obj instanceof Set) { child = new Set() }
-        else if (obj instanceof Date) { child = new Date(obj.getTime()) }
-        else if (obj instanceof Array) { child = [] }
-        else if (obj instanceof Error) { child = Object.create(obj) }
-        else if (obj instanceof RegExp) { child = new RegExp(obj.source, obj.flags) }
-        else if (obj instanceof Promise) { child = new Promise(
-            (res, rej) => obj.then(
-                v => res(_clone(v, depth - 1)),
-                e => rej(_clone(e, depth - 1))
-            ))
-        } else { child = Object.create(Object.getPrototypeOf(obj)) }
+// copied from svelte codebase:
+// adapted from klona v2.0.4 - https://github.com/lukeed/klona
+// (c) Luke Edwards, under MIT License
+function _clone(val: any) {
+	let k, out, tmp;
 
-        if (parents.includes(obj)) { return children[parents.indexOf(obj)] }
-        parents.push(obj);
-        children.push(child);
+	if (Array.isArray(val)) {
+		out = Array(k = val.length);
+		while (k--) out[k] = (tmp = val[k]) && typeof tmp === 'object' ? clone(tmp) : tmp;
+		return out;
+	}
 
-        if (obj instanceof Map) {
-            for (let [k, v] of obj) { child.set(k, _clone(v, depth - 1)) }
-        }
-        else if (obj instanceof Set) {
-            for (let v of obj) { child.add(_clone(v, depth - 1)) }
-        }
-        else {
-            for (let key in obj) { child[key] = _clone(obj[key], depth - 1) }
-        }
-        return child;
-    }
+	if (Object.prototype.toString.call(val) === '[object Object]') {
+		out = {}; // null
+		for (k in val) {
+			if (k === '__proto__') {
+				Object.defineProperty(out, k, {
+					value: clone(val[k]),
+					configurable: true,
+					enumerable: true,
+					writable: true
+				});
+			} else if (typeof val[k] !== 'function') { // MODIFICATION: skip functions
+				out[k] = (tmp = val[k]) && typeof tmp === 'object' ? clone(tmp) : tmp;
+			}
+		}
+		return out;
+	}
 
-    return _clone(obj, depth);
+	return val;
 }

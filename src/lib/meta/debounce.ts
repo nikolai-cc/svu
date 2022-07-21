@@ -2,7 +2,7 @@
  * A function that executes the passed in function max once every interval milliseconds
  * Set leading to true to execute the function on the leading edge of the interval.
  */
-export const debounce = (fn: Function, interval: number, leading: boolean = false) => {
+export const debounce = (fn: (...params: any) => any, interval: number, leading: boolean = false) => {
     let timer: any;
     return (...args: any[]) => {
         if (timer) {

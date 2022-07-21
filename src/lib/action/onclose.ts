@@ -5,21 +5,21 @@ import { listen, noop } from '$lib/meta/index.js';
  * Pass in a condition to only execute when that condition is met.
  * Usage: <element use:onclose={{ handler, condition }} />
  */
-export const onclose = (_node: HTMLElement, options: {handler?: Function, condition?: boolean} = {}) => {
+export const onclose = (_node: HTMLElement, options: {handler?: (...params: any) => any, condition?: boolean} = {}) => {
     let handler = options.handler
     let condition = options.condition ?? true
     
     const confirm = (e: BeforeUnloadEvent) => {
         if (!condition) return
-        handler && handler(e);
+        if(typeof handler === "function") handler(e);
         e.preventDefault()
         return e.returnValue = "Are you sure you want to close this window?"
     }
 
-    let unlisten = listen(window, 'beforeunload', confirm) || noop;
+    const unlisten = listen(window, 'beforeunload', confirm) || noop;
 
     return {
-        update: (options: {handler?: Function, condition?: boolean} = {}) => {
+        update: (options: {handler?: (...params: any) => any, condition?: boolean} = {}) => {
             handler = options.handler
             condition = options.condition ?? true
         },

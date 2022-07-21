@@ -5,7 +5,7 @@ import { noop } from "$lib/meta/index.js"
  * Usage: <element use:focus />
  */
 export const focus = (node: HTMLElement) => {
-    node && node.focus()
+    if(typeof node.focus === 'function') node.focus()
 
     return {
         update: noop,
