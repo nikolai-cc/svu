@@ -42,13 +42,18 @@ export const active = (
 
 	return {
 		update: (options: UseActiveOptions) => {
-			node.classList.contains(className) && node.classList.remove(className);
-			className = options.className === '' ? 'active' : options.className ?? 'active';
+			// Update the class only if the className is different than before, taking into account that undefined and '' result in 'active'.
+			if (
+				className !== options.className &&
+				!((options.className === '' || options.className === undefined) && className === 'active')
+			) {
+				node.classList.contains(className) && node.classList.remove(className);
+				className = options.className === '' ? 'active' : options.className ?? 'active';
+				const pathName = get(pathNameStore);
+				addClass(pathName);
+			}
 			includeDescendants = options.includeDescendants ?? false;
 			path = options.path ?? node.getAttribute('href') ?? '/';
-			// i think this might be redundant, because the we could reuse the subscription above
-			const pathName = get(pathNameStore);
-			addClass(pathName);
 		},
 		destroy: () => {
 			node.classList.remove(className);
