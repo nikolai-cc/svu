@@ -1,34 +1,37 @@
-import { listen, noop, timeout } from "$lib/meta/index.js"
+import { listen, noop, timeout } from '../meta';
 
-/** 
+/**
  * Dispatches a press event or calls a handler if pressed down for duration milliseconds.
  * Usage: <element use:press={{ duration: 500 }} on:press={ () => console.log('hello') } />
  */
-export const press = (node: HTMLElement, options: {duration: number, handler?: Function} | number) => {
-    let duration = typeof options === 'number' ? options : options.duration
-    let handler = typeof options === 'number' ? noop : options.handler || noop
+export const press = (
+	node: HTMLElement,
+	options: { duration: number; handler?: Function } | number
+) => {
+	let duration = typeof options === 'number' ? options : options.duration;
+	let handler = typeof options === 'number' ? noop : options.handler || noop;
 
-    const start = () => {
-        const dispatch = () => {
-            handler()
-            node.dispatchEvent(new CustomEvent('press', { detail: duration }))
-            
-            unlistenUp();
-            unlistenOut();
-        }
+	const start = () => {
+		const dispatch = () => {
+			handler();
+			node.dispatchEvent(new CustomEvent('press', { detail: duration }));
 
-        const clear = timeout(dispatch, duration);
-        const unlistenUp = listen(node, 'pointerup', clear);
-        const unlistenOut = listen(node, 'pointerout', clear);
-    }
+			unlistenUp();
+			unlistenOut();
+		};
 
-    const unlisten = listen(node, 'pointerdown', start)
+		const clear = timeout(dispatch, duration);
+		const unlistenUp = listen(node, 'pointerup', clear);
+		const unlistenOut = listen(node, 'pointerout', clear);
+	};
 
-    return {
-        update: (options: {duration: number, handler?: Function} | number) => {
-            duration = typeof options === 'number' ? options : options.duration
-            handler = typeof options === 'number' ? noop : options.handler || noop
-        },
-        destroy: unlisten,
-    }
-}
+	const unlisten = listen(node, 'pointerdown', start);
+
+	return {
+		update: (options: { duration: number; handler?: Function } | number) => {
+			duration = typeof options === 'number' ? options : options.duration;
+			handler = typeof options === 'number' ? noop : options.handler || noop;
+		},
+		destroy: unlisten
+	};
+};

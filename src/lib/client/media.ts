@@ -1,4 +1,4 @@
-import { mediaquery } from "../store/mediaquery.js";
+import { mediaquery } from '../store/mediaquery.js';
 
 /**
  * Is true when `prefers-reduced-motion` is set to `no-preference`.
@@ -28,7 +28,7 @@ export const landscape = mediaquery('orientation', 'landscape');
 /**
  * Is true when the viewport is taller than it is wide;
  */
- export const portrait = mediaquery('orientation', 'portrait');
+export const portrait = mediaquery('orientation', 'portrait');
 
 /**
  * Is true when the client prefers a dark color scheme.
@@ -48,9 +48,9 @@ export const highContrast = mediaquery('prefers-contrast', 'more');
 /**
  * Is true when the client prefers a low contrast color scheme.
  */
- export const lowContrast = mediaquery('prefers-contrast', 'less');
+export const lowContrast = mediaquery('prefers-contrast', 'less');
 
- /**
+/**
  * Is true when the has no contrast preference.
  */
 export const defaultContrast = mediaquery('prefers-contrast', 'no-preference');
@@ -58,7 +58,7 @@ export const defaultContrast = mediaquery('prefers-contrast', 'no-preference');
 /**
  * Is true when the device can display a hover state. (You can do so with a mouse, but not with a finger + touchscreen.)
  */
- export const hover = mediaquery('hover', 'hover');
+export const hover = mediaquery('hover', 'hover');
 
 /**
  * Is true when the client does not have a pointer available.

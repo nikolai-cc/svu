@@ -9,3 +9,6 @@ node_modules
 
 # used for janky brain farts, don't commit
 /src/routes/temp
+/test-results/
+/playwright-report/
+/playwright/.cache/

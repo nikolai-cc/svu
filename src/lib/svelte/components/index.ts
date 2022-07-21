@@ -1,1 +1,1 @@
-export { default as OnMount } from '../../components/OnMount.svelte'
+export { default as OnMount } from '../../components/OnMount.svelte';

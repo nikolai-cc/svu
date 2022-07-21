@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
-import { noop } from '$lib/meta/index.js';
-import { writable } from "svelte/store";
+import { noop } from '../meta';
+import { writable } from 'svelte/store';
 
 /**
  * A writable store that is synced with localstorage.
@@ -9,37 +9,39 @@ import { writable } from "svelte/store";
  * TODO: handle non-JSON-parseable values (e.g. Date objects)??
  */
 export const localstore = (key: string, value: any) => {
-	if (!browser) { 
-        return {
-            ...writable(value),
-            clear: noop,
-        }
-    }
-	
-    value = JSON.parse(window.localStorage.getItem(key) ?? 'null') ?? value
-    window.localStorage.setItem(key, JSON.stringify(value))
+	if (!browser) {
+		return {
+			...writable(value),
+			clear: noop
+		};
+	}
 
-    let { subscribe, set: setStore } = writable(value)
-    
+	value = JSON.parse(window.localStorage.getItem(key) ?? 'null') ?? value;
+	window.localStorage.setItem(key, JSON.stringify(value));
+
+	let { subscribe, set: setStore } = writable(value);
+
 	window.addEventListener('storage', (e) => {
-		e.key === key && window.localStorage.getItem(key) && setStore(JSON.parse(window.localStorage.getItem(key) ?? 'null'))
-	})
-	
+		e.key === key &&
+			window.localStorage.getItem(key) &&
+			setStore(JSON.parse(window.localStorage.getItem(key) ?? 'null'));
+	});
+
 	let set = (newValue: any) => {
 		window.localStorage.setItem(key, JSON.stringify(newValue));
-		setStore(newValue)
-	}
-	
-	let clear = (v: any) => {
-		window.localStorage.removeItem(key)
-		setStore(v ?? undefined)
-	}
+		setStore(newValue);
+	};
 
-    window.localStorage.set
+	let clear = (v: any) => {
+		window.localStorage.removeItem(key);
+		setStore(v ?? undefined);
+	};
+
+	window.localStorage.set;
 
 	return {
 		subscribe,
 		set,
 		clear
-	}
-}
+	};
+};

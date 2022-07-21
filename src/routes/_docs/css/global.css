@@ -1,129 +1,140 @@
-:root, [data-theme='light'] {
-    --bg0: rgb(228, 232, 232);
-    --bg: rgb(213, 218, 218);
-    --bg2: rgb(210, 215, 215);
-    --bg3: rgb(194, 200, 200);
-    --bg4: rgb(180, 185, 185);
-    
-    --fg: rgb(0, 0, 0);
-    --dark: rgb(15, 30, 10);
-    --light: rgb(55, 165, 20);
-    --light-33: rgba(55, 165, 20, 0.33);
+:root,
+[data-theme='light'] {
+	--bg0: rgb(228, 232, 232);
+	--bg: rgb(213, 218, 218);
+	--bg2: rgb(210, 215, 215);
+	--bg3: rgb(194, 200, 200);
+	--bg4: rgb(180, 185, 185);
+
+	--fg: rgb(0, 0, 0);
+	--dark: rgb(15, 30, 10);
+	--light: rgb(55, 165, 20);
+	--light-33: rgba(55, 165, 20, 0.33);
 }
 
 [data-theme='dark'] {
-    --bg0: rgb(30, 30, 30);
-    --bg: rgb(40, 40, 40);
-    --bg2: rgb(50, 50, 50);
-    --bg3: rgb(75, 75, 75);
-    --bg4: rgb(80, 80, 80);
-    
-    --fg: rgb(213, 218, 218);
-    --dark: rgb(15, 30, 10);
-    --light: rgb(55, 165, 20);
-    --light-33: rgba(0, 0, 0, 0.33);
+	--bg0: rgb(30, 30, 30);
+	--bg: rgb(40, 40, 40);
+	--bg2: rgb(50, 50, 50);
+	--bg3: rgb(75, 75, 75);
+	--bg4: rgb(80, 80, 80);
+
+	--fg: rgb(213, 218, 218);
+	--dark: rgb(15, 30, 10);
+	--light: rgb(55, 165, 20);
+	--light-33: rgba(0, 0, 0, 0.33);
 }
 
 html {
-    background-color: var(--bg);
-    background-image:
-        linear-gradient(var(--bg2) 2px, transparent 2px),
-        linear-gradient(90deg, var(--bg2) 2px, transparent 2px),
-        linear-gradient(var(--bg2) 1px, transparent 1px),
-        linear-gradient(90deg, var(--bg2) 1px, var(--bg) 1px);
-    background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
+	background-color: var(--bg);
+	background-image: linear-gradient(var(--bg2) 2px, transparent 2px),
+		linear-gradient(90deg, var(--bg2) 2px, transparent 2px),
+		linear-gradient(var(--bg2) 1px, transparent 1px),
+		linear-gradient(90deg, var(--bg2) 1px, var(--bg) 1px);
+	background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
 }
 
-:root, html, body {
-    font-family: 'Recursive', system-ui, sans-serif;
-    font-variation-settings: "MONO" 0, "CASL" 0.3, "wght" 350;
-    line-height: 1.5;
-    color: var(--fg);
-    height: --webkit-fill-available;
-    overflow: hidden;
+:root,
+html,
+body {
+	font-family: 'Recursive', system-ui, sans-serif;
+	font-variation-settings: 'MONO' 0, 'CASL' 0.3, 'wght' 350;
+	line-height: 1.5;
+	color: var(--fg);
+	height: --webkit-fill-available;
+	overflow: hidden;
 }
 
 h1 {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 h2 {
-    font-size: 1.6rem;
+	font-size: 1.6rem;
 }
 h2 {
-    font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
-h1, h2, h3, h4, h5 {
-    font-variation-settings: "CASL" 1, "wght" 600;
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-variation-settings: 'CASL' 1, 'wght' 600;
 }
 
 a {
-    color: var(--fg);
-    text-decoration: none;
-    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 500;
-    transition: font-variation-settings 0.2s ease-out;
+	color: var(--fg);
+	text-decoration: none;
+	font-variation-settings: 'MONO' 1, 'CASL' 0, 'wght' 500;
+	transition: font-variation-settings 0.2s ease-out;
 }
 
 article a {
-    color: var(--light)
+	color: var(--light);
 }
 
-a:hover, a.active {
-    font-variation-settings: "MONO" 1, "CASL" 1, "wght" 800;
+a:hover,
+a.active {
+	font-variation-settings: 'MONO' 1, 'CASL' 1, 'wght' 800;
 }
 
 a:active {
-    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 1000;
+	font-variation-settings: 'MONO' 1, 'CASL' 0, 'wght' 1000;
 }
 
 a.active {
-    color: var(--light);
+	color: var(--light);
 }
 
-pre, code {
-    font-family: 'Recursive', system-ui, sans-serif;
-    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 400;
-    color: var(--light);
-    background-color: var(--dark);
-    padding: 0.125rem 0.25rem;
-    border-radius: 0.25rem;
+pre,
+code {
+	font-family: 'Recursive', system-ui, sans-serif;
+	font-variation-settings: 'MONO' 1, 'CASL' 0, 'wght' 400;
+	color: var(--light);
+	background-color: var(--dark);
+	padding: 0.125rem 0.25rem;
+	border-radius: 0.25rem;
 }
 
-h2 > code, h3 > code, h4 > code, h5 > code {
-    color: var(--fg);
-    background: var(--bg0);
+h2 > code,
+h3 > code,
+h4 > code,
+h5 > code {
+	color: var(--fg);
+	background: var(--bg0);
 }
 
 pre {
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background-image: radial-gradient(var(--light-33) 0.55px, var(--dark) 0.55px);
-    background-size: 12px 12px;
-    overflow-x: auto;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	background-image: radial-gradient(var(--light-33) 0.55px, var(--dark) 0.55px);
+	background-size: 12px 12px;
+	overflow-x: auto;
 }
 
 .flow > :where(:not(:last-child)) {
-    margin-bottom: var(--flow-spacer, 1rem);
+	margin-bottom: var(--flow-spacer, 1rem);
 }
 
 :not(nav) > ul {
-    list-style: inside;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: var(--bg0);
-    background-image: radial-gradient(var(--bg3) 0.55px, var(--bg0) 0.55px);
-    background-size: 12px 12px;
+	list-style: inside;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: var(--bg0);
+	background-image: radial-gradient(var(--bg3) 0.55px, var(--bg0) 0.55px);
+	background-size: 12px 12px;
 }
 
 ol {
-    list-style: decimal;
-    list-style-position: inside;
+	list-style: decimal;
+	list-style-position: inside;
 }
 
 li > p {
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 li > p:last-child {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
