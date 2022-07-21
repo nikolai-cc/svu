@@ -1,6 +1,6 @@
 import { listen } from '$lib/meta';
 import { browser } from '$app/env';
-import { writable, type Readable } from 'svelte/store'
+import { writable, type Readable } from 'svelte/store';
 
 /**
  * This is a readable store that syncs to the state of a media query.
@@ -11,18 +11,20 @@ import { writable, type Readable } from 'svelte/store'
  * There are many built-in stores available in `svu/store`!
  */
 export const mediaquery = (media: string, value?: string) => {
-    media = value ? `(${media}: ${value})` : media;
+	media = value ? `(${media}: ${value})` : media;
 
-    const { subscribe, set } = writable();
+	const { subscribe, set } = writable();
 
-    if (!browser) return { subscribe };
+	if (!browser) return { subscribe };
 
-    let update = (e: MediaQueryListEvent) => { set(e.matches) }
-    let query = window.matchMedia(media)
-    let unlisten = listen(query, 'change', update as EventListener)
-    
-    set(query.matches)
-    let unsubscribe = () => unlisten();
+	const update = (e: MediaQueryListEvent) => {
+		set(e.matches);
+	};
+	const query = window.matchMedia(media);
+	const unlisten = listen(query, 'change', update as EventListener);
 
-    return { subscribe, unsubscribe }
-}
+	set(query.matches);
+	const unsubscribe = () => unlisten();
+
+	return { subscribe, unsubscribe };
+};

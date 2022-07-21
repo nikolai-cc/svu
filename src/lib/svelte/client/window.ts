@@ -2,11 +2,11 @@ import { derived, writable } from 'svelte/store';
 import { listen } from '$lib/meta/index.js';
 
 const createSize = (prop: 'innerWidth' | 'innerHeight') => {
-    const { subscribe, set } = writable(0);
-    set(window[prop])
-    listen(window, 'resize', () => set(window[prop]));
-    return { subscribe }
-}
+	const { subscribe, set } = writable(0);
+	set(window[prop]);
+	listen(window, 'resize', () => set(window[prop]));
+	return { subscribe };
+};
 
 /**
  * Svelte store that tracks the window width.
@@ -21,16 +21,14 @@ export const wh = createSize('innerHeight');
 /**
  * Svelte store that tracks the window size.
  */
-export const windowSize = derived(
-    [ww, wh], ([$ww, $wh]) => ({ w: $ww, h: $wh })
-);
+export const windowSize = derived([ww, wh], ([$ww, $wh]) => ({ w: $ww, h: $wh }));
 
 const createScroll = (prop: 'scrollX' | 'scrollY') => {
-    const { subscribe, set } = writable(0);
-    set(window[prop])
-    listen(window, 'scroll', () => set(window[prop]));
-    return { subscribe }
-}
+	const { subscribe, set } = writable(0);
+	set(window[prop]);
+	listen(window, 'scroll', () => set(window[prop]));
+	return { subscribe };
+};
 
 /**
  * Svelte store that tracks the scroll x position.
@@ -45,6 +43,4 @@ export const sy = createScroll('scrollY');
 /**
  * Svelte store that tracks the scroll position.
  */
-export const scroll = derived(
-    [sx, sy], ([$sx, $sy]) => ({ x: $sx, y: $sy })
-);
+export const scroll = derived([sx, sy], ([$sx, $sy]) => ({ x: $sx, y: $sy }));
