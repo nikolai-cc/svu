@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- FIX: patch error in copy/paste action on textarea
+- FIX: patch error passing in target by reference in copy/paste action
+
 ## 0.1.4
 
 - Fix exports
