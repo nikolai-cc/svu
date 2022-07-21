@@ -6,7 +6,7 @@ import { listen, noop, timeout } from '../meta';
  */
 export const press = (
 	node: HTMLElement,
-	options: { duration: number; handler?: Function } | number
+	options: { duration: number; handler?: (...params: any) => any } | number
 ) => {
 	let duration = typeof options === 'number' ? options : options.duration;
 	let handler = typeof options === 'number' ? noop : options.handler || noop;
@@ -28,7 +28,11 @@ export const press = (
 	const unlisten = listen(node, 'pointerdown', start);
 
 	return {
+<<<<<<< HEAD
 		update: (options: { duration: number; handler?: Function } | number) => {
+=======
+		update: (options: { duration: number; handler?: (...params: any) => any } | number) => {
+>>>>>>> 43a2b44386f095009ed548cbc86c5283b604b0fd
 			duration = typeof options === 'number' ? options : options.duration;
 			handler = typeof options === 'number' ? noop : options.handler || noop;
 		},

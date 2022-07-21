@@ -13,7 +13,7 @@ export const typewriter = (node: Element, options: { speed?: number; delay?: num
 	return {
 		duration,
 		delay,
-		tick: (t: number, u: number) => {
+		tick: (t: number, _: number) => {
 			const i = Math.trunc(text.length * t);
 			node.textContent = text.slice(0, i);
 		}

@@ -1,24 +1,26 @@
 /**
- * Function that deep clones any object up to a maximum recursion depth.
+ * Function that deep clones any object
  */
-export const clone = (obj: any, depth: number = Infinity) => {
-	let parents: any[] = [];
-	let children: any[] = [];
+export const clone = typeof structuredClone === 'function' ? structuredClone : _clone;
 
-	const _clone = (obj: any, depth: number) => {
-		if (typeof obj !== 'object' || depth === 0) {
+function _clone(obj: any) {
+	const parents: any[] = [];
+	const children: any[] = [];
+
+	const __clone = (obj: any) => {
+		if (typeof obj !== 'object') {
 			return obj;
 		}
 
 		let child: any;
-		if (obj instanceof Map) {
+		if (Array.isArray(obj)) {
+			child = [];
+		} else if (obj instanceof Map) {
 			child = new Map();
 		} else if (obj instanceof Set) {
 			child = new Set();
 		} else if (obj instanceof Date) {
 			child = new Date(obj.getTime());
-		} else if (obj instanceof Array) {
-			child = [];
 		} else if (obj instanceof Error) {
 			child = Object.create(obj);
 		} else if (obj instanceof RegExp) {
@@ -26,8 +28,8 @@ export const clone = (obj: any, depth: number = Infinity) => {
 		} else if (obj instanceof Promise) {
 			child = new Promise((res, rej) =>
 				obj.then(
-					(v) => res(_clone(v, depth - 1)),
-					(e) => rej(_clone(e, depth - 1))
+					(v) => res(__clone(v)),
+					(e) => rej(__clone(e))
 				)
 			);
 		} else {
@@ -42,19 +44,24 @@ export const clone = (obj: any, depth: number = Infinity) => {
 
 		if (obj instanceof Map) {
 			for (let [k, v] of obj) {
-				child.set(k, _clone(v, depth - 1));
+				child.set(k, __clone(v));
 			}
 		} else if (obj instanceof Set) {
 			for (let v of obj) {
-				child.add(_clone(v, depth - 1));
+				child.add(__clone(v));
 			}
 		} else {
 			for (let key in obj) {
-				child[key] = _clone(obj[key], depth - 1);
+				child[key] = __clone(obj[key]);
 			}
 		}
 		return child;
 	};
 
+<<<<<<< HEAD
 	return _clone(obj, depth);
 };
+=======
+	return __clone(obj);
+}
+>>>>>>> 43a2b44386f095009ed548cbc86c5283b604b0fd

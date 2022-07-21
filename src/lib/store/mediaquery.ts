@@ -17,14 +17,14 @@ export const mediaquery = (media: string, value?: string) => {
 
 	if (!browser) return { subscribe };
 
-	let update = (e: MediaQueryListEvent) => {
+	const update = (e: MediaQueryListEvent) => {
 		set(e.matches);
 	};
-	let query = window.matchMedia(media);
-	let unlisten = listen(query, 'change', update as EventListener);
+	const query = window.matchMedia(media);
+	const unlisten = listen(query, 'change', update as EventListener);
 
 	set(query.matches);
-	let unsubscribe = () => unlisten();
+	const unsubscribe = () => unlisten();
 
 	return { subscribe, unsubscribe };
 };

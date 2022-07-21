@@ -3,9 +3,9 @@ import { listen, noop } from '../meta';
 /**
  * Executes a function when clicking anywhere but on the target node.
  * Also dispatches the `clickoutside` event on the target node.
- * Usage: <element use:clickoutside={ handler() } />
+ * Usage: <element use:clickoutside={ handler } />
  */
-export const clickoutside = (node: HTMLElement, handler?: Function) => {
+export const clickoutside = (node: HTMLElement, handler?: (...params: any) => any) => {
 	const handleClick = (event: PointerEvent) => {
 		if (node.contains(event.target as HTMLElement)) return;
 		handler && handler();
