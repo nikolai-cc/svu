@@ -1,1 +1,1 @@
-export * from './ls'
+export * from './ls';

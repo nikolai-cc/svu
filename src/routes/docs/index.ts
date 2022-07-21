@@ -1,10 +1,10 @@
-import type { RequestEvent } from "@sveltejs/kit"
+import type { RequestEvent } from '@sveltejs/kit';
 
 export const GET = async () => {
-    return {
-        status: 303,
-        headers: {
-            Location: '/'
-        }
-    }
-}
+	return {
+		status: 303,
+		headers: {
+			Location: '/'
+		}
+	};
+};

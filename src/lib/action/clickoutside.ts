@@ -1,4 +1,4 @@
-import { listen, noop } from '$lib/meta/index.js'
+import { listen, noop } from '$lib/meta/index.js';
 
 /**
  * Executes a function when clicking anywhere but on the target node.
@@ -6,15 +6,15 @@ import { listen, noop } from '$lib/meta/index.js'
  * Usage: <element use:clickoutside={ handler } />
  */
 export const clickoutside = (node: HTMLElement, handler?: (...params: any) => any) => {
-    const handleClick = (event: PointerEvent) => {
-        if (node.contains(event.target as HTMLElement)) return
-        handler && handler()
-        node.dispatchEvent(new CustomEvent('clickoutside'));
-    }
-    const unlisten = listen(document, 'click', handleClick as EventListenerOrEventListenerObject)
+	const handleClick = (event: PointerEvent) => {
+		if (node.contains(event.target as HTMLElement)) return;
+		handler && handler();
+		node.dispatchEvent(new CustomEvent('clickoutside'));
+	};
+	const unlisten = listen(document, 'click', handleClick as EventListenerOrEventListenerObject);
 
-    return {
-        update: noop,
-        destroy: unlisten
-    }
-}
+	return {
+		update: noop,
+		destroy: unlisten
+	};
+};

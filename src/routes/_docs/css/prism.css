@@ -1,26 +1,30 @@
 :root {
-    --c1: var(--light);
-    --c2: #5A7302;
-    --c3: #83A603;
-    --c4: #ABD904;
-    --c5: #93D94E;
-    --c6: #37D43D;
+	--c1: var(--light);
+	--c2: #5a7302;
+	--c3: #83a603;
+	--c4: #abd904;
+	--c5: #93d94e;
+	--c6: #37d43d;
 }
 
-pre > code[class*="language-"] {
+pre > code[class*='language-'] {
 	font-size: 1em;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
 	text-shadow: none;
 	background: black;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: black;
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	text-shadow: none;
+	background: black;
 }
 
 .token.comment,
@@ -35,7 +39,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 }
 
 .token.namespace {
-	opacity: .7;
+	opacity: 0.7;
 }
 
 .token.tag,
@@ -46,18 +50,18 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 .token.property,
 .token.function {
-    color: var(--c3);
+	color: var(--c3);
 }
 
 .token.tag-id,
 .token.selector,
 .token.atrule-id {
-    color: var(--c4);
+	color: var(--c4);
 }
 
 code.language-javascript,
 .token.attr-name {
-    color: var(--c5);
+	color: var(--c5);
 }
 
 code.language-css,
@@ -112,6 +116,6 @@ code.language-scss,
 }
 
 pre > code.highlight {
-	outline: .4em solid var(--c4);
-	outline-offset: .4em;
+	outline: 0.4em solid var(--c4);
+	outline-offset: 0.4em;
 }

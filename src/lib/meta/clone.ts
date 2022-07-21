@@ -1,7 +1,7 @@
 /**
  * Function that deep clones any object up to a maximum recursion depth.
  */
-export const clone = typeof structuredClone === 'function' ? structuredClone : _clone
+export const clone = typeof structuredClone === 'function' ? structuredClone : _clone;
 
 // copied from svelte codebase:
 // adapted from klona v2.0.4 - https://github.com/lukeed/klona
@@ -10,7 +10,7 @@ function _clone(val: any) {
 	let k, out, tmp;
 
 	if (Array.isArray(val)) {
-		out = Array(k = val.length);
+		out = Array((k = val.length));
 		while (k--) out[k] = (tmp = val[k]) && typeof tmp === 'object' ? clone(tmp) : tmp;
 		return out;
 	}
@@ -25,7 +25,8 @@ function _clone(val: any) {
 					enumerable: true,
 					writable: true
 				});
-			} else if (typeof val[k] !== 'function') { // MODIFICATION: skip functions
+			} else if (typeof val[k] !== 'function') {
+				// MODIFICATION: skip functions
 				out[k] = (tmp = val[k]) && typeof tmp === 'object' ? clone(tmp) : tmp;
 			}
 		}

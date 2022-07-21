@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import { noop, stringify, parse } from '$lib/meta/index.js';
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
 
 /**
  * A writable store that is synced with localstorage.
@@ -8,39 +8,38 @@ import { writable } from "svelte/store";
  * TODO: handle non-JSON-parseable values (e.g. Date objects)??
  */
 export const localstore = (key: string, value: any) => {
-	if (!browser || !window || !available()) { 
-        return {
-            ...writable(value),
-            clear: noop,
-        }
-    }
-	
-    value = parse(getItem(key)) ?? value
-    setItem(key, value)
+	if (!browser || !window || !available()) {
+		return {
+			...writable(value),
+			clear: noop
+		};
+	}
 
-    const { subscribe, set: setStore } = writable(value)
-    
+	value = parse(getItem(key)) ?? value;
+	setItem(key, value);
+
+	const { subscribe, set: setStore } = writable(value);
+
 	window.addEventListener('storage', (e) => {
-		e.key === key && getItem(key) && setStore(parse(getItem(key)))
-	})
-	
+		e.key === key && getItem(key) && setStore(parse(getItem(key)));
+	});
+
 	const set = (newValue: any) => {
 		setItem(key, newValue);
-		setStore(newValue)
-	}
-	
+		setStore(newValue);
+	};
+
 	const clear = (v: any) => {
-		removeItem(key)
-		setStore(v ?? undefined)
-	}
+		removeItem(key);
+		setStore(v ?? undefined);
+	};
 
 	return {
 		subscribe,
 		set,
 		clear
-	}
-}
-
+	};
+};
 
 // takes in a key and value and stringifies the value before adding to localstorage
 function setItem(key: string, value: any) {
@@ -57,12 +56,12 @@ function removeItem(key: string) {
 }
 
 function available() {
-    const test = '__svu_test__';
-    try {
-        setItem(test, test);
-        removeItem(test);
-        return true;
-    } catch(_) {
-        return false;
-    }
+	const test = '__svu_test__';
+	try {
+		setItem(test, test);
+		removeItem(test);
+		return true;
+	} catch (_) {
+		return false;
+	}
 }
