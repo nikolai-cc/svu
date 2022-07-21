@@ -7,7 +7,7 @@ import { listen } from "$lib/meta/index.js"
 export const copy = (node: HTMLElement, target?: HTMLElement | string) => {
     let object = (typeof target === 'string' ? document.querySelector(target) : target) ?? node;
     const copyObject = () => {
-        let text = (object instanceof HTMLInputElement) ? object.value : object.textContent || '';
+        let text = (object instanceof HTMLInputElement || object instanceof HTMLTextAreaElement) ? object.value : object.textContent || '';
         navigator.clipboard.writeText(text)
     }
 
@@ -28,7 +28,7 @@ export const paste = (node: HTMLElement, target?: HTMLElement | string) => {
 
     const pasteObject = async () => { 
         const text = await navigator.clipboard.readText();
-        if (object instanceof HTMLInputElement) object.value = text
+        if (object instanceof HTMLInputElement || object instanceof HTMLTextAreaElement) object.value = text
         else object.textContent = text
     }
 
