@@ -1,14 +1,15 @@
 import type { PlaywrightTestConfig } from '@playwright/experimental-ct-svelte';
 import { devices } from '@playwright/experimental-ct-svelte';
+import { resolve } from 'node:path';
 
 /**
  * See https://playwright.dev/docs/test-components
  */
 const config: PlaywrightTestConfig = {
-	testDir: './test',
-	snapshotDir: './__snapshots__',
+	testDir: 'test',
+	snapshotDir: '__snapshots__',
 	fullyParallel: true,
-	testIgnore: '**/*.test.ts',
+	testMatch: '**/*.spec.ts',
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
@@ -18,7 +19,17 @@ const config: PlaywrightTestConfig = {
 	reporter: 'html',
 	use: {
 		trace: 'on-first-retry',
-		ctPort: 3100
+		ctPort: 3100,
+		ctViteConfig: {
+			resolve: {
+				alias: {
+					// Setup the built-in $lib alias in SvelteKit
+					'$lib': resolve('src/lib')
+				}
+			}
+		},
+		ctTemplateDir: 'test/template',
+		ctCacheDir: 'test/template/.cache'
 	},
 
 	projects: [
