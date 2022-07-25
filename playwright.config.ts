@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
 	retries: process.env.CI ? 2 : 0,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
-	reporter: 'html',
+	reporter: [['html', { outputFolder: 'test/playwright-report' }]],
 	use: {
 		trace: 'on-first-retry',
 		ctPort: 3100,
@@ -28,8 +28,9 @@ const config: PlaywrightTestConfig = {
 				}
 			}
 		},
-		ctTemplateDir: 'test/template',
-		ctCacheDir: 'test/template/.cache'
+		
+		ctTemplateDir: 'test/playwright-template',
+		ctCacheDir: 'test/playwright-template/.cache',
 	},
 
 	projects: [

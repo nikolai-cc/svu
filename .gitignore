@@ -13,5 +13,5 @@ node_modules
 
 # test files
 /test-results/
-/playwright-report/
-/test/template/.cache/
+/test/playwright-report/
+/test/playwright-template/.cache/
