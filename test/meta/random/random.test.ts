@@ -7,6 +7,7 @@ describe('Random meta utility', () => {
 		for (let i = 0; i < 10_000; i++) {
 			numbers.push(random(100));
 		}
+		expect(numbers.some((n) => n < 0)).toBeFalsy();
 		expect(numbers.some((n) => n > 100)).toBeFalsy();
 	});
 });
