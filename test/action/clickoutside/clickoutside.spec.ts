@@ -1,14 +1,17 @@
 import Component from './Component.svelte';
 import { test, expect } from '@playwright/experimental-ct-svelte';
 
-const outside_selector = 'data-testid=outside';
-const foo_selector = 'data-testid=foo';
-
-test('should work', async ({ mount, page }) => {
+test('Should change only on click-outside', async ({ mount, page }) => {
 	await mount(Component);
-	await expect(page.locator(foo_selector)).toHaveAttribute('data-where', 'inside');
-	await page.locator(foo_selector).click();
-	await expect(page.locator(foo_selector)).toHaveAttribute('data-where', 'inside');
-	await page.locator(outside_selector).click();
-	await expect(page.locator(foo_selector)).toHaveAttribute('data-where', 'outside');
+	
+	const target = page.locator('button');
+	const container = page.locator('main');
+
+	await expect(target).toHaveText('unchanged');
+	
+	await target.click();
+	await expect(target).toHaveText('unchanged');
+	
+	await container.click();
+	await expect(target).toHaveText('changed');
 });
