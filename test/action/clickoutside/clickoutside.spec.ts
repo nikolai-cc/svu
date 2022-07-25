@@ -1,7 +1,7 @@
 import Component from './Component.svelte';
 import { test, expect } from '@playwright/experimental-ct-svelte';
 
-test('Should change only on click-outside', async ({ mount, page }) => {
+test('ClickOutside callback should only fire on click outside of target node.', async ({ mount, page }) => {
 	await mount(Component);
 	
 	const target = page.locator('button');
