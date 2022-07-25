@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clickoutside } from '../../../src/lib/action/clickoutside';
+	import { clickoutside } from '$lib/action/clickoutside';
 
 	let where = 'inside';
 </script>
