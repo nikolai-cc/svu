@@ -1,4 +1,4 @@
-import { listen, noop, timeout } from '../meta';
+import { listen, noop, timeout } from '../meta/index.js';
 
 /**
  * Dispatches a press event or calls a handler if pressed down for duration milliseconds.
@@ -28,11 +28,7 @@ export const press = (
 	const unlisten = listen(node, 'pointerdown', start);
 
 	return {
-<<<<<<< HEAD
-		update: (options: { duration: number; handler?: Function } | number) => {
-=======
 		update: (options: { duration: number; handler?: (...params: any) => any } | number) => {
->>>>>>> 43a2b44386f095009ed548cbc86c5283b604b0fd
 			duration = typeof options === 'number' ? options : options.duration;
 			handler = typeof options === 'number' ? noop : options.handler || noop;
 		},
