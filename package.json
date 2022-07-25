@@ -15,7 +15,7 @@
 	"scripts": {
 		"test": "npm run test:vitest && npm run test:playwright",
 		"test:setup": "tsm ./test/setup.ts",
-		"test:vitest": "vitest run",
+		"test:vitest": "npm run test:setup && vitest run",
 		"test:playwright": "npm run test:setup && playwright test -c playwright.config.ts",
 		"dev": "vite dev",
 		"build": "vite build",
