@@ -13,10 +13,10 @@
 		"url": "https://github.com/nikolai-cc/svu/issues"
 	},
 	"scripts": {
-		"test-setup": "tsm ./test/setup.ts",
-		"vitest": "vitest run",
-		"playwright": "npm run test-setup && playwright test -c playwright.config.ts",
-		"test": "npm run vitest && npm run playwright",
+		"test": "npm run test:vitest && npm run test:playwright",
+		"test:setup": "tsm ./test/setup.ts",
+		"test:vitest": "vitest run",
+		"test:playwright": "npm run test:setup && playwright test -c playwright.config.ts",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
