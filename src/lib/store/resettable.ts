@@ -1,5 +1,5 @@
 import { writable, type StartStopNotifier } from 'svelte/store';
-import { clone } from '../meta';
+import { clone } from '../meta/index.js';
 
 /**
  * Resettable writable store. Allows any values (including objects).

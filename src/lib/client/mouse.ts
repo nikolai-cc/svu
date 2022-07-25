@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import { derived, writable } from 'svelte/store';
-import { listen } from '../meta';
+import { listen } from '../meta/index.js';
 
 const create = (prop: 'clientX' | 'clientY') => {
 	const { subscribe, set } = writable(0);

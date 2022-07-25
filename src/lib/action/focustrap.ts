@@ -1,4 +1,4 @@
-import { noop, listen } from '../meta';
+import { noop, listen } from '../meta/index.js';
 
 // This list originates from: https://stackoverflow.com/a/30753870
 const FOCUSABLE = `

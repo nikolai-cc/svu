@@ -1,4 +1,4 @@
-import { listen, noop } from '../meta';
+import { listen, noop } from '../meta/index.js';
 
 /**
  * Theme Toggler.

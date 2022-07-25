@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import { listen } from '../meta';
+import { listen } from '../../meta/index.js';
 
 const createSize = (prop: 'innerWidth' | 'innerHeight') => {
 	const { subscribe, set } = writable(0);
