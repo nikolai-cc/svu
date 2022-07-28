@@ -8,6 +8,12 @@ const config = {
 	},
 	ssr: {
 		noExternal: ['svu']
+	},
+	test: {
+		globals: true,
+		environment: 'jsdom',
+		include: ['test/**/*.{test,spec}.ts'],
+		setupFiles: ['./test/setup.ts']
 	}
 };
 
