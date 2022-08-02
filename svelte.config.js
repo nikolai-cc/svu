@@ -6,7 +6,7 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	extensions: ['.svelte', '.svx'],
+	extensions: ['.svelte', '.svx', '.test.svelte'],
 	preprocess: [mdsvex(), preprocess()],
 
 	kit: {
