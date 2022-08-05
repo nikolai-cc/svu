@@ -10,6 +10,5 @@
 		"sourceMap": true,
 		"strict": true,
 		"types": ["vitest/globals", "@testing-library/jest-dom"]
-	},
-	"include": ["./src/**/*.test.svelte", "./src/**/*.test.ts"]
+	}
 }
