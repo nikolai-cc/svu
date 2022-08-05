@@ -37,8 +37,8 @@ export const active = (
 
 	// A derived store will only run the subscribe method if the derived value changes,
 	// so we avoid unecessary addClass() calls where the pathName was not changed
-	const pathNameStore = derived(page, ($page) => $page.url.pathname);
-	const unsubscribeFromPathNameStore = pathNameStore.subscribe(addClass);
+	const pathStore = derived(page, ($page) => $page.url.pathname);
+	const unsubscribe = pathStore.subscribe(addClass);
 
 	return {
 		update: (options: UseActiveOptions) => {
@@ -49,7 +49,7 @@ export const active = (
 			) {
 				node.classList.contains(className) && node.classList.remove(className);
 				className = options.className === '' ? 'active' : options.className ?? 'active';
-				const pathName = get(pathNameStore);
+				const pathName = get(pathStore);
 				addClass(pathName);
 			}
 			includeDescendants = options.includeDescendants ?? false;
@@ -57,7 +57,7 @@ export const active = (
 		},
 		destroy: () => {
 			node.classList.remove(className);
-			unsubscribeFromPathNameStore();
+			unsubscribe();
 		}
 	};
 };

@@ -1,4 +1,4 @@
-export { active } from './active.js';
+export { active } from './active/active.js';
 export { clickoutside } from './clickoutside.js';
 export { copy, paste } from './clipboard.js';
 export { download } from './download.js';
