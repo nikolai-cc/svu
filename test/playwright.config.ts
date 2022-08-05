@@ -1,12 +1,16 @@
 import type { PlaywrightTestConfig } from '@playwright/experimental-ct-svelte';
 import { devices } from '@playwright/experimental-ct-svelte';
-import { resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * See https://playwright.dev/docs/test-components
  */
 const config: PlaywrightTestConfig = {
-	testDir: 'test',
+	testDir: 'tests',
 	snapshotDir: '__snapshots__',
 	fullyParallel: true,
 	testMatch: '**/*.spec.ts',
@@ -16,7 +20,7 @@ const config: PlaywrightTestConfig = {
 	retries: process.env.CI ? 2 : 0,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
-	reporter: [['html', { outputFolder: 'test/playwright-report' }]],
+	reporter: [['html', { outputFolder: 'playwright/report' }]],
 	use: {
 		trace: 'on-first-retry',
 		ctPort: 3100,
@@ -24,13 +28,15 @@ const config: PlaywrightTestConfig = {
 			resolve: {
 				alias: {
 					// Setup the built-in $lib alias in SvelteKit
-					'$lib': resolve('src/lib')
+					'$lib': resolve(__dirname, '../src/lib'),
+					// Replace $app with our mocked variant.
+					'$app': resolve(__dirname, 'playwright/mock/app'),
 				}
 			}
 		},
-		
-		ctTemplateDir: 'test/playwright-template',
-		ctCacheDir: 'test/playwright-template/.cache',
+
+		ctTemplateDir: 'playwright/template',
+		ctCacheDir: 'playwright/.cache',
 	},
 
 	projects: [
