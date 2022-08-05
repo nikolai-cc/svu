@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import path from 'path';
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -12,8 +13,8 @@ const config = {
 	test: {
 		globals: true,
 		environment: 'jsdom',
-		include: ['test/**/*.{test,spec}.ts'],
-		setupFiles: ['./test/setup.ts']
+		include: ['src/**/*.{test,spec}.ts'],
+		setupFiles: ['src/test/setup.ts']
 	}
 };
 
