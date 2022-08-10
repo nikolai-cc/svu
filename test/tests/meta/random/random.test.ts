@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { random } from '../../../../src/lib/meta';
+import { random } from '$lib/meta';
 
 describe('Random meta utility', () => {
 	it('should give a random number from 0 to number if only one parameter is provided', () => {

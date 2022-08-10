@@ -1,6 +1,6 @@
 import { get } from 'svelte/store';
 import { describe, expect, it } from 'vitest';
-import { resettable } from '../../../../src/lib/store/resettable';
+import { resettable } from '$lib/store/resettable';
 
 describe('Resettable stores', () => {
 	it('should have a reset function', () => {
