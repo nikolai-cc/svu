@@ -1,7 +1,7 @@
 import Component from './Component.svelte';
 import { test, expect } from '@playwright/experimental-ct-svelte';
 
-test('Action class should be given to the right link.', async ({ mount, page }) => {
+test('Action class should be given to the correct link.', async ({ mount, page }) => {
 	await mount(Component);
 
 	const activeLink = page.locator('#active');
