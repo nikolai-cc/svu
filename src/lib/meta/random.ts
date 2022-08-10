@@ -3,9 +3,9 @@
  * Passing in a single parameter returns a random integer between 0 and the provided value.
  */
 export const random = (min: number, max?: number) => {
-	min = max ? min : 0;
-	max = max ? max : min;
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	const _min = max ? min : 0;
+	const _max = max ? max : min;
+	return Math.floor(Math.random() * (_max - _min + 1)) + _min;
 };
 
 /** Flip a coin */
