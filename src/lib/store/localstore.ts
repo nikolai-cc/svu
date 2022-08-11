@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '../meta/index.js';
 import { noop, stringify, parse } from '../meta/index.js';
 import { writable } from 'svelte/store';
 

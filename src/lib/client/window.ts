@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '../meta/index.js';
 import { derived, writable } from 'svelte/store';
 import { listen } from '../meta/index.js';
 
