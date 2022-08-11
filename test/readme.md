@@ -1,6 +1,6 @@
 # Testing svu
 
-You'll find everything related to testing in the `/test` folder. In order to fully test every svu we make use of [Vitest](https://vitest.dev) and [Playwright CT](https://playwright.dev/docs/test-components). Vitests allows us to perform code tests, while Playwright allows us to test components and actions in a real browser environment.
+You'll find everything related to testing in the `/test` folder. In order to fully test every svu we make use of [Vitest](https://vitest.dev) and [Playwright CT](https://playwright.dev/docs/test-components). Vitest allows us to perform code tests, while Playwright allows us to test components and actions in a real browser environment.
 
 ## Writing tests
 
@@ -11,9 +11,9 @@ The `test/tests` folder contains all tests. This folder is structured the same w
 
 ### Testing with Playwright
 
-E.g. in order to test an action, define a `Component.svelte` that implements the action. Import this component in your `action.spec.ts` file test it there.
+E.g. in order to test an action, define a `Component.svelte` that implements the action. Import this component in your `action.spec.ts` file and test it there.
 
-The real SvelteKit context (and thus `$app`) is not available in these tests. You can import things from `$app` like you would in SvelteKit, though it resolves to `/test/playwright/mock/app`. There you will find a mocked version of the relevant stores. Feel free to add more if you deem it nessecary. Keep in mind that many `readable` stores are implemented as `writable`, in order to enable us to do things like faking browser navigation by updating the `$page` store in order to test the `active` action. Similarly, feel free to change a mocked store from `readable` to `writable` if a test requires it.
+The real SvelteKit context (and thus `$app`) is not available in these tests. You can import things from `$app` like you would in SvelteKit, though it resolves to `/test/playwright/mock/app`. There you will find a mocked version of the relevant stores. Feel free to add more if you deem it necessary. Keep in mind that many `readable` stores are implemented as `writable`, in order to enable us to do things like faking browser navigation by updating the `$page` store in order to test the `active` action. Similarly, feel free to change a mocked store from `readable` to `writable` if a test requires it.
 
 ### Testing with Vitest
 
