@@ -1,5 +1,11 @@
 # svu
 
+## 0.2.1
+
+### Changes
+
+- FIX: Remove SvelteKit dependency for svu/dev
+
 ## 0.2.0
 
 ### Changes
