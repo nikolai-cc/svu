@@ -64,7 +64,7 @@ const encode = (e: KeyboardEvent): string => {
 /**
  * Executes functions on keydown. Pass in a map of shortcuts to functions.
  * You can pass in modifier keys with the + symbol. The key to test for always comes last.
- * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match an invalid modifier, it is ignored.
+ * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match a modifier, it is ignored.
  * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
@@ -88,7 +88,7 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
 /**
  * Executes functions on keyup. Pass in a map of key names to functions.
  * You can pass in modifier keys with the + symbol. The key to test for always comes last.
- * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match an invalid modifier, it is ignored.
+ * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match a modifier, it is ignored.
  * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
