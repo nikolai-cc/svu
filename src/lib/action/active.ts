@@ -1,5 +1,5 @@
 import type { ActionReturn } from 'svelte/action';
-import { listen } from '$lib/meta';
+import { listen } from '../meta/index.js';
 
 export interface UseActiveOptions {
 	className?: string;
