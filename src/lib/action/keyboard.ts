@@ -1,4 +1,4 @@
-import { listen, noop, capitalise } from '../meta/index.js';
+import { listen, capitalise } from '../meta/index.js';
 
 export type keyMap = { [key: string]: Function };
 
