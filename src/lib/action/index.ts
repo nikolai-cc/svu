@@ -5,7 +5,7 @@ export { download } from './download.js';
 export { draggable } from './draggable.js';
 export { focus } from './focus.js';
 export { focustrap } from './focustrap.js';
-export { keydown, keyup, type keyMap } from './keyboard.js';
+export { keydown, keyup, type KeyMap } from './keyboard.js';
 export { onclose } from './onclose.js';
 export { portal } from './portal.js';
 export { press } from './press.js';

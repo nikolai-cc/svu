@@ -1,6 +1,6 @@
 import { listen, noop, capitalise } from '../meta/index.js';
 
-export type keyMap = { [key: string]: Function };
+export type KeyMap = { [key: string]: Function };
 
 /**
  * Takes an `keyboard shortcut` string: e.g. `'shift+cmd+a'` and returns a string that normalises `meta`/`cmd`/`win` to `'Super'`,
@@ -28,8 +28,8 @@ const sanitise = (keyString: string): string => {
 /**
  * Takes a keyMap and returns it with its key strings sanitised.
  */
-function sanitizeKeyMap(keyMap: keyMap) {
-	const shortcuts: keyMap = {};
+function sanitizeKeyMap(keyMap: KeyMap) {
+	const shortcuts: KeyMap = {};
 	for (const [key, fn] of Object.entries(keyMap)) {
 		shortcuts[sanitise(key)] = fn;
 	}
@@ -68,8 +68,8 @@ const encode = (e: KeyboardEvent): string => {
  * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
-export const keydown = (node: HTMLElement, keys: keyMap) => {
-	let shortcuts: keyMap = sanitizeKeyMap(keys);
+export const keydown = (node: HTMLElement, keys: KeyMap) => {
+	let shortcuts: KeyMap = sanitizeKeyMap(keys);
 
 	const execute = (e: KeyboardEvent) => {
 		shortcuts[encode(e)]?.(e);
@@ -78,7 +78,7 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
 	const unlisten = listen(node, 'keydown', execute as EventListener);
 
 	return {
-		update: (keys: keyMap) => {
+		update: (keys: KeyMap) => {
 			shortcuts = sanitizeKeyMap(keys);
 		},
 		destroy: unlisten
@@ -92,7 +92,7 @@ export const keydown = (node: HTMLElement, keys: keyMap) => {
  * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
  * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
  */
-export const keyup = (node: HTMLElement, keys: keyMap) => {
+export const keyup = (node: HTMLElement, keys: KeyMap) => {
 	let shortcuts = sanitizeKeyMap(keys);
 	const execute = (e: KeyboardEvent) => {
 		shortcuts[encode(e)]?.(e);
@@ -101,7 +101,7 @@ export const keyup = (node: HTMLElement, keys: keyMap) => {
 	const unlisten = listen(node, 'keyup', execute as EventListener);
 
 	return {
-		update: (keys: keyMap) => {
+		update: (keys: KeyMap) => {
 			shortcuts = sanitizeKeyMap(keys);
 		},
 		destroy: unlisten

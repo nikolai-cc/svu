@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { active } from '$lib/action';
-	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	// Page is a readable store, but the mocked page is writable. This way we can easily fake a navigation event.
+	onMount(() => {
+		history.replaceState({}, '', '/');
+	});
+
 	const fakePageNavigation = () => {
-		//@ts-ignore
-		page.update((p) => ({ ...p, url: new URL('http://svu.dev/inactive') }));
+		history.replaceState({}, '', '/inactive');
 	};
 </script>
 

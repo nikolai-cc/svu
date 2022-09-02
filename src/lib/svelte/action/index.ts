@@ -4,7 +4,7 @@ export { download } from '../../action/download.js';
 export { draggable } from '../../action/draggable.js';
 export { focus } from '../../action/focus.js';
 export { focustrap } from '../../action/focustrap.js';
-export { keydown, keyup, type keyMap } from '../../action/keyboard.js';
+export { keydown, keyup, type KeyMap } from '../../action/keyboard.js';
 export { onclose } from '../../action/onclose.js';
 export { portal } from '../../action/portal.js';
 export { press } from '../../action/press.js';

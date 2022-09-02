@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { browser } from '$app/env';
+import { browser } from '../meta/index.js';
 
 // A map of OS to regex User Agent string match.
 let osMap = {

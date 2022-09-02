@@ -1,7 +1,7 @@
 {
 	"name": "svu",
 	"description": "Svultimate Svelte(Kit) Svutilities",
-	"version": "0.1.5",
+	"version": "0.2.1",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/nikolai-cc/svu.git"

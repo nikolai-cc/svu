@@ -1,4 +1,4 @@
-# Changelog
+# svu
 
 ## 0.2.1
 
@@ -8,7 +8,7 @@
 
 ## 0.2.0
 
-#### Changes
+### Changes
 
 - [BREAKING]: Feat: Svu now is no longer dependant on SvelteKit, so should work in the Svelte REPL (or fallback gracefully). This means the svu/svelte export will be removed.
 - [BREAKING]: FIX: type KeyMap is now capitalised.

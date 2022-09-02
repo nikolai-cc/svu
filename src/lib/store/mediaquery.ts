@@ -1,5 +1,5 @@
 import { listen } from '../meta/index.js';
-import { browser } from '$app/env';
+import { browser } from '../meta/index.js';
 import { writable, type Readable } from 'svelte/store';
 
 /**
