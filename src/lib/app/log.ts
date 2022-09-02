@@ -1,6 +1,6 @@
 /** Logging utilities */
 
-import { dev } from '$app/env';
+import { dev } from '../meta/env';
 
 /**
  * A set of wrapper functions that only logs to the console when SvelteKit is in development mode.
