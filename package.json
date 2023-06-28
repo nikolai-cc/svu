@@ -13,11 +13,11 @@
 		"url": "https://github.com/nikolai-cc/svu/issues"
 	},
 	"scripts": {
-		"test": "npm run test:vitest && npm run test:playwright",
+		"test": "pnpm run test:vitest && pnpm run test:playwright",
 		"test:clean": "rm -rf ./test/playwright/.cache",
 		"test:setup": "tsm ./test/setup.ts",
-		"test:vitest": "npm run test:setup && vitest run -c test/vitest.config.ts",
-		"test:playwright": "npm run test:setup && playwright test -c test/playwright.config.ts",
+		"test:vitest": "pnpm run test:setup && vitest run -c test/vitest.config.ts",
+		"test:playwright": "pnpm run test:setup && playwright test -c test/playwright.config.ts",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -69,5 +69,6 @@
 		"./svelte/store": "./svelte/store/index.js",
 		"./svelte/transition": "./svelte/transition/index.js"
 	},
-	"type": "module"
+	"type": "module",
+	"packageManager": "pnpm@8.6.5"
 }
