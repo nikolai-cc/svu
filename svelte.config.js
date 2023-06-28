@@ -11,15 +11,12 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		prerender: {
-			default: true
-		},
 		alias: {
 			$docs: 'src/routes/_docs/'
-		},
-		package: {
-			exports: () => {}
 		}
+	},
+	package: {
+		exports: () => true
 	}
 };
 
