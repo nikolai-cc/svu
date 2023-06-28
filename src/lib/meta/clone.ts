@@ -1,11 +1,11 @@
 /**
  * Function that deep clones any object up to a maximum recursion depth.
  */
- export const clone = (obj: any, depth: number = Infinity) => {
-    let parents: any[] = [];
-    let children: any[] = [];
+export const clone = (obj: any, depth: number = Infinity) => {
+	let parents: any[] = [];
+	let children: any[] = [];
 
-    const _clone = (obj: any, depth: number) => {
+	const _clone = (obj: any, depth: number) => {
 		if (typeof obj !== 'object') {
 			return obj;
 		}

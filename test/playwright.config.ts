@@ -28,15 +28,15 @@ const config: PlaywrightTestConfig = {
 			resolve: {
 				alias: {
 					// Setup the built-in $lib alias in SvelteKit
-					'$lib': resolve(__dirname, '../src/lib'),
+					$lib: resolve(__dirname, '../src/lib'),
 					// Replace $app with our mocked variant.
-					'$app': resolve(__dirname, 'playwright/mock/app'),
+					$app: resolve(__dirname, 'playwright/mock/app')
 				}
 			}
 		},
 
 		ctTemplateDir: 'playwright/template',
-		ctCacheDir: 'playwright/.cache',
+		ctCacheDir: 'playwright/.cache'
 	},
 
 	projects: [

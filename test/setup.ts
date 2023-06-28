@@ -7,16 +7,16 @@ import { promisify } from 'node:util';
  */
 
 // Making sure .svelte-kit/tsconfig is present (needed for vitest test runner to work)
-if (!(fs.existsSync('./.svelte-kit/tsconfig.json'))) {
-	console.log('No tsconfig found, running svelte-kit build.')
+if (!fs.existsSync('./.svelte-kit/tsconfig.json')) {
+	console.log('No tsconfig found, running svelte-kit build.');
 	const run = promisify(exec);
 	await run('npm run build');
 }
 // Making sure .svelte-kit/output is present (needed for playwright test runner to work)
-else if (!(fs.existsSync('./.svelte-kit/output'))) {
-	console.log('No output directory found, running svelte-kit build.')
+else if (!fs.existsSync('./.svelte-kit/output')) {
+	console.log('No output directory found, running svelte-kit build.');
 	const run = promisify(exec);
 	await run('npm run build');
 } else {
-	console.log('Output directory found, running test suite.')
+	console.log('Output directory found, running test suite.');
 }

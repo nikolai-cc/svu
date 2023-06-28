@@ -8,12 +8,12 @@ const __dirname = dirname(__filename);
 export default defineConfig({
 	test: {
 		globals: true,
-		include: ["test/**/*.test.ts"],
-		setupFiles: ['test/vitest/setup.ts'],
+		include: ['test/**/*.test.ts'],
+		setupFiles: ['test/vitest/setup.ts']
 	},
 	resolve: {
 		alias: {
-			'$lib': resolve(__dirname, '../src/lib'),
+			$lib: resolve(__dirname, '../src/lib')
 		}
 	}
 });

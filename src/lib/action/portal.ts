@@ -5,12 +5,12 @@
  */
 export const portal = (node: HTMLElement, target: HTMLElement | string) => {
 	let targetElement = typeof target === 'string' ? document.querySelector(target) : target;
-	targetElement && targetElement.appendChild(node)
-	
+	targetElement && targetElement.appendChild(node);
+
 	return {
 		update: (target: HTMLElement | string) => {
 			let targetElement = typeof target === 'string' ? document.querySelector(target) : target;
-			targetElement && targetElement.appendChild(node)
+			targetElement && targetElement.appendChild(node);
 		},
 		destroy: () => node.parentElement?.removeChild(node)
 	};
