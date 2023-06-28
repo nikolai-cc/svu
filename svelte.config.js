@@ -15,9 +15,6 @@ const config = {
 			$docs: 'src/routes/_docs/'
 		}
 	},
-	package: {
-		exports: () => true
-	}
-};
+	};
 
 export default config;
