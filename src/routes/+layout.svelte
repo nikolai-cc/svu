@@ -1,22 +1,10 @@
-<script context="module" lang="ts">
-	import type { LoadEvent } from '@sveltejs/kit';
-	export const load = async ({ fetch }: LoadEvent) => {
-		const categories = await fetch('/docs/categories.json');
-		const json = await categories.json();
-
-		return {
-			props: {
-				categories: json.categories
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
 	import { theme } from '$lib/client';
 	import { themetoggle } from '$lib/action';
 
-	export let categories: string[];
+	export let data;
+	let { categories } = data;
+
 	const pages = [
 		{
 			name: 'why',

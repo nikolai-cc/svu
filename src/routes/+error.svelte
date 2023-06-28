@@ -1,29 +1,13 @@
-<script lang="ts" context="module">
-	import type { LoadEvent } from '@sveltejs/kit';
-
-	export const load = ({ error, status }: LoadEvent) => {
-		return {
-			props: {
-				error,
-				status
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
-	export let error: Error;
-	export let status: number;
-
-	console.log(error);
+	import { page } from '$app/stores';
+	const { error, status } = $page;
 </script>
 
 <article>
 	<h1>{status}</h1>
 	<p>
-		{error.message}
+		{error?.message}
 	</p>
-	<pre>{error.stack}</pre>
 </article>
 
 <style>
