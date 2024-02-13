@@ -14,37 +14,79 @@
 	},
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
+			"svelte": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./action": {
+			"svelte": "./dist/action/index.js",
+			"types": "./dist/action/index.d.ts"
+		},
+		"./app/": {
+			"svelte": "./dist/app/index.js",
+			"types": "./dist/app/index.d.ts"
+		},
+		"./components/": {
+			"svelte": "./dist/components/index.js",
+			"types": "./dist/components/index.d.ts"
+		},
+		"./store/": {
+			"svelte": "./dist/store/index.js",
+			"types": "./dist/store/index.d.ts"
+		},
+		"./transition/": {
+			"svelte": "./dist/transition/index.js",
+			"types": "./dist/transition/index.d.ts"
+		},
+		"./svelte": {
+			"svelte": "./dist/svelte/index.js",
+			"types": "./dist/svelte/index.d.ts"
+		},
+		"./svelte/action": {
+			"svelte": "./dist/svelte/action/index.js",
+			"types": "./dist/svelte/action/index.d.ts"
+		},
+		"./svelte/app/": {
+			"svelte": "./dist/svelte/app/index.js",
+			"types": "./dist/svelte/app/index.d.ts"
+		},
+		"./svelte/components/": {
+			"svelte": "./dist/svelte/components/index.js",
+			"types": "./dist/svelte/components/index.d.ts"
+		},
+		"./svelte/store/": {
+			"svelte": "./dist/svelte/store/index.js",
+			"types": "./dist/svelte/store/index.d.ts"
+		},
+		"./svelte/transition/": {
+			"svelte": "./dist/svelte/transition/index.js",
+			"types": "./dist/svelte/transition/index.d.ts"
 		}
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^4.2.10"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
-		"@sveltejs/package": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
-		"@types/eslint": "8.56.0",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
+		"@sveltejs/adapter-auto": "^3.1.1",
+		"@sveltejs/kit": "^2.5.0",
+		"@sveltejs/package": "^2.2.6",
+		"@sveltejs/vite-plugin-svelte": "^3.0.2",
+		"@types/eslint": "8.56.2",
+		"@typescript-eslint/eslint-plugin": "^7.0.1",
+		"@typescript-eslint/parser": "^7.0.1",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
-		"prettier": "^3.1.1",
-		"prettier-plugin-svelte": "^3.1.2",
-		"publint": "^0.1.9",
-		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.0",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
-		"vite": "^5.0.11"
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.0",
+		"publint": "^0.2.7",
+		"svelte": "^4.2.10",
+		"svelte-check": "^3.6.4",
+		"tslib": "^2.6.2",
+		"typescript": "^5.3.3",
+		"vite": "^5.1.1"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
