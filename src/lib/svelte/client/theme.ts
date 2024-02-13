@@ -1,8 +1,10 @@
+import { browser } from '$lib/meta';
 import { writable } from 'svelte/store';
 
 const create = () => {
 	const { subscribe, set: setStore } = writable('');
 
+	if (!browser) return { subscribe, set: setStore };
 	const target = document.documentElement;
 
 	const set = (val: string) => {

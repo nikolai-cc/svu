@@ -1,8 +1,9 @@
 import { derived, writable } from 'svelte/store';
-import { listen } from '../../meta/index.js';
+import { browser, listen } from '../../meta/index.js';
 
 const createSize = (prop: 'innerWidth' | 'innerHeight') => {
 	const { subscribe, set } = writable(0);
+	if (!browser) return { subscribe };
 	set(window[prop]);
 	listen(window, 'resize', () => set(window[prop]));
 	return { subscribe };
@@ -25,6 +26,7 @@ export const windowSize = derived([ww, wh], ([$ww, $wh]) => ({ w: $ww, h: $wh })
 
 const createScroll = (prop: 'scrollX' | 'scrollY') => {
 	const { subscribe, set } = writable(0);
+	if (!browser) return { subscribe };
 	set(window[prop]);
 	listen(window, 'scroll', () => set(window[prop]));
 	return { subscribe };
