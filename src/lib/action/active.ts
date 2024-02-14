@@ -1,4 +1,3 @@
-export type { ActionReturn } from 'svelte/action';
 import { listen, patchHistoryAPI } from '../meta/index.js';
 
 export interface UseActiveOptions {
