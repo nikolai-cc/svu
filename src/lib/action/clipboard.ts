@@ -30,7 +30,7 @@ function setTextContent(target: Element, text: string) {
 /**
  * Copies the text content of `target` to the clipboard when `node` is clicked.
  * If `target` is not provided, `node`'s text content is copied. When `target` is a string, it is used as a query selector.
- * Also dispatches a `copy` event on 'node' with the copied text as `detail`.
+ * Also dispatches a `copy` ClipboardEvent on 'target'.
  * When `target` is an input or textarea, its value is copied. Otherwise, textContent is copied.
  *
  * Example:
@@ -47,7 +47,7 @@ export function copy(node: HTMLElement, target?: HTMLElement | string) {
 	const handleClick: EventListener = async () => {
 		const text = getTextContent(targetNode);
 		await navigator.clipboard.writeText(text);
-		node.dispatchEvent(new CustomEvent('copy', { detail: text }));
+		targetNode.dispatchEvent(new CustomEvent('!copy', { detail: text }));
 	};
 
 	const unlisten = listen(node, 'click', handleClick);
@@ -81,7 +81,7 @@ export function cut(node: HTMLElement, target?: HTMLElement | string) {
 	const handleClick: EventListener = async () => {
 		const text = getTextContent(targetNode);
 		await navigator.clipboard.writeText(text);
-		node.dispatchEvent(new CustomEvent('cut', { detail: text }));
+		node.dispatchEvent(new CustomEvent('!cut', { detail: text }));
 		setTextContent(targetNode, '');
 	};
 
@@ -114,7 +114,7 @@ export function paste(node: HTMLElement, target?: HTMLElement | string) {
 
 	const handleClick: EventListener = async () => {
 		const text = await navigator.clipboard.readText();
-		node.dispatchEvent(new CustomEvent('paste', { detail: text }));
+		node.dispatchEvent(new CustomEvent('!paste', { detail: text }));
 		setTextContent(targetNode, text);
 	};
 
