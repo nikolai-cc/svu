@@ -16,7 +16,7 @@ export function clickoutside(node: HTMLElement, handler: (event?: Event) => void
 	const handleClick: EventListener = (event: Event) => {
 		if (!node.contains(event.target as Node)) {
 			handle(event);
-			node.dispatchEvent(new CustomEvent('clickoutside', { detail: event }));
+			node.dispatchEvent(new CustomEvent('!clickoutside', { detail: event }));
 		}
 	};
 
