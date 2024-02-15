@@ -1,3 +1,5 @@
+import { browser } from './index.js';
+
 export type ElementOrSelector = HTMLElement | string | undefined;
 
 /**
@@ -27,4 +29,19 @@ export function setTextContent(target: Element, text: string) {
 	} else {
 		target.textContent = text;
 	}
+}
+
+/**
+ * Returns the DOMRect of the target node relative to the document. Want the rect relative to the viewport? Use the native `getBoundingClientRect` instead.
+ */
+export function getDomRect(node: HTMLElement) {
+	if (!browser) return { left: 0, top: 0, width: 0, height: 0 };
+
+	const rect = node.getBoundingClientRect();
+	return {
+		left: rect.left + window.scrollX,
+		top: rect.top + window.scrollY,
+		width: rect.width,
+		height: rect.height
+	};
 }
