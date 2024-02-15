@@ -41,15 +41,18 @@ export function active(node: HTMLElement, options?: UseActiveOptions) {
 
 	patchHistoryAPI();
 
+	// Listens for native `popstate` event.
 	const unlistenPopState = listen(window, 'popstate', () => {
 		setClass(hash ? window.location.hash : window.location.pathname);
 	});
 
-	const unlistenReplaceState = listen(window, 'replacestate', () => {
+	// Listens for custom `!replacestate` event (see meta/history.ts)
+	const unlistenReplaceState = listen(window, '!replacestate', () => {
 		setClass(hash ? window.location.hash : window.location.pathname);
 	});
 
-	const unlistenPushState = listen(window, 'pushstate', () => {
+	// Listens for custom `!pushstate` event (see meta/history.ts)
+	const unlistenPushState = listen(window, '!pushstate', () => {
 		setClass(hash ? window.location.hash : window.location.pathname);
 	});
 

@@ -16,18 +16,18 @@
  * Please open an issue in the 'svu' repo if you an idea, but keep the above rationale in mind.
  */
 export const patchHistoryAPI = () => {
-	if (!history.replaceState.toString().includes('replacestate')) {
+	if (!history.replaceState.toString().includes('!replacestate')) {
 		const rs = history.replaceState;
 		history.replaceState = function (...args) {
 			rs(...args);
-			window.dispatchEvent(new CustomEvent('replacestate'));
+			window.dispatchEvent(new CustomEvent('!replacestate'));
 		};
 	}
-	if (!history.pushState.toString().includes('pushstate')) {
+	if (!history.pushState.toString().includes('!pushstate')) {
 		const ps = history.pushState;
 		history.pushState = function (...args) {
 			ps(...args);
-			window.dispatchEvent(new CustomEvent('pushstate'));
+			window.dispatchEvent(new CustomEvent('!pushstate'));
 		};
 	}
 };
