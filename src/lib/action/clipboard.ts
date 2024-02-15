@@ -1,31 +1,5 @@
 import { listen } from '../meta/index.js';
-
-/**
- * Returns the target node from the provided target or the fallback node.
- */
-function getTarget(target: HTMLElement | string | undefined, fallBack: HTMLElement) {
-	return (typeof target === 'string' ? document.querySelector(target) : target) || fallBack;
-}
-
-/**
- * Returns the text content of the target node. If the target is an input or textarea, its value is returned. Otherwise, textContent is returned.
- */
-function getTextContent(target: Element) {
-	return target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement
-		? target.value
-		: target.textContent || '';
-}
-
-/**
- * Sets the text content of the target node. If the target is an input or textarea, its value is set. Otherwise, textContent is set.
- */
-function setTextContent(target: Element, text: string) {
-	if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
-		target.value = text;
-	} else {
-		target.textContent = text;
-	}
-}
+import { getElement, getTextContent, setTextContent } from '$lib/meta/index.js';
 
 /**
  * Copies the text content of `target` to the clipboard when `node` is clicked.
@@ -42,7 +16,7 @@ function setTextContent(target: Element, text: string) {
  *```
  */
 export function copy(node: HTMLElement, target?: HTMLElement | string) {
-	let targetNode = getTarget(target, node);
+	let targetNode = getElement(target, node);
 
 	const handleClick: EventListener = async () => {
 		const text = getTextContent(targetNode);
@@ -54,7 +28,7 @@ export function copy(node: HTMLElement, target?: HTMLElement | string) {
 
 	return {
 		update: (newTarget: HTMLElement | string) => {
-			targetNode = getTarget(newTarget, node);
+			targetNode = getElement(newTarget, node);
 		},
 		destroy: unlisten
 	};
@@ -76,7 +50,7 @@ export function copy(node: HTMLElement, target?: HTMLElement | string) {
  *```
  */
 export function cut(node: HTMLElement, target?: HTMLElement | string) {
-	let targetNode = getTarget(target, node);
+	let targetNode = getElement(target, node);
 
 	const handleClick: EventListener = async () => {
 		const text = getTextContent(targetNode);
@@ -89,7 +63,7 @@ export function cut(node: HTMLElement, target?: HTMLElement | string) {
 
 	return {
 		update: (newTarget: HTMLElement | string) => {
-			targetNode = getTarget(newTarget, node);
+			targetNode = getElement(newTarget, node);
 		},
 		destroy: unlisten
 	};
@@ -110,7 +84,7 @@ export function cut(node: HTMLElement, target?: HTMLElement | string) {
  *```
  */
 export function paste(node: HTMLElement, target?: HTMLElement | string) {
-	let targetNode = getTarget(target, node);
+	let targetNode = getElement(target, node);
 
 	const handleClick: EventListener = async () => {
 		const text = await navigator.clipboard.readText();
@@ -122,7 +96,7 @@ export function paste(node: HTMLElement, target?: HTMLElement | string) {
 
 	return {
 		update: (newTarget: HTMLElement | string) => {
-			targetNode = getTarget(newTarget, node);
+			targetNode = getElement(newTarget, node);
 		},
 		destroy: unlisten
 	};
