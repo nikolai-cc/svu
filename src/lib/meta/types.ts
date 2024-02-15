@@ -19,3 +19,7 @@ export interface Size {
 export interface Size3D extends Size {
 	depth: number;
 }
+
+export interface Rect extends Coords, Size {}
+
+export interface Cuboid extends Coords3D, Size3D {}
