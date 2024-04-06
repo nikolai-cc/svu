@@ -1,5 +1,6 @@
 import { listen, getElement, getDomRect, clamp, type ElementOrSelector } from '$lib/meta/index.js';
 import type { Coords } from '$lib/meta/types.js';
+import type { ActionReturn } from 'svelte/action';
 
 export interface UseDraggableOptions {
 	position?: Coords;
@@ -7,6 +8,12 @@ export interface UseDraggableOptions {
 	axis?: 'x' | 'y' | 'xy';
 	container?: ElementOrSelector;
 	class?: string;
+}
+
+interface Attributes {
+	'on:!dragstart'?: (event: CustomEvent<Coords>) => void;
+	'on:!drag'?: (event: CustomEvent<Coords>) => void;
+	'on:!dragend'?: (event: CustomEvent<Coords>) => void;
 }
 
 /**
@@ -44,7 +51,10 @@ function setBounds(node: HTMLElement, position: Coords, container: HTMLElement |
  * </style>
  * ```
  */
-export function draggable(node: HTMLElement, options?: UseDraggableOptions) {
+export function draggable(
+	node: HTMLElement,
+	options?: UseDraggableOptions
+): ActionReturn<UseDraggableOptions, Attributes> {
 	let { position = { x: 0, y: 0 }, axis = 'xy' } = options || {};
 
 	let className = options?.class || 'svu-dragging';
