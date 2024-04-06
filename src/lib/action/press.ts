@@ -22,13 +22,13 @@ export function press(
 	let handler = typeof options === 'number' ? noop : options.handler || noop;
 
 	const start = () => {
-		const dispatch = () => {
+		function dispatch() {
 			handler();
 			node.dispatchEvent(new CustomEvent('!press', { detail: duration }));
 
 			unlistenUp();
 			unlistenOut();
-		};
+		}
 
 		const clear = timeout(dispatch, duration);
 		const unlistenUp = listen(node, 'pointerup', clear);

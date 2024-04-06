@@ -14,11 +14,11 @@ export function onclose(_node: HTMLElement, options: OnCloseOptions = {}) {
 	let handler = options.handler ?? noop;
 	let condition = options.condition ?? true;
 
-	const confirm = (e: BeforeUnloadEvent) => {
+	function confirm(e: BeforeUnloadEvent) {
 		if (!condition) return;
 		e.preventDefault();
 		handler(e);
-	};
+	}
 
 	const unlisten = listen(window, 'beforeunload', confirm) || noop;
 

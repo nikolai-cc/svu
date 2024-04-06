@@ -75,9 +75,9 @@ function encode(e: KeyboardEvent) {
 export function keydown(node: HTMLElement, keys: KeyMap) {
 	let shortcuts: KeyMap = sanitizeKeyMap(keys);
 
-	const execute = (e: KeyboardEvent) => {
+	function execute(e: KeyboardEvent) {
 		shortcuts[encode(e)]?.(e);
-	};
+	}
 
 	const unlisten = listen(node, 'keydown', execute as EventListener);
 
@@ -101,9 +101,9 @@ export function keydown(node: HTMLElement, keys: KeyMap) {
 export function keyup(node: HTMLElement, keys: KeyMap) {
 	let shortcuts = sanitizeKeyMap(keys);
 
-	const execute = (e: KeyboardEvent) => {
+	function execute(e: KeyboardEvent) {
 		shortcuts[encode(e)]?.(e);
-	};
+	}
 
 	const unlisten = listen(node, 'keyup', execute as EventListener);
 
