@@ -23,12 +23,12 @@ export function clickoutside(
 ): ActionReturn<Handler, Attributes> {
 	let handle = handler;
 
-	const handleClick: EventListener = (event: Event) => {
+	function handleClick(event: Event) {
 		if (!node.contains(event.target as Node)) {
 			handle(event);
 			node.dispatchEvent(new CustomEvent('!clickoutside', { detail: event }));
 		}
-	};
+	}
 
 	const unlisten = listen(document, 'click', handleClick);
 

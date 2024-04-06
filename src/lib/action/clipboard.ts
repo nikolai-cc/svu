@@ -39,11 +39,11 @@ export function copy(
 ): ActionReturn<ElementOrSelector, CopyAttributes> {
 	let targetNode = getElement(target, node);
 
-	const handleClick: EventListener = async () => {
+	async function handleClick() {
 		const text = getTextContent(targetNode);
 		await navigator.clipboard.writeText(text);
 		node.dispatchEvent(new CustomEvent('!copy', { detail: text }));
-	};
+	}
 
 	const unlisten = listen(node, 'click', handleClick);
 
@@ -76,12 +76,12 @@ export function cut(
 ): ActionReturn<ElementOrSelector, CutAttributes> {
 	let targetNode = getElement(target, node);
 
-	const handleClick: EventListener = async () => {
+	async function handleClick() {
 		const text = getTextContent(targetNode);
 		await navigator.clipboard.writeText(text);
 		node.dispatchEvent(new CustomEvent('!cut', { detail: text }));
 		setTextContent(targetNode, '');
-	};
+	}
 
 	const unlisten = listen(node, 'click', handleClick);
 
@@ -113,11 +113,11 @@ export function paste(
 ): ActionReturn<ElementOrSelector, PasteAttributes> {
 	let targetNode = getElement(target, node);
 
-	const handleClick: EventListener = async () => {
+	async function handleClick() {
 		const text = await navigator.clipboard.readText();
 		node.dispatchEvent(new CustomEvent('!paste', { detail: text }));
 		setTextContent(targetNode, text);
-	};
+	}
 
 	const unlisten = listen(node, 'click', handleClick);
 

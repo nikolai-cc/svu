@@ -1,21 +1,21 @@
 import { noop, listen, getFocusableChildren } from '../meta/index.js';
 
 /**
- * Traps focus within an element. Pressing `Tab` cycles through focusable children. Pressing `Escape` cancels the trap.
+ * Traps focus within an element on mount. Pressing `Tab` cycles through focusable children. Pressing `Escape` (or unmounting the element) cancels the trap.
  * Only works on focusable elements.
  *
  * Usage: <element use:focustrap />
  */
-export const focustrap = (node: HTMLElement) => {
+export function focustrap(node: HTMLElement) {
 	const focusable = getFocusableChildren(node);
 
 	focusable[0].focus();
 
-	const reFocus = (e: FocusEvent) => {
+	function reFocus(e: FocusEvent) {
 		!focusable.includes(e.relatedTarget as HTMLElement) && (e.target as HTMLElement).focus();
-	};
+	}
 
-	const handleKeyDown = (e: KeyboardEvent) => {
+	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Tab') {
 			e.shiftKey
 				? (e.preventDefault(),
@@ -28,7 +28,7 @@ export const focustrap = (node: HTMLElement) => {
 		if (e.key === 'Escape') {
 			cancel();
 		}
-	};
+	}
 
 	const unlistenFocusOut = listen(node, 'focusout', reFocus as EventListener);
 	const unlistenKeyDown = listen(window, 'keydown', handleKeyDown as EventListener);
@@ -43,4 +43,4 @@ export const focustrap = (node: HTMLElement) => {
 		update: noop,
 		destroy: cancel
 	};
-};
+}
