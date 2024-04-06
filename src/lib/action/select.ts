@@ -3,7 +3,12 @@ import { listen } from '../meta/index.js';
 /**
  * Selects the content of the element (or a specified target) on click.
  * If the element is an input element, it selects the value, otherwise it selects all child nodes.
- * Usage: <element use:select={ target } />
+ *
+ * Example:
+ * ```svelte
+ * <element use:select />
+ * <element use:select={ target } />
+ * ```
  */
 export function select(node: HTMLElement, target?: HTMLElement) {
 	let object = target ?? node;

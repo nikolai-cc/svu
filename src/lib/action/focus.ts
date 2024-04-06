@@ -2,7 +2,11 @@ import { noop, isFocusable } from '../meta/index.js';
 
 /**
  * Focuses element when it mounts. Only works on focusable elements.
- * Usage: <element use:focus />
+ *
+ * Example:
+ * ```svelte
+ * <element use:focus />
+ * ```
  */
 export function focus(node: HTMLElement) {
 	if (isFocusable(node)) node.focus();

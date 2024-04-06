@@ -7,7 +7,11 @@ interface Attributes {
 
 /**
  * Dispatches an event or calls a handler if an element is resized.
- * Usage: <element use:resize={{ handler: () => console.log('hello') }} />
+ *
+ * Usage:
+ * <element use:resize />
+ * <element use:resize={handler} />
+ *
  * For tracking <window> size it's best to use the window store from svu/client.
  */
 export function resize(node: HTMLElement, handler: Fn = noop): ActionReturn<Fn, Attributes> {

@@ -70,7 +70,11 @@ function encode(e: KeyboardEvent) {
  * Modifiers are sanitised (e.g. change `cmd` to `Meta`). If a modifier can't be matched it is ignored.
  * The action is fully reactive, so shortcuts and handlers can be variables.
  *
- * Usage: <element use:keydown={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * Example:
+ * ```svelte
+ * <element use:keydown={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * <element use:keydown={shortcuts} />
+ * ```
  */
 export function keydown(node: HTMLElement, keys: KeyMap) {
 	let shortcuts: KeyMap = sanitizeKeyMap(keys);
@@ -96,7 +100,11 @@ export function keydown(node: HTMLElement, keys: KeyMap) {
  * Modifiers are sanitised (e.g. change `cmd` to `Meta`). If a modifier can't be matched it is ignored.
  * The action is fully reactive, so shortcuts and handlers can be variables.
  *
- * Usage: <element use:keyup={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * Example:
+ * ```svelte
+ * <element use:keyup={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * <element use:keyup={shortcuts} />
+ * ```
  */
 export function keyup(node: HTMLElement, keys: KeyMap) {
 	let shortcuts = sanitizeKeyMap(keys);

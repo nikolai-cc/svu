@@ -4,7 +4,10 @@ import { noop, listen, getFocusableChildren } from '../meta/index.js';
  * Traps focus within an element on mount. Pressing `Tab` cycles through focusable children. Pressing `Escape` (or unmounting the element) cancels the trap.
  * Only works on focusable elements.
  *
- * Usage: <element use:focustrap />
+ * Example:
+ * ```svelte
+ * <element use:focustrap />
+ * ```
  */
 export function focustrap(node: HTMLElement) {
 	const focusable = getFocusableChildren(node);

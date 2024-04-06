@@ -12,7 +12,12 @@ interface Attributes {
 
 /**
  * Dispatches a press event or calls a handler if pressed down for duration milliseconds.
- * Usage: <element use:press={ duration: 500 } on:press={{ duration: 500, handler: () => console.log('hello') }} />
+ *
+ * Example:
+ * ```svelte
+ * <element use:press={ duration: 500, handler } />
+ * <element use:press={ duration: 500 } on:press={handler} />
+ * ```
  */
 export function press(
 	node: HTMLElement,

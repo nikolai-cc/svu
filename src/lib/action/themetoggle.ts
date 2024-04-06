@@ -3,8 +3,12 @@ import { listen, noop } from '../meta/index.js';
 /**
  * Theme Toggler.
  * Sets the 'data-theme' attribute on the html to a theme or the next of a list of themes on click.
- * Usage: <element use:theme={['dark', 'light']} /> toggles between dark and light
- * Usage: <element use:theme={'dark'} /> sets theme to dark
+ *
+ * Example:
+ * ```svelte
+ * <element use:theme={['dark', 'light']} /> toggles between dark and light
+ * <element use:theme={'dark'} /> sets theme to dark
+ * ```
  */
 export function themetoggle(node: HTMLElement, themes?: string | string[]) {
 	themes = themes ?? ['light', 'dark'];
