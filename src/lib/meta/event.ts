@@ -8,12 +8,12 @@
  * unlisten();
  * ```
  */
-export const listen = (
+export function listen(
 	node: EventTarget,
 	type: string,
 	listener: EventListenerOrEventListenerObject,
 	options?: boolean | EventListenerOptions
-) => {
+) {
 	node.addEventListener(type, listener, options);
 	return () => node.removeEventListener(type, listener, options);
-};
+}

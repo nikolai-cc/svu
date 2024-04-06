@@ -15,7 +15,7 @@
  * I am open to suggestions for a better approach.
  * Please open an issue in the 'svu' repo if you an idea, but keep the above rationale in mind.
  */
-export const patchHistoryAPI = () => {
+export function patchHistoryAPI() {
 	if (!history.replaceState.toString().includes('!replacestate')) {
 		const rs = history.replaceState;
 		history.replaceState = function (...args) {
@@ -30,4 +30,4 @@ export const patchHistoryAPI = () => {
 			window.dispatchEvent(new CustomEvent('!pushstate'));
 		};
 	}
-};
+}
