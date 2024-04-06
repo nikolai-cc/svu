@@ -1,11 +1,9 @@
-import { listen, noop } from '../meta/index.js';
+import { listen, noop, type Fn } from '../meta/index.js';
 import type { ActionReturn } from 'svelte/action';
 
 interface Attributes {
 	'on:!clickoutside'?: (event: CustomEvent<Event>) => void;
 }
-
-type Handler = (event?: Event) => void;
 
 /**
  * Calls `handler` when a click event occurs outside of `node`. The event is forwarded to `handler`.
@@ -19,8 +17,8 @@ type Handler = (event?: Event) => void;
  */
 export function clickoutside(
 	node: HTMLElement,
-	handler: (event?: Event) => void = noop
-): ActionReturn<Handler, Attributes> {
+	handler: Fn<[Event]> = noop
+): ActionReturn<Fn<[Event]>, Attributes> {
 	let handle = handler;
 
 	function handleClick(event: Event) {
@@ -33,7 +31,7 @@ export function clickoutside(
 	const unlisten = listen(document, 'click', handleClick);
 
 	return {
-		update: (handler: (event?: Event) => void) => {
+		update: (handler: Fn<[Event]>) => {
 			handle = handler;
 		},
 		destroy: unlisten

@@ -1,7 +1,7 @@
-import { listen, noop } from '../meta/index.js';
+import { listen, noop, type Fn } from '../meta/index.js';
 
 interface OnCloseOptions {
-	handler?: (...params: unknown[]) => unknown;
+	handler?: Fn;
 	condition?: boolean;
 }
 
