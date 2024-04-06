@@ -45,3 +45,30 @@ export function getDomRect(node: HTMLElement) {
 		height: rect.height
 	};
 }
+
+// This list originates from: https://stackoverflow.com/a/30753870
+const focusableElements = `
+    a[href]:not([tabindex='-1']),
+    area[href]:not([tabindex='-1']),
+    input:not([disabled]):not([tabindex='-1']),
+    select:not([disabled]):not([tabindex='-1']),
+    textarea:not([disabled]):not([tabindex='-1']),
+    button:not([disabled]):not([tabindex='-1']),
+    iframe:not([tabindex='-1']),
+    [tabindex]:not([tabindex='-1']),
+    [contentEditable=true]:not([tabindex='-1'])
+`;
+
+/**
+ * Returns true if the node is focusable.
+ */
+export function isFocusable(node: HTMLElement) {
+	return node && node.matches(focusableElements);
+}
+
+/**
+ * Returns an array with all focusable children of the node.
+ */
+export function getFocusableChildren(node: HTMLElement): HTMLElement[] {
+	return node ? Array.from(node.querySelectorAll(focusableElements)) : [];
+}
