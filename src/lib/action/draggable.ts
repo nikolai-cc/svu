@@ -12,7 +12,7 @@ export interface UseDraggableOptions {
 /**
  * Returns the minimum and maximum bounds for the draggable element based on an optional container element.
  */
-function setBounds(node: HTMLElement, container: HTMLElement | undefined) {
+function setBounds(node: HTMLElement, position: Coords, container: HTMLElement | undefined) {
 	const min = { x: 0, y: 0 };
 	const max = { x: Infinity, y: Infinity };
 
@@ -20,10 +20,10 @@ function setBounds(node: HTMLElement, container: HTMLElement | undefined) {
 		const containerRect = getDomRect(container);
 		const nodeRect = getDomRect(node);
 
-		min.x = containerRect.left - nodeRect.left;
-		min.y = containerRect.top - nodeRect.top;
-		max.x = containerRect.left + containerRect.width - nodeRect.left - nodeRect.width;
-		max.y = containerRect.top + containerRect.height - nodeRect.top - nodeRect.height;
+		min.x = containerRect.left - nodeRect.left + position.x;
+		min.y = containerRect.top - nodeRect.top + position.y;
+		max.x = containerRect.left + containerRect.width - nodeRect.left - nodeRect.width + position.x;
+		max.y = containerRect.top + containerRect.height - nodeRect.top - nodeRect.height + position.y;
 	}
 
 	return { min, max };
@@ -52,8 +52,6 @@ export function draggable(node: HTMLElement, options?: UseDraggableOptions) {
 	let container = getElement(options?.container);
 	let origin = position;
 
-	let { min, max } = setBounds(node, container);
-
 	function handlePointerDown(event: PointerEvent) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -65,14 +63,28 @@ export function draggable(node: HTMLElement, options?: UseDraggableOptions) {
 			y: event.clientY
 		};
 
+		const { min, max } = setBounds(node, position, container);
+
 		node.dispatchEvent(new CustomEvent('!dragstart', { detail: position }));
 
 		function handlePointerMove(event: PointerEvent) {
 			event.preventDefault();
 			event.stopPropagation();
 
-			position.x = axis.includes('x') ? position.x + event.clientX - origin.x : position.x;
-			position.y = axis.includes('y') ? position.y + event.clientY - origin.y : position.y;
+			const handleRect = getDomRect(handle);
+
+			const moveX =
+				axis.includes('x') &&
+				event.clientX >= handleRect.left &&
+				event.clientX <= handleRect.left + handleRect.width;
+
+			const moveY =
+				axis.includes('y') &&
+				event.clientY >= handleRect.top &&
+				event.clientY <= handleRect.top + handleRect.height;
+
+			position.x = moveX ? position.x + event.clientX - origin.x : position.x;
+			position.y = moveY ? position.y + event.clientY - origin.y : position.y;
 
 			position.x = clamp(position.x, min.x, max.x);
 			position.y = clamp(position.y, min.y, max.y);
@@ -116,7 +128,6 @@ export function draggable(node: HTMLElement, options?: UseDraggableOptions) {
 			handle = getElement(options.handle, node);
 			axis = options.axis || axis;
 			container = getElement(options.container) || container;
-			({ min, max } = setBounds(node, container));
 		},
 		destroy() {
 			unlistenPointerDown();
