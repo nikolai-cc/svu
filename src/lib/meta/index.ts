@@ -4,3 +4,4 @@ export * from './event.js';
 export * from './fn.js';
 export * from './history.js';
 export * from './math.js';
+export * from './string.js';
