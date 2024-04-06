@@ -1,5 +1,5 @@
-import { listen, getElement, getDomRect, clamp, type ElementOrSelector } from '$lib/meta/index.js';
-import type { Coords } from '$lib/meta/types.js';
+import { listen, getElement, getDomRect, clamp, type ElementOrSelector } from '../meta/index.js';
+import type { Coords } from '../meta/types.js';
 import type { ActionReturn } from 'svelte/action';
 
 export interface UseDraggableOptions {
