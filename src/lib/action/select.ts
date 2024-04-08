@@ -1,4 +1,4 @@
-import { listen } from '../meta/index.js';
+import { listen } from '../meta/event.js';
 
 /**
  * Selects the content of the element (or a specified target) on click.

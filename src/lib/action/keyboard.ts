@@ -1,4 +1,5 @@
-import { listen, capitalise } from '../meta/index.js';
+import { listen } from '../meta/event.js';
+import { capitalise } from '../meta/string.js';
 
 export type KeyMap = { [key: string]: (e: KeyboardEvent) => void };
 

@@ -1,11 +1,8 @@
-import { listen } from '../meta/index.js';
-import {
-	getElement,
-	getTextContent,
-	setTextContent,
-	type ElementOrSelector
-} from '$lib/meta/index.js';
+import { listen } from '../meta/event.js';
+import { getElement, getTextContent, setTextContent } from '../meta/element.js';
+
 import type { ActionReturn } from 'svelte/action';
+import type { ElementOrSelector } from '../meta/element.js';
 
 interface CopyAttributes {
 	'on:!copy'?: (event: CustomEvent<string>) => void;

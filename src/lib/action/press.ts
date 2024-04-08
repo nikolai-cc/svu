@@ -1,4 +1,8 @@
-import { listen, noop, timeout, type Fn } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
+import { timeout } from '../meta/time.js';
+
+import type { Fn } from '../meta/fn.js';
 import type { ActionReturn } from 'svelte/action';
 
 interface PressOptions {

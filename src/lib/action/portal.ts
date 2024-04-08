@@ -1,4 +1,6 @@
-import { getElement, type ElementOrSelector } from '../meta/element.js';
+import { getElement } from '../meta/element.js';
+
+import type { ElementOrSelector } from '../meta/element.js';
 
 /**
  * Mounts a component elsewhere in the DOM.

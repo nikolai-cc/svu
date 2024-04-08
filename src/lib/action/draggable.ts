@@ -1,6 +1,10 @@
-import { listen, getElement, getDomRect, clamp, type ElementOrSelector } from '../meta/index.js';
+import { clamp } from '../meta/math.js';
+import { listen } from '../meta/event.js';
+import { getElement, getDomRect } from '../meta/element.js';
+
 import type { Coords } from '../meta/types.js';
 import type { ActionReturn } from 'svelte/action';
+import type { ElementOrSelector } from '../meta/element.js';
 
 export interface UseDraggableOptions {
 	position?: Coords;

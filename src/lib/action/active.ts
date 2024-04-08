@@ -1,4 +1,5 @@
-import { listen, patchHistoryAPI } from '../meta/index.js';
+import { listen } from '../meta/event.js';
+import { patchHistoryAPI } from '../meta/history.js';
 
 export interface UseActiveOptions {
 	class?: string;

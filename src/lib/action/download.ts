@@ -1,4 +1,4 @@
-import { listen } from '../meta/index.js';
+import { listen } from '../meta/event.js';
 
 export interface UseDownloadOptions {
 	name?: string;

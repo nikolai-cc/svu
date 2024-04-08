@@ -1,4 +1,6 @@
-import { noop, type Fn } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+
+import type { Fn } from '../meta/fn.js';
 import type { ActionReturn } from 'svelte/action';
 
 interface Attributes {

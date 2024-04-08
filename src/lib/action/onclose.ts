@@ -1,4 +1,7 @@
-import { listen, noop, type Fn } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
+
+import type { Fn } from '../meta/fn.js';
 
 interface OnCloseOptions {
 	handler: Fn;

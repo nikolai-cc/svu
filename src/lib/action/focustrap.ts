@@ -1,4 +1,6 @@
-import { noop, listen, getFocusableChildren } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
+import { getFocusableChildren } from '../meta/element.js';
 
 /**
  * Traps focus within an element on mount. Pressing `Tab` cycles through focusable children. Pressing `Escape` (or unmounting the element) cancels the trap.
