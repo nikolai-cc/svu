@@ -1,3 +1,4 @@
+export * from './clone.js';
 export * from './element.js';
 export * from './env.js';
 export * from './event.js';
@@ -5,4 +6,4 @@ export * from './fn.js';
 export * from './history.js';
 export * from './math.js';
 export * from './string.js';
-export * from './timeout.js';
+export * from './time.js';
