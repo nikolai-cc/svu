@@ -1,4 +1,4 @@
-import { browser } from './index.js';
+import { browser } from './env.js';
 
 export type ElementOrSelector = HTMLElement | string | undefined;
 
