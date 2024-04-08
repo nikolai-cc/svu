@@ -14,3 +14,8 @@ export function timeout(handler: Fn, delay_ms: number, ...args: unknown[]) {
 export function wait(delay_ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, delay_ms));
 }
+
+/**
+ * Type for a timer returned by setTimeout (from node.js or browser).
+ */
+export type Timer = ReturnType<typeof setTimeout>;
