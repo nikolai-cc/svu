@@ -10,7 +10,7 @@ export type JSONSerialisable =
 	| Date;
 
 /**
- * Serialise to JSON, extends JSON.stringify to handle date values. Dates are serialised to ISO strings.
+ * Serialise to JSON, extends JSON.stringify to handle dates. Dates are serialised to ISO strings.
  */
 export function serialise(value: JSONSerialisable, space: number = 0) {
 	function replacer(this: unknown, key: string, value: unknown) {
