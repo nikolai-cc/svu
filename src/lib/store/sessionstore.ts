@@ -109,7 +109,6 @@ function removeItem(key: string) {
 }
 
 function fallback<T>(value: T) {
-	console.log('fallback');
 	const { subscribe, set, reset } = resettable(value);
 	return {
 		available: false,
@@ -123,14 +122,12 @@ function fallback<T>(value: T) {
 }
 
 function checkAvailability() {
-	console.log('checkAvailability');
 	const test = '__svu_test_sessionstore__';
 	try {
 		setItem(test, test);
 		removeItem(test);
 		return true;
 	} catch (_) {
-		console.log('i got caught');
 		return false;
 	}
 }
