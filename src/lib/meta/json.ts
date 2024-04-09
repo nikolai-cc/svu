@@ -13,12 +13,11 @@ export type JSONSerialisable =
  * Serialise to JSON, extends JSON.stringify to handle dates. Dates are serialised to ISO strings.
  */
 export function serialise(value: JSONSerialisable, space: number = 0) {
-	function replacer(this: unknown, key: string, value: unknown) {
+	function replacer(this: { [key: string]: unknown }, key: string, value: unknown) {
 		// value is the object after calling object.prototype.toJSON(), there is a slim chance that value is a Date object
 		if (isDate(value)) return value.toISOString();
 		// this is the object that contains the key, this[key] is the value BEFORE calling object.prototype.toJSON()
-		// @ts-expect-error – this[key] is of type unknown
-		if (isDate(this[key])) return this[key].toISOString();
+		if (isDate(this[key])) return (this[key] as Date).toISOString();
 		return value;
 	}
 	return JSON.stringify(value, replacer, space);
