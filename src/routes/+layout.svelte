@@ -26,6 +26,7 @@
 		border: 2px solid #323232;
 		backdrop-filter: blur(0.25rem);
 		-webkit-backdrop-filter: blur(0.25rem);
+		overflow: hidden;
 	}
 
 	header {
@@ -55,6 +56,7 @@
 	}
 
 	main {
+		height: calc(100% - 2rem);
 		overflow-y: auto;
 	}
 </style>
