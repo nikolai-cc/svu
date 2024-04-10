@@ -7,10 +7,11 @@
 	import { draggable } from '$lib/action/draggable.js';
 </script>
 
-<div id="window" use:draggable={{ handle: '#titlebar', container: 'html' }}>
+<div id="window" use:draggable={{ handle: '#logo', container: 'html' }}>
 	<header id="titlebar">
 		<div id="logo">/svu</div>
 		<div id="address">
+			<span class="partial"> https:// </span>
 			<span class="partial">
 				<a href="/"> svu </a>
 			</span>
@@ -32,9 +33,11 @@
 			{/if}
 		</div>
 		<div id="controls">
-			<button id="minimize">_</button>
-			<button id="maximize">[]</button>
-			<button id="close">X</button>
+			<a href="https://github.com/nikolai-cc/svu">
+				<span id="source">
+					{'</>'}
+				</span>
+			</a>
 		</div>
 	</header>
 	<main>
@@ -62,12 +65,7 @@
 		gap: 1rem;
 		border-bottom: 2px solid #323232;
 		padding: 0.5rem;
-		cursor: grab;
 		background-color: rgba(255, 255, 255, 0.1);
-	}
-
-	header:active {
-		cursor: grabbing;
 	}
 
 	#logo {
@@ -75,10 +73,15 @@
 		border-radius: 0.25rem;
 		background-color: #323232;
 		color: white;
+		cursor: grab;
 	}
 
-	header:hover #logo,
-	header:active #logo {
+	#logo:active {
+		cursor: grabbing;
+	}
+
+	#logo:hover,
+	#logo:active {
 		font-weight: bold;
 		color: var(--c);
 	}
@@ -97,6 +100,7 @@
 		border-radius: 0.25rem;
 		color: #bcbcbc;
 		cursor: default;
+		overflow-x: auto;
 	}
 
 	a {
@@ -105,5 +109,29 @@
 
 	a:hover {
 		color: var(--c);
+	}
+
+	#controls {
+		display: flex;
+		gap: 0.25rem;
+		padding: 0.25rem;
+	}
+
+	#source {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		margin: -0.125rem;
+		font-size: 0.667rem;
+		border-radius: 100%;
+		background-color: #bcbcbc;
+		color: white;
+	}
+
+	#source:hover {
+		background-color: var(--c);
+		color: #e0e0e0;
 	}
 </style>
