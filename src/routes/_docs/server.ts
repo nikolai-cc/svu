@@ -44,7 +44,7 @@ export function getPages(category: string) {
 	const pages = [];
 	for (const path in docs) {
 		if (docs[path].category === category) {
-			pages.push(docs[path]);
+			pages.push(docs[path].slug);
 		}
 	}
 	return pages;
