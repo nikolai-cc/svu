@@ -7,7 +7,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$docs: 'src/routes/docs/'
+			$docs: 'src/routes/_docs/'
 		}
 	}
 };

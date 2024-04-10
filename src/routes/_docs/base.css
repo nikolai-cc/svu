@@ -1,0 +1,15 @@
+:root {
+	font-family: 'Recursive Variable', system-ui, sans-serif;
+
+	--c: rgb(55, 165, 20);
+}
+
+html,
+body {
+	overflow: hidden;
+	background-color: #e0e0e0;
+	background-image: radial-gradient(circle, #bcbcbc 9%, transparent 9%);
+	background-position: center center;
+	background-size: 32px 32px;
+	background-repeat: repeat;
+}
