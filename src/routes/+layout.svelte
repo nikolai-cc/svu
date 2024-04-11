@@ -58,6 +58,8 @@
 		backdrop-filter: blur(0.25rem);
 		-webkit-backdrop-filter: blur(0.25rem);
 		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 	}
 
 	header {
@@ -88,7 +90,7 @@
 	}
 
 	main {
-		height: calc(100% - 2rem);
+		flex: 1;
 		overflow-y: auto;
 	}
 
