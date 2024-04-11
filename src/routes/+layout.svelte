@@ -7,6 +7,10 @@
 	import { draggable } from '$lib/action/draggable.js';
 </script>
 
+<div id="warning">
+	⚠️ The content of the docs have not yet been updated for the current version of svu.
+</div>
+
 <div id="window" use:draggable={{ handle: '#logo', container: 'html' }}>
 	<header id="titlebar">
 		<div id="logo">/svu</div>
@@ -136,5 +140,17 @@
 	#source:hover {
 		background-color: var(--c);
 		color: #e0e0e0;
+	}
+
+	#warning {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100vw;
+		padding: 0.25rem;
+		font-size: 0.75rem;
+		background-color: var(--c);
+		color: white;
+		text-align: center;
 	}
 </style>
