@@ -98,3 +98,33 @@ li::before {
 	content: '> ';
 	color: var(--c);
 }
+
+a {
+	font-variation-settings:
+		'slnt' -7,
+		'CASL' 0.1;
+
+	text-decoration: underline;
+	text-decoration-color: var(--c);
+	text-decoration-thickness: 0rem;
+	text-underline-offset: 0rem;
+
+	transition:
+		font-variation-settings 0.25s ease-in-out,
+		text-decoration-thickness 0.5s ease-in-out,
+		text-underline-offset 0.5s ease-in-out;
+}
+
+a:hover {
+	font-variation-settings:
+		'slnt' 0,
+		'CASL' 1;
+
+	text-decoration-thickness: 0.125rem;
+	text-underline-offset: 0.25rem;
+
+	transition:
+		font-variation-settings 0.25s ease-in-out,
+		text-decoration-thickness 0.5s ease-in-out,
+		text-underline-offset 0.5s ease-in-out;
+}

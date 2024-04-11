@@ -22,11 +22,4 @@
 	article {
 		padding: 1rem;
 	}
-
-	a:hover {
-		text-decoration: underline;
-		text-decoration-color: var(--c);
-		text-decoration-thickness: 0.25rem;
-		text-underline-offset: 0.25rem;
-	}
 </style>
