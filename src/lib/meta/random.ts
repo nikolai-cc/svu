@@ -1,15 +1,26 @@
 /**
  * Returns a pseudorandom integer between min (inclusive) and max (inclusive).
  * Passing in a single parameter returns a random integer between 0 and the provided value.
+ * Throws an error if min or max are not integers, or if min is greater than max.
  */
-export const random = (min: number, max?: number) => {
-	const _min = max ? min : 0;
-	const _max = max ? max : min;
-	return Math.floor(Math.random() * (_max - _min + 1)) + _min;
-};
+export function random(min: number, max?: number) {
+	if (!Number.isInteger(min) || (max !== undefined && !Number.isInteger(max))) {
+		throw new Error('Min and max values must be integers');
+	}
 
-/** Flip a coin */
-export const coin = () => random(0, 1);
+	const _min = max !== undefined ? Math.min(min, max) : 0;
+	const _max = max !== undefined ? Math.max(min, max) : min;
+
+	if (_min === _max) {
+		return _min;
+	}
+
+	return Math.floor(Math.random() * (_max - _min + 1)) + _min;
+}
+
+/** Flip a coin, returns true or false */
+export const coin = () => random(0, 1) === 1;
+
 /** Throw a four-sided dice */
 export const d4 = () => random(1, 6);
 /** Throw a six-sided dice */

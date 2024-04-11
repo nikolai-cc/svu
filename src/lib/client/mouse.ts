@@ -1,13 +1,13 @@
-import { browser } from '../meta/index.js';
+import { browser } from '../meta/env.js';
+import { listen } from '../meta/event.js';
 import { derived, writable } from 'svelte/store';
-import { listen } from '../meta/index.js';
 
-const create = (prop: 'clientX' | 'clientY') => {
+function create(prop: 'clientX' | 'clientY') {
 	const { subscribe, set } = writable(0);
 	if (!browser) return { subscribe };
-	listen(window, 'mousemove', (e: Event) => set((<MouseEvent>e)[prop]));
-	return { subscribe };
-};
+	const unlisten = listen(window, 'mousemove', (e: Event) => set((<MouseEvent>e)[prop]));
+	return { subscribe, unsubscribe: unlisten };
+}
 
 /**
  * Svelte store that tracks the mouse x position.

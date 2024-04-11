@@ -1,14 +1,14 @@
+import { listen } from '../meta/index.js';
 import { browser } from '../meta/index.js';
 import { derived, writable } from 'svelte/store';
-import { listen } from '../meta/index.js';
 
-const createSize = (prop: 'innerWidth' | 'innerHeight') => {
+function createSize(prop: 'innerWidth' | 'innerHeight') {
 	const { subscribe, set } = writable(0);
 	if (!browser) return { subscribe };
 	set(window[prop]);
 	listen(window, 'resize', () => set(window[prop]));
 	return { subscribe };
-};
+}
 
 /**
  * Svelte store that tracks the window width.
@@ -25,13 +25,13 @@ export const wh = createSize('innerHeight');
  */
 export const windowSize = derived([ww, wh], ([$ww, $wh]) => ({ w: $ww, h: $wh }));
 
-const createScroll = (prop: 'scrollX' | 'scrollY') => {
+function createScroll(prop: 'scrollX' | 'scrollY') {
 	const { subscribe, set } = writable(0);
 	if (!browser) return { subscribe };
 	set(window[prop]);
 	listen(window, 'scroll', () => set(window[prop]));
 	return { subscribe };
-};
+}
 
 /**
  * Svelte store that tracks the scroll x position.

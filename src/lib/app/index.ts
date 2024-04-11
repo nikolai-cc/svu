@@ -12,4 +12,3 @@ export {
 	dirxml,
 	clear
 } from './log.js';
-export { default as console } from './log.js';

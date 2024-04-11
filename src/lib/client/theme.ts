@@ -1,7 +1,7 @@
 import { browser } from '../meta/index.js';
 import { writable } from 'svelte/store';
 
-const create = () => {
+function create() {
 	const { subscribe, set: setStore } = writable('');
 
 	if (!browser) return { subscribe, set: setStore };
@@ -23,6 +23,16 @@ const create = () => {
 	observer.observe(target, { attributes: true, attributeFilter: ['data-theme'] });
 
 	return { subscribe, set };
-};
+}
 
+/**
+ * A store that holds the current theme. It detects changes to the `data-theme` attribute on the `html` element.
+ * Changing the theme will also change the `data-theme` attribute on the `html` element.
+ * Changing the `data-theme` attribute on the `html` element will be reflected to $theme.
+ *
+ * ```svelte
+ * <button on:click={$theme = 'dark'}>Dark</button>
+ * <button on:click={$theme = 'light'}>Light</button>
+ * ```
+ */
 export const theme = create();

@@ -1,31 +1,40 @@
-import { listen, noop } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
+
+import type { Fn } from '../meta/fn.js';
+
+interface OnCloseOptions {
+	handler: Fn;
+	condition?: boolean;
+}
 
 /**
- * Executes an optional fuction on the onclose event, and displays an 'are you sure' modal.
+ * Executes a passed in fuction on the window's onclose event.
  * Pass in a condition to only execute when that condition is met.
- * Usage: <element use:onclose={{ handler, condition }} />
+ *
+ * Example:
+ * ```svelte
+ * <element use:onclose={handler} />
+ * <element use:onclose={{ handler, condition }} />
+ * ```
  */
-export const onclose = (
-	_node: HTMLElement,
-	options: { handler?: (...params: any) => any; condition?: boolean } = {}
-) => {
+export function onclose(_node: HTMLElement, options: OnCloseOptions) {
 	let handler = options.handler;
 	let condition = options.condition ?? true;
 
-	const confirm = (e: BeforeUnloadEvent) => {
+	function confirm(e: BeforeUnloadEvent) {
 		if (!condition) return;
-		if (typeof handler === 'function') handler(e);
 		e.preventDefault();
-		return (e.returnValue = 'Are you sure you want to close this window?');
-	};
+		handler(e);
+	}
 
 	const unlisten = listen(window, 'beforeunload', confirm) || noop;
 
 	return {
-		update: (options: { handler?: (...params: any) => any; condition?: boolean } = {}) => {
+		update: (options: OnCloseOptions) => {
 			handler = options.handler;
 			condition = options.condition ?? true;
 		},
 		destroy: () => unlisten()
 	};
-};
+}

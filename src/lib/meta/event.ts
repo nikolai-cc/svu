@@ -1,19 +1,19 @@
 /**
- * A convenience function that returns removeEventListener for the event we've just added.
+ * Adds an event listener and returns a function that removes it.
+ *
+ * Usage:
+ * ```ts
+ * const unlisten = listen(window, 'resize', () => console.log('resized'));
+ * // Later (e.g. in destroy phase):
+ * unlisten();
+ * ```
  */
-export const listen = (
+export function listen(
 	node: EventTarget,
 	type: string,
 	listener: EventListenerOrEventListenerObject,
 	options?: boolean | EventListenerOptions
-) => {
+) {
 	node.addEventListener(type, listener, options);
 	return () => node.removeEventListener(type, listener, options);
-};
-
-export const unlisten = (
-	node: EventTarget,
-	type: string,
-	listener: EventListenerOrEventListenerObject,
-	options?: boolean | EventListenerOptions
-) => node.removeEventListener(type, listener, options);
+}

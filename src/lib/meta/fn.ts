@@ -1,8 +1,10 @@
-/** noop */
+/** Do nothing. */
 export const noop = () => {};
-/** execute function */
-export const run = (fn: () => any) => fn();
-/** execute array of functions */
-export const runAll = (fns: (() => any)[]) => {
-	for (const fn of fns) fn();
-};
+
+/** Executes passed in function immediately. */
+export const run = <T>(fn: () => T) => fn();
+
+/** Unknown function type. Use `Fn<Params, Return>` to specify types. */
+export type Fn<Params extends unknown[] = unknown[], Return = unknown> = (
+	...params: Params
+) => Return;

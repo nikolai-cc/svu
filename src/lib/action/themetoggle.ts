@@ -1,24 +1,29 @@
-import { listen, noop } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
 
 /**
  * Theme Toggler.
  * Sets the 'data-theme' attribute on the html to a theme or the next of a list of themes on click.
- * Usage: <element use:theme={['dark', 'light']} /> toggles between dark and light
- * Usage: <element use:theme={'dark'} /> sets theme to dark
+ *
+ * Example:
+ * ```svelte
+ * <element use:theme={['dark', 'light']} /> toggles between dark and light
+ * <element use:theme={'dark'} /> sets theme to dark
+ * ```
  */
-export const themetoggle = (node: HTMLElement, themes?: string | string[]) => {
+export function themetoggle(node: HTMLElement, themes?: string | string[]) {
 	themes = themes ?? ['light', 'dark'];
 	const target = document.documentElement;
 	let theme = 0;
 
-	const toggle = (themes: string[]) => {
+	function toggle(themes: string[]) {
 		theme = (theme + 1) % themes.length;
 		target.setAttribute('data-theme', themes[theme]);
-	};
+	}
 
-	const set = (themes: string) => {
+	function set(themes: string) {
 		target.setAttribute('data-theme', themes);
-	};
+	}
 
 	const unlisten = listen(
 		node,
@@ -30,4 +35,4 @@ export const themetoggle = (node: HTMLElement, themes?: string | string[]) => {
 		update: noop,
 		destroy: unlisten
 	};
-};
+}

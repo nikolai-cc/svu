@@ -1,6 +1,7 @@
-import { listen, noop, capitalise } from '../meta/index.js';
+import { listen } from '../meta/event.js';
+import { capitalise } from '../meta/string.js';
 
-export type KeyMap = { [key: string]: Function };
+export type KeyMap = { [key: string]: (e: KeyboardEvent) => void };
 
 /**
  * Takes an `keyboard shortcut` string: e.g. `'shift+cmd+a'` and returns a string that normalises `meta`/`cmd`/`win` to `'Super'`,
@@ -8,7 +9,7 @@ export type KeyMap = { [key: string]: Function };
  * Keys and modifiers should be separated by a `+`, and the key to test for comes last.
  * Invalid modifer keys will be ignored.
  */
-const sanitise = (keyString: string): string => {
+function sanitise(keyString: string) {
 	const keys = keyString.split('+').map((k) => capitalise(k));
 	const key = keys.pop();
 	const alt = keys.includes('Alt') ? 'Alt+' : '';
@@ -23,7 +24,7 @@ const sanitise = (keyString: string): string => {
 			: '';
 	const shift = keys.includes('Shift') ? 'Shift+' : '';
 	return alt + ctrl + meta + shift + key;
-};
+}
 
 /**
  * Takes a keyMap and returns it with its key strings sanitised.
@@ -38,42 +39,50 @@ function sanitizeKeyMap(keyMap: KeyMap) {
 
 /**
  * Takes a sanitised key string and returns an object that matches the key and modifiers of the keyboardEvent.
+ *
+ * (currently unused)
  */
-const decode = (keyString: string) => {
-	const keys = keyString.split('+');
-	return {
-		key: keys.pop(),
-		altKey: keys.includes('Alt'),
-		ctrlKey: keys.includes('Ctrl'),
-		metaKey: keys.includes('Meta'),
-		shiftKey: keys.includes('Shift')
-	};
-};
+// function decode(keyString: string) {
+// 	const keys = keyString.split('+');
+// 	return {
+// 		key: keys.pop(),
+// 		altKey: keys.includes('Alt'),
+// 		ctrlKey: keys.includes('Ctrl'),
+// 		metaKey: keys.includes('Meta'),
+// 		shiftKey: keys.includes('Shift')
+// 	};
+// }
 
 /**
  * Takes a KeyboardEvent and returns a key string that matches a `keyboard shortcut` string after sanitisation.
  */
-const encode = (e: KeyboardEvent): string => {
+function encode(e: KeyboardEvent) {
 	const alt = e.key !== 'Alt' && e.altKey ? 'Alt+' : '';
 	const ctrl = e.key !== 'Control' && e.ctrlKey ? 'Control+' : '';
 	const meta = e.key !== 'Meta' && e.metaKey ? 'Meta+' : '';
 	const shift = e.key !== 'Shift' && e.shiftKey ? 'Shift+' : '';
 	return alt + ctrl + meta + shift + capitalise(e.key);
-};
+}
 
 /**
- * Executes functions on keydown. Pass in a map of shortcuts to functions.
- * You can pass in modifier keys with the + symbol. The key to test for always comes last.
- * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match an invalid modifier, it is ignored.
- * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
- * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
+ * Executes functions on keydown. Pass in a map of key names to functions.
+ * Pass in modifier keys with the + symbol. The key to test for always comes last.
+ *
+ * Modifiers are sanitised (e.g. change `cmd` to `Meta`). If a modifier can't be matched it is ignored.
+ * The action is fully reactive, so shortcuts and handlers can be variables.
+ *
+ * Example:
+ * ```svelte
+ * <element use:keydown={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * <element use:keydown={shortcuts} />
+ * ```
  */
-export const keydown = (node: HTMLElement, keys: KeyMap) => {
+export function keydown(node: HTMLElement, keys: KeyMap) {
 	let shortcuts: KeyMap = sanitizeKeyMap(keys);
 
-	const execute = (e: KeyboardEvent) => {
+	function execute(e: KeyboardEvent) {
 		shortcuts[encode(e)]?.(e);
-	};
+	}
 
 	const unlisten = listen(node, 'keydown', execute as EventListener);
 
@@ -83,20 +92,27 @@ export const keydown = (node: HTMLElement, keys: KeyMap) => {
 		},
 		destroy: unlisten
 	};
-};
+}
 
 /**
- * Executes functions on keyup. Pass in a map of key names to functions.
- * You can pass in modifier keys with the + symbol. The key to test for always comes last.
- * We sanitise modifiers (e.g. change `cmd` to `Meta`), if we are unable to match an invalid modifier, it is ignored.
- * Usage: <element use:keydown={{ 'Shift+Enter': handler() }} />
- * The action is fully reactive, so feel free to pass in a variable as the shortcut or handler.
+ * Executes functions on keydown. Pass in a map of key names to functions.
+ * Pass in modifier keys with the + symbol. The key to test for always comes last.
+ *
+ * Modifiers are sanitised (e.g. change `cmd` to `Meta`). If a modifier can't be matched it is ignored.
+ * The action is fully reactive, so shortcuts and handlers can be variables.
+ *
+ * Example:
+ * ```svelte
+ * <element use:keyup={{ 'F': handler(), 'Shift+Enter': handler(), 'Meta+A': handler() }} />
+ * <element use:keyup={shortcuts} />
+ * ```
  */
-export const keyup = (node: HTMLElement, keys: KeyMap) => {
+export function keyup(node: HTMLElement, keys: KeyMap) {
 	let shortcuts = sanitizeKeyMap(keys);
-	const execute = (e: KeyboardEvent) => {
+
+	function execute(e: KeyboardEvent) {
 		shortcuts[encode(e)]?.(e);
-	};
+	}
 
 	const unlisten = listen(node, 'keyup', execute as EventListener);
 
@@ -106,4 +122,4 @@ export const keyup = (node: HTMLElement, keys: KeyMap) => {
 		},
 		destroy: unlisten
 	};
-};
+}

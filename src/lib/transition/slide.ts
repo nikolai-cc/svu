@@ -5,10 +5,10 @@ import type { EasingFunction } from 'svelte/transition';
  * Slide transition that supports multiple directions.
  * Based on the original slide transition from 'svelte/transition'.
  */
-export const slide = (
+export function slide(
 	node: Element,
 	options: { delay?: number; duration?: number; direction?: 'x' | 'y'; easing?: EasingFunction }
-) => {
+) {
 	const { delay = 0, duration = 400, direction = 'x', easing = cubicOut } = options ?? {};
 
 	const style = getComputedStyle(node);
@@ -40,4 +40,4 @@ export const slide = (
 			`border-top-width: ${t * borderTopWidth}px;` +
 			`border-bottom-width: ${t * borderBottomWidth}px;`
 	};
-};
+}

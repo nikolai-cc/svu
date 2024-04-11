@@ -1,14 +1,17 @@
+import type { Fn } from './fn.js';
+import type { Timer } from './time.js';
+
 /**
  * A function that executes the passed in function max once every interval milliseconds
  * Set leading to true to execute the function on the leading edge of the interval.
  */
-export const debounce = (
-	fn: (...params: any) => any,
+export function debounce<Params extends unknown[], Return>(
+	fn: Fn<Params, Return>,
 	interval: number,
 	leading: boolean = false
-) => {
-	let timer: any;
-	return (...args: any[]) => {
+) {
+	let timer: Timer | null = null;
+	return (...args: Params) => {
 		if (timer) {
 			clearTimeout(timer);
 		}
@@ -19,4 +22,4 @@ export const debounce = (
 			fn(...args);
 		}, interval);
 	};
-};
+}

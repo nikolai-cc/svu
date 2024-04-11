@@ -1,14 +1,19 @@
-import { noop } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { isFocusable } from '../meta/element.js';
 
 /**
  * Focuses element when it mounts. Only works on focusable elements.
- * Usage: <element use:focus />
+ *
+ * Example:
+ * ```svelte
+ * <element use:focus />
+ * ```
  */
-export const focus = (node: HTMLElement) => {
-	if (typeof node.focus === 'function') node.focus();
+export function focus(node: HTMLElement) {
+	if (isFocusable(node)) node.focus();
 
 	return {
 		update: noop,
 		destroy: noop
 	};
-};
+}

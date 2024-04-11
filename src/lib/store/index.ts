@@ -1,4 +1,4 @@
-export * from './localstore.js';
-export * from './sessionstore.js';
-export * from './resettable.js';
-export * from './mediaquery.js';
+export { localstore } from './localstore.js';
+export { mediaquery } from './mediaquery.js';
+export { resettable } from './resettable.js';
+export { sessionstore } from './sessionstore.js';

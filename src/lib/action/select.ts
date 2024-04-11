@@ -1,11 +1,16 @@
-import { listen } from '../meta/index.js';
+import { listen } from '../meta/event.js';
 
 /**
  * Selects the content of the element (or a specified target) on click.
  * If the element is an input element, it selects the value, otherwise it selects all child nodes.
- * Usage: <element use:select={ target } />
+ *
+ * Example:
+ * ```svelte
+ * <element use:select />
+ * <element use:select={ target } />
+ * ```
  */
-export const select = (node: HTMLElement, target?: HTMLElement) => {
+export function select(node: HTMLElement, target?: HTMLElement) {
 	let object = target ?? node;
 
 	const selectObject = () => {
@@ -34,4 +39,4 @@ export const select = (node: HTMLElement, target?: HTMLElement) => {
 		update: (target: HTMLElement) => (object = target ?? node),
 		destroy: unlisten
 	};
-};
+}

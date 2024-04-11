@@ -1,16 +1,14 @@
 /** Returns true in browser, false when prerendering / running in node. */
 export const browser = typeof window !== 'undefined' && window.document;
 
-declare const __SVELTEKIT_DEV__: boolean |undefined
-declare const __SVU_DEV__: boolean |undefined
+declare const __SVELTEKIT_DEV__: boolean | undefined;
+declare const __SVU_DEV__: boolean | undefined;
 
-const checkDev = () => {
-    try {
-        return __SVU_DEV__
-        // return __SVELTEKIT_DEV__ || __SVU_DEV__
-    } catch (e) {
-        return false
-    }
+function checkDev() {
+	if (typeof __SVELTEKIT_DEV__ !== 'undefined') return __SVELTEKIT_DEV__;
+	if (typeof __SVU_DEV__ !== 'undefined') return __SVU_DEV__;
+	if (typeof process.env.NODE_ENV !== 'undefined') return process.env.NODE_ENV === 'development';
+	return false;
 }
 
 /**

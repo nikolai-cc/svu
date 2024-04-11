@@ -1,55 +1,72 @@
-# `/svu`
+# /svu
 
-`/svu` is a collection of Svelte(Kit) utillities that make developing webapps even more easy and fun.
+Svelte development, supercharged.
 
-Read the docs at http://svu.vercel.app
-
-## Why
-
-Svelte and SvelteKit make web development easy and fun. No wonder it’s the most loved web framework in the world. Although Svelte, especially in conjunction with SvelteKit is fairly batteries-included, there are a bunch of small things they rightfully leave up to the developer.
-
-This package aims to be a collection of all of those small things that bring a little spark of joy to your next Svelte(Kit) app.
+svu started out as a collection of svelte-related utilities I copied from project to project. svu is currently in alpha, while the API settles. If you run into any issues, or have any questions or suggestions, feel free to open an issue on GitHub.
 
 ## Features
 
 Check out the various parts of the docs:
 
-- [`/action`](http://svu.vercel.app/docs/action): A huge collection of svelte:actions.
+- [`/action`](http://svu.vercel.app/action): A huge collection of svelte:actions.
 
-- [`/app`](http://svu.vercel.app/docs/app): App related utilities.
+- [`/app`](http://svu.vercel.app/app): App related utilities.
 
-- [`/client`](http://svu.vercel.app/docs/client): Client related stores and utils.
+- [`/client`](http://svu.vercel.app/client): Client related stores and utils.
 
-- [`/components`](http://svu.vercel.app/docs/components): Useful components.
+- [`/components`](http://svu.vercel.app/components): Useful components.
 
-- [`/store`](http://svu.vercel.app/docs/store): Custom stores.
+- [`/store`](http://svu.vercel.app/store): Custom stores.
 
-- [`/transition`](http://svu.vercel.app/docs/transition): Custom transition functions.
+- [`/transition`](http://svu.vercel.app/transition): Custom transition functions.
 
-## Principles
+## Getting Started
 
-Some design principles:
+1. Install from npm:
 
-- 🥇 `One dependency`
+```bash
+npm i -D svu
+```
 
-  The utilities by themselves are too small to warrant their own package. In the past, I have manually copied them from project to project for exactly that reason.
+2. For SvelteKit: add this to your vite.config.js:
 
-- 🔋 `Batteries Included`
+This tells Vite to treat this package as part of our application code. We need this because for some SvelteKit `/svu`'s are using SvelteKit utilities like the `$app` syntax.
 
-  svu comes with a actions, stores, utility-functions and more. The real value is in the fact that everything you need is at your fingertips.
+```js
+optimizeDeps: {
+    exclude: ['svu', 'svu/*'],
+},
+ssr: {
+    noExternal: ['svu', 'svu/*'],
+},
+```
 
-- 🪶 `Small sizes please`
+3. Import only what you need.
 
-  The library is fully tree shakeable so it's safe too include even if you need just one utillity. It won't harm your bundle size.
+For SvelteKit:
 
-- ❤️ `Pareto Principle`
+```svelte
+<script>
+	import { draggable } from 'svu/action';
+</script>
 
-  These utilities are designed to solve 80% of usecases with 20% of the code. It might well be that your specific use-case outgrows the capabilities of a specific svu. No hard feelings! The docs will tell you were to find more elaborate packages, if applicable.
+<p use:draggable>Be Happy</p>
+```
+
+For Svelte:
+
+```svelte
+<script>
+	import { draggable } from 'svu/svelte/action';
+</script>
+
+<p use:draggable>Be Happy</p>
+```
+
+Find out wether you need one of our [actions](/action), [custom stores](/stores), [app-related stores](/app), [client-related stores](/client) and [components](/components).
+
+4. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
 
 ## Status
 
-svu started out as a collection of Svelte stuff I often use. svu is currently in alpha, while the API settles.
-
-Feel free to take it for a test drive! Be aware that some svus are not fully production ready, and the API may change in the near future.
-
-If you run into any issues, or have any questions or suggestions, feel free to open an issue on GitHub.
+The API is in flux and may change without warning in 0.X.0 updates.

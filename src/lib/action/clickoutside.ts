@@ -1,20 +1,42 @@
-import { listen, noop } from '../meta/index.js';
+import { noop } from '../meta/fn.js';
+import { listen } from '../meta/event.js';
+
+import type { Fn } from '../meta/fn.js';
+import type { ActionReturn } from 'svelte/action';
+
+interface Attributes {
+	'on:!clickoutside'?: (event: CustomEvent<Event>) => void;
+}
 
 /**
- * Executes a function when clicking anywhere but on the target node.
- * Also dispatches the `clickoutside` event on the target node.
- * Usage: <element use:clickoutside={ handler } />
+ * Calls `handler` when a click event occurs outside of `node`. The event is forwarded to `handler`.
+ * Also dispatches a `!clickoutside` event on 'node' with the original event as `detail`.
+ *
+ * Example:
+ * ```svelte
+ * <element use:clickoutside={handler} />
+ * <element use:clickoutside on:!clickoutside={handler} />
+ * ```
  */
-export const clickoutside = (node: HTMLElement, handler?: (...params: any) => any) => {
-	const handleClick = (event: PointerEvent) => {
-		if (node.contains(event.target as HTMLElement)) return;
-		handler && handler();
-		node.dispatchEvent(new CustomEvent('clickoutside'));
-	};
-	const unlisten = listen(document, 'click', handleClick as EventListenerOrEventListenerObject);
+export function clickoutside(
+	node: HTMLElement,
+	handler: Fn<[Event]> = noop
+): ActionReturn<Fn<[Event]>, Attributes> {
+	let handle = handler;
+
+	function handleClick(event: Event) {
+		if (!node.contains(event.target as Node)) {
+			handle(event);
+			node.dispatchEvent(new CustomEvent('!clickoutside', { detail: event }));
+		}
+	}
+
+	const unlisten = listen(document, 'click', handleClick);
 
 	return {
-		update: noop,
+		update: (handler: Fn<[Event]>) => {
+			handle = handler;
+		},
 		destroy: unlisten
 	};
-};
+}

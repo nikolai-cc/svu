@@ -1,17 +1,11 @@
 .DS_Store
 node_modules
 /build
+/dist
 /.svelte-kit
 /package
 .env
 .env.*
 !.env.example
-.vscode
-
-# used for janky brain farts, don't commit
-/src/routes/temp
-
-# test files
-/test-results/
-/test/playwright/report/
-/test/playwright/.cache/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
