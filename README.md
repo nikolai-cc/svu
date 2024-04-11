@@ -63,7 +63,7 @@ For Svelte:
 <p use:draggable>Be Happy</p>
 ```
 
-Find out wether you need one of our [actions](/action), [custom stores](/stores), [app-related stores](/app), [client-related stores](/client) and [components](/components).
+Find out wether you need one of our [actions](http://svu.vercel.app/action), [custom stores](http://svu.vercel.app/stores), [app-related stores](http://svu.vercel.app/app), [client-related stores](http://svu.vercel.app/client) and [components](http://svu.vercel.app/components).
 
 4. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
 
