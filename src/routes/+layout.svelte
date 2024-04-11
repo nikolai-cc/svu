@@ -124,6 +124,11 @@
 		padding: 0.25rem;
 	}
 
+	header a,
+	header a:hover {
+		text-decoration: none;
+	}
+
 	#source {
 		display: flex;
 		align-items: center;
