@@ -4,7 +4,7 @@ Action that adds a `resize` event and optionally calls a handler function when a
 
 Want to track the window size? Go for the `window` store in `svu/client` or use the window.onresize event.
 
-- See also [window](/docs/client/window)
+- See also [window](/client/window)
 
 ## Usage
 

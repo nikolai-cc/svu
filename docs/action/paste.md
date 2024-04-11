@@ -2,7 +2,7 @@
 
 This action pastes the text content of the clipboard into the `textContent` of the element (or the `value` in case of an `HTMLInputElement`). It pastes into the element itself by default, but another element can be passed in.
 
-- See also [use:copy](/docs/action/copy).
+- See also [use:copy](/action/copy).
 
 ## Usage
 

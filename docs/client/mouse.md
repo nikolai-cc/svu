@@ -2,7 +2,7 @@
 
 Mouse is a collection of stores that contain the mouse position. You can either get the x position through `mx` and y position through `my`, or access the `mouse` store which is an object in the form of `{x, y}`.
 
-- see also: [window](/docs/client/window)
+- see also: [window](/client/window)
 
 ## Usage
 

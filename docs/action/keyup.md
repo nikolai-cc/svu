@@ -2,7 +2,7 @@
 
 Execute a function on `keyup`. Pass in a map of key names to functions to execute the function on key.
 
-- See also: [use:keydown](/docs/action/keydown)
+- See also: [use:keydown](/action/keydown)
 
 ## Usage
 
@@ -56,4 +56,4 @@ This action does not dispatch any events.
 
 keyboard modifiers (shift, ctrl, alt, meta) are not yet supported.
 
-If you need to handle a function on keydown see [use:keydown](/docs/action/keydown). If you need something to happen while the key is pressed down you can use keydown and keyup in conjunction with each other.
+If you need to handle a function on keydown see [use:keydown](/action/keydown). If you need something to happen while the key is pressed down you can use keydown and keyup in conjunction with each other.

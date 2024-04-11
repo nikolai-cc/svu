@@ -8,17 +8,17 @@ svu started out as a collection of svelte-related utilities I copied from projec
 
 Check out the various parts of the docs:
 
-- [`/action`](http://svu.vercel.app/docs/action): A huge collection of svelte:actions.
+- [`/action`](http://svu.vercel.app/action): A huge collection of svelte:actions.
 
-- [`/app`](http://svu.vercel.app/docs/app): App related utilities.
+- [`/app`](http://svu.vercel.app/app): App related utilities.
 
-- [`/client`](http://svu.vercel.app/docs/client): Client related stores and utils.
+- [`/client`](http://svu.vercel.app/client): Client related stores and utils.
 
-- [`/components`](http://svu.vercel.app/docs/components): Useful components.
+- [`/components`](http://svu.vercel.app/components): Useful components.
 
-- [`/store`](http://svu.vercel.app/docs/store): Custom stores.
+- [`/store`](http://svu.vercel.app/store): Custom stores.
 
-- [`/transition`](http://svu.vercel.app/docs/transition): Custom transition functions.
+- [`/transition`](http://svu.vercel.app/transition): Custom transition functions.
 
 ## Getting Started
 
@@ -63,7 +63,7 @@ For Svelte:
 <p use:draggable>Be Happy</p>
 ```
 
-Find out wether you need one of our [actions](/docs/action), [custom stores](/docs/stores), [app-related stores](/docs/app), [client-related stores](/docs/client) and [components](/docs/components).
+Find out wether you need one of our [actions](/action), [custom stores](/stores), [app-related stores](/app), [client-related stores](/client) and [components](/components).
 
 4. <p use:draggable on:drag:start={dragStart} on:drag:end={dragEnd} bind:this={happy} style:transition="all 50ms ease-in-out">Be happy!</p>
 

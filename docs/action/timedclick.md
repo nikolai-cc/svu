@@ -2,7 +2,7 @@
 
 Dispatches an event and calls an optional handler if an element is _pressed down_ and _released_ within a certain amount of time. Starts checking after an optional `delay` so can be used for fairly precise timings.
 
-- See also: [use:press](/docs/action/press)
+- See also: [use:press](/action/press)
 
 ## Usage
 
@@ -64,6 +64,6 @@ Emitted when the button has been pressed for `duration` milliseconds. The event 
 
 ## Caveats
 
-This action used to handle a timed click event. If you simply want to handle a button that is pressed down fow a certain time, you can better use the [press](/docs/action/press) action.
+This action used to handle a timed click event. If you simply want to handle a button that is pressed down fow a certain time, you can better use the [press](/action/press) action.
 
 In order to have a complicated interaction on the button element, you can use the `press` and `timedclick` actions in conjunction with each other. The `timedclick` action can also be used with any standard events such as `on:pointerdown` and `on:pointerup`.

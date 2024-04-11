@@ -12,7 +12,7 @@
 	<ul>
 		{#each pages as slug}
 			<li>
-				<a href="{$page.url.href}/{slug}">{slug}</a>
+				<a href="/{$page.params.category}/{slug}">{slug}</a>
 			</li>
 		{/each}
 	</ul>

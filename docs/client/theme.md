@@ -2,7 +2,7 @@
 
 Store to track and change the root element's `data-theme` attribute. It works well with the themetoggle action, but will work equally well with any other theme-change library that sets the `data-theme` attribute on the root element. It's powered by a MutationObserver that checks for any changes to the element.
 
-- See also: [themetoggle](/docs/action/themetoggle)
+- See also: [themetoggle](/action/themetoggle)
 
 ## Usage
 

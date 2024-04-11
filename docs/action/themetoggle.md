@@ -2,7 +2,7 @@
 
 Sets the `data-theme` attribute of the `html` element to a theme or the next of a list of themes on click.
 
-- see also: [theme](/docs/client/theme)
+- see also: [theme](/client/theme)
 
 ## Usage
 
