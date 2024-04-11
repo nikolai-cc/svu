@@ -7,6 +7,12 @@
 	import { draggable } from '$lib/action/draggable.js';
 </script>
 
+<svelte:head>
+	<title>Svu: Svelte development, supercharged.</title>
+	<meta name="description" content="Svelte development, supercharged." />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</svelte:head>
+
 <div id="warning">
 	⚠️ The content of the docs have not yet been updated for the current version of svu.
 </div>
@@ -39,7 +45,7 @@
 		<div id="controls">
 			<a href="https://github.com/nikolai-cc/svu">
 				<span id="source">
-					{'</>'}
+					{'</s>'}
 				</span>
 			</a>
 		</div>
