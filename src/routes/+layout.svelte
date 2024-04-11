@@ -47,10 +47,11 @@
 
 <style>
 	#window {
-		max-width: 800px;
-		width: 80%;
+		width: 80vw;
 		height: calc(100dvh - 2rem);
-		margin: 1rem auto;
+		max-width: 800px;
+		max-height: 800px;
+		margin: auto;
 		border-radius: 0.25rem;
 		background-color: rgba(255, 255, 255, 0.25);
 		border: 2px solid #323232;

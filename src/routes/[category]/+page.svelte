@@ -29,9 +29,4 @@
 		text-decoration-thickness: 0.25rem;
 		text-underline-offset: 0.25rem;
 	}
-
-	li::before {
-		content: '> ';
-		color: var(--c);
-	}
 </style>
