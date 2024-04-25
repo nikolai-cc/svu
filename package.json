@@ -1,7 +1,7 @@
 {
 	"name": "svu",
 	"description": "Svelte development, supercharged.",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/nikolai-cc/svu.git"
@@ -32,19 +32,19 @@
 			"types": "./dist/action/index.d.ts",
 			"svelte": "./dist/action/index.js"
 		},
-		"./app/": {
+		"./app": {
 			"types": "./dist/app/index.d.ts",
 			"svelte": "./dist/app/index.js"
 		},
-		"./components/": {
+		"./components": {
 			"types": "./dist/components/index.d.ts",
 			"svelte": "./dist/components/index.js"
 		},
-		"./store/": {
+		"./store": {
 			"types": "./dist/store/index.d.ts",
 			"svelte": "./dist/store/index.js"
 		},
-		"./transition/": {
+		"./transition": {
 			"types": "./dist/transition/index.d.ts",
 			"svelte": "./dist/transition/index.js"
 		}
