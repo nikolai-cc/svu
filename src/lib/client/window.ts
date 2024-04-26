@@ -21,6 +21,11 @@ export const ww = createSize('innerWidth');
 export const wh = createSize('innerHeight');
 
 /**
+ * Svelte store that tracks the window aspect ratio.
+ */
+export const aspect = derived([ww, wh], ([$ww, $wh]) => $ww / $wh);
+
+/**
  * Svelte store that tracks the window size.
  */
 export const windowSize = derived([ww, wh], ([$ww, $wh]) => ({ w: $ww, h: $wh }));

@@ -18,4 +18,4 @@ export {
 export { mx, my, mouse } from './mouse.js';
 export { os, modKey } from './os.js';
 export { theme } from './theme.js';
-export { ww, wh, windowSize, sx, sy, scroll } from './window.js';
+export { ww, wh, aspect, windowSize, sx, sy, scroll } from './window.js';
