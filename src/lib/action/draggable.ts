@@ -24,7 +24,7 @@ interface Attributes {
  * Returns the minimum and maximum bounds for the draggable element based on an optional container element.
  */
 function setBounds(node: HTMLElement, position: Coords, container: HTMLElement | undefined) {
-	const min = { x: 0, y: 0 };
+	const min = { x: -Infinity, y: -Infinity };
 	const max = { x: Infinity, y: Infinity };
 
 	if (container) {
@@ -85,17 +85,21 @@ export function draggable(
 			event.preventDefault();
 			event.stopPropagation();
 
-			const handleRect = getDomRect(handle);
+			const containerRect = container ? getDomRect(container) : undefined;
 
-			const moveX =
-				axis.includes('x') &&
-				event.clientX >= handleRect.left &&
-				event.clientX <= handleRect.left + handleRect.width;
+			let moveX = axis.includes('x');
+			let moveY = axis.includes('y');
 
-			const moveY =
-				axis.includes('y') &&
-				event.clientY >= handleRect.top &&
-				event.clientY <= handleRect.top + handleRect.height;
+			if (containerRect) {
+				moveX =
+					event.clientX >= containerRect.left &&
+					event.clientX <= containerRect.width + containerRect.left &&
+					moveX;
+				moveY =
+					event.clientY >= containerRect.top &&
+					event.clientY <= containerRect.height + containerRect.top &&
+					moveY;
+			}
 
 			position.x = moveX ? position.x + event.clientX - origin.x : position.x;
 			position.y = moveY ? position.y + event.clientY - origin.y : position.y;
