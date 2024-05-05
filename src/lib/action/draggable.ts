@@ -136,16 +136,25 @@ export function draggable(
 		node.style.transform = `translate(${position.x}px, ${position.y}px)`;
 	}
 
-	const unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
-	const unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
+	let unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
+	let unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
 
 	return {
 		update(options: UseDraggableOptions) {
 			position = options.position || position;
 			className = options.class || 'svu-dragging';
-			handle = getElement(options.handle, node);
 			axis = options.axis || axis;
 			container = getElement(options.container) || container;
+
+			if (options.handle !== handle) {
+				handle = getElement(options.handle, node);
+
+				unlistenPointerDown();
+				unlistenTouchStart();
+
+				unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
+				unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
+			}
 		},
 		destroy() {
 			unlistenPointerDown();
