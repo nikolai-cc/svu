@@ -10,6 +10,7 @@ export { onclose } from './onclose.js';
 export { portal } from './portal.js';
 export { press } from './press.js';
 export { resize } from './resize.js';
+export { resizable } from './resizable.js';
 export { select } from './select.js';
 export { themetoggle } from './themetoggle.js';
 export { timedclick } from './timedclick.js';
