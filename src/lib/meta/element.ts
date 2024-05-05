@@ -35,15 +35,33 @@ export function setTextContent(target: Element, text: string) {
  * Returns the DOMRect of the target node relative to the document. Want the rect relative to the viewport? Use the native `getBoundingClientRect` instead.
  */
 export function getDomRect(node: HTMLElement) {
-	if (!browser) return { left: 0, top: 0, width: 0, height: 0 };
+	if (!browser) return { left: 0, top: 0, width: 0, height: 0, right: 0, bottom: 0 };
 
 	const rect = node.getBoundingClientRect();
 	return {
 		left: rect.left + window.scrollX,
 		top: rect.top + window.scrollY,
+		right: rect.left + window.scrollX + rect.width,
+		bottom: rect.top + window.scrollY + rect.height,
 		width: rect.width,
 		height: rect.height
 	};
+}
+
+export function getTransformCoords(node: HTMLElement) {
+	const style = window.getComputedStyle(node);
+	const transform = style.transform;
+
+	console.log(transform);
+
+	if (transform === 'none') return { x: 0, y: 0 };
+
+	const matrix = transform.match(/^matrix\((.+)\)$/);
+	if (!matrix) return { x: 0, y: 0 };
+
+	const [x, y] = matrix[1].split(',').slice(4).map(parseFloat);
+
+	return { x, y };
 }
 
 // This list originates from: https://stackoverflow.com/a/30753870

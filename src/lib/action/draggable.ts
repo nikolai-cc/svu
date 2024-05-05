@@ -1,6 +1,6 @@
 import { clamp } from '../meta/math.js';
 import { listen } from '../meta/event.js';
-import { getElement, getDomRect } from '../meta/element.js';
+import { getElement, getDomRect, getTransformCoords } from '../meta/element.js';
 
 import type { Coords } from '../meta/types.js';
 import type { ActionReturn } from 'svelte/action';
@@ -33,8 +33,8 @@ function setBounds(node: HTMLElement, position: Coords, container: HTMLElement |
 
 		min.x = containerRect.left - nodeRect.left + position.x;
 		min.y = containerRect.top - nodeRect.top + position.y;
-		max.x = containerRect.left + containerRect.width - nodeRect.left - nodeRect.width + position.x;
-		max.y = containerRect.top + containerRect.height - nodeRect.top - nodeRect.height + position.y;
+		max.x = containerRect.right - nodeRect.right + position.x;
+		max.y = containerRect.bottom - nodeRect.bottom + position.y;
 	}
 
 	return { min, max };
@@ -72,10 +72,14 @@ export function draggable(
 		node.setPointerCapture(event.pointerId);
 		node.classList.add(className);
 
+		console.log('SYC');
+
 		origin = {
 			x: event.clientX,
 			y: event.clientY
 		};
+
+		position = getTransformCoords(node);
 
 		const { min, max } = setBounds(node, position, container);
 
@@ -92,13 +96,9 @@ export function draggable(
 
 			if (containerRect) {
 				moveX =
-					event.clientX >= containerRect.left &&
-					event.clientX <= containerRect.width + containerRect.left &&
-					moveX;
+					event.clientX >= containerRect.left && event.clientX <= containerRect.right && moveX;
 				moveY =
-					event.clientY >= containerRect.top &&
-					event.clientY <= containerRect.height + containerRect.top &&
-					moveY;
+					event.clientY >= containerRect.top && event.clientY <= containerRect.bottom && moveY;
 			}
 
 			position.x = moveX ? position.x + event.clientX - origin.x : position.x;
