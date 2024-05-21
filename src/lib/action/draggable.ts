@@ -72,8 +72,6 @@ export function draggable(
 		node.setPointerCapture(event.pointerId);
 		node.classList.add(className);
 
-		console.log('SYC');
-
 		origin = {
 			x: event.clientX,
 			y: event.clientY

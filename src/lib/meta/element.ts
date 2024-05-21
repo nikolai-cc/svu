@@ -52,8 +52,6 @@ export function getTransformCoords(node: HTMLElement) {
 	const style = window.getComputedStyle(node);
 	const transform = style.transform;
 
-	console.log(transform);
-
 	if (transform === 'none') return { x: 0, y: 0 };
 
 	const matrix = transform.match(/^matrix\((.+)\)$/);
