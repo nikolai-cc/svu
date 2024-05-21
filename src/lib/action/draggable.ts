@@ -66,6 +66,8 @@ export function draggable(
 	let container = getElement(options?.container);
 	let origin = position;
 
+	if (options && options.position) draw();
+
 	function handlePointerDown(event: PointerEvent) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -143,6 +145,8 @@ export function draggable(
 			className = options.class || 'svu-dragging';
 			axis = options.axis || axis;
 			container = getElement(options.container) || container;
+
+			if (options.position) draw();
 
 			if (options.handle !== handle) {
 				handle = getElement(options.handle, node);
