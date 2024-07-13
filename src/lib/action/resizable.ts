@@ -70,12 +70,13 @@ export function resizable(
 	node: HTMLElement,
 	options?: UseDraggableOptions
 ): ActionReturn<UseDraggableOptions, Attributes> {
-	let nodeRect = getDomRect(node);
+	const nodeRect = getDomRect(node);
 
-	let size = options?.size || { width: nodeRect.width, height: nodeRect.height };
 	let position = options?.position || { x: 0, y: 0 };
-	let margin = options?.margin || 10;
-	let className = options?.class || 'svu-resizing';
+
+	const size = options?.size || { width: nodeRect.width, height: nodeRect.height };
+	const margin = options?.margin || 10;
+	const className = options?.class || 'svu-resizing';
 
 	let borders = {
 		top: 0,
@@ -179,7 +180,7 @@ export function resizable(
 	}
 
 	let unlistenSensor = listen(node, 'pointermove', checkSensor as EventListener);
-	let unlistenPointerDown = listen(node, 'pointerdown', handlePointerDown as EventListener);
+	const unlistenPointerDown = listen(node, 'pointerdown', handlePointerDown as EventListener);
 
 	return {
 		destroy() {
