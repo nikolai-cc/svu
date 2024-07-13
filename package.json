@@ -21,7 +21,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"prepare": "husky"
 	},
 	"exports": {
 		".": {
@@ -62,10 +63,10 @@
 	"devDependencies": {
 		"@fontsource-variable/recursive": "^5.0.17",
 		"@sveltejs/adapter-static": "^3.0.1",
+		"@sveltejs/eslint-config": "^7.0.1",
 		"@sveltejs/kit": "^2.5.5",
 		"@sveltejs/package": "^2.3.1",
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
-		"@sveltejs/eslint-config": "^7.0.1",
 		"@types/eslint": "8.56.8",
 		"@typescript-eslint/eslint-plugin": "^7.6.0",
 		"@typescript-eslint/parser": "^7.6.0",
@@ -73,6 +74,8 @@
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
 		"marked": "^12.0.1",
 		"prettier": "^3.2.5",
 		"prettier-plugin-svelte": "^3.2.2",
