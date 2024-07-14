@@ -88,3 +88,42 @@ export function isFocusable(node: HTMLElement) {
 export function getFocusableChildren(node: HTMLElement): HTMLElement[] {
 	return node ? Array.from(node.querySelectorAll(focusableElements)) : [];
 }
+
+/**
+ * Element border sensor. Used to detect the cursor position relative to the element's borders.
+ */
+export type BorderSensor = { top: boolean; right: boolean; bottom: boolean; left: boolean };
+
+/**
+ * Element border sensor. Returns sensor values based on the cursor position and the element's borders.
+ */
+export function getBorderSensor(
+	borders: { top: number; right: number; bottom: number; left: number },
+	margin: number,
+	coords: { x: number; y: number }
+) {
+	const { top, right, bottom, left } = borders;
+	const { x, y } = coords;
+
+	return {
+		top: top < y && y < top + margin,
+		right: right - margin < x && x < right,
+		bottom: bottom - margin < y && y < bottom,
+		left: left < x && x < left + margin
+	};
+}
+
+/**
+ * Returns the cursor "𝑥-resize" name based on BorderSensor values.
+ */
+export function getBorderCursor(sensor: BorderSensor) {
+	if (sensor.top && sensor.left) return 'nwse-resize';
+	if (sensor.top && sensor.right) return 'nesw-resize';
+	if (sensor.bottom && sensor.left) return 'nesw-resize';
+	if (sensor.bottom && sensor.right) return 'nwse-resize';
+	if (sensor.top) return 'ns-resize';
+	if (sensor.right) return 'ew-resize';
+	if (sensor.bottom) return 'ns-resize';
+	if (sensor.left) return 'ew-resize';
+	return 'default';
+}

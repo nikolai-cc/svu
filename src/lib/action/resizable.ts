@@ -1,6 +1,12 @@
 import { listen } from '../meta/event.js';
-import { getDomRect, getTransformCoords } from '../meta/element.js';
+import {
+	getDomRect,
+	getTransformCoords,
+	getBorderCursor,
+	getBorderSensor
+} from '../meta/element.js';
 
+import type { BorderSensor } from '../meta/element.js';
 import type { Size, Coords } from '../meta/types.js';
 import type { ActionReturn } from 'svelte/action';
 
@@ -15,40 +21,6 @@ interface Attributes {
 	'on:!resizestart'?: (event: CustomEvent<Size>) => void;
 	'on:!resize'?: (event: CustomEvent<Size>) => void;
 	'on:!resizeend'?: (event: CustomEvent<Size>) => void;
-}
-
-/**
- * Returns sensor values based on the cursor position and the element's borders.
- */
-function getSensorValues(
-	borders: { top: number; right: number; bottom: number; left: number },
-	margin: number,
-	coords: { x: number; y: number }
-) {
-	const { top, right, bottom, left } = borders;
-	const { x, y } = coords;
-
-	return {
-		top: top < y && y < top + margin,
-		right: right - margin < x && x < right,
-		bottom: bottom - margin < y && y < bottom,
-		left: left < x && x < left + margin
-	};
-}
-
-/**
- * Returns the cursor type based on the sensor values.
- */
-function getCursor(sensor: { top: boolean; right: boolean; bottom: boolean; left: boolean }) {
-	if (sensor.top && sensor.left) return 'nwse-resize';
-	if (sensor.top && sensor.right) return 'nesw-resize';
-	if (sensor.bottom && sensor.left) return 'nesw-resize';
-	if (sensor.bottom && sensor.right) return 'nwse-resize';
-	if (sensor.top) return 'ns-resize';
-	if (sensor.right) return 'ew-resize';
-	if (sensor.bottom) return 'ns-resize';
-	if (sensor.left) return 'ew-resize';
-	return 'default';
 }
 
 /**
@@ -85,7 +57,7 @@ export function resizable(
 		left: 0
 	};
 
-	let sensor = {
+	let sensor: BorderSensor = {
 		top: false,
 		right: false,
 		bottom: false,
@@ -97,11 +69,11 @@ export function resizable(
 		y: 0
 	};
 
-	function checkSensor(event: PointerEvent) {
+	function checkBorderSensor(event: PointerEvent) {
 		const { clientX, clientY } = event;
 		borders = getDomRect(node);
-		sensor = getSensorValues(borders, margin, { x: clientX, y: clientY });
-		node.style.cursor = getCursor(sensor);
+		sensor = getBorderSensor(borders, margin, { x: clientX, y: clientY });
+		node.style.cursor = getBorderCursor(sensor);
 	}
 
 	function draw() {
@@ -170,7 +142,7 @@ export function resizable(
 			unlistenPointerMove();
 			unlistenPointerUp();
 
-			unlistenSensor = listen(node, 'pointermove', checkSensor as EventListener);
+			unlistenSensor = listen(node, 'pointermove', checkBorderSensor as EventListener);
 		}
 
 		unlistenSensor();
@@ -179,7 +151,7 @@ export function resizable(
 		const unlistenPointerUp = listen(window, 'pointerup', handlePointerUp as EventListener);
 	}
 
-	let unlistenSensor = listen(node, 'pointermove', checkSensor as EventListener);
+	let unlistenSensor = listen(node, 'pointermove', checkBorderSensor as EventListener);
 	const unlistenPointerDown = listen(node, 'pointerdown', handlePointerDown as EventListener);
 
 	return {
