@@ -149,7 +149,7 @@ export function draggable(
 			if (options.position) draw();
 
 			if (options.handle !== handle) {
-				handle = getElement(options.handle, node);
+				handle = getElement(options.handle, handle);
 
 				unlistenPointerDown();
 				unlistenTouchStart();

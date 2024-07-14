@@ -1,11 +1,12 @@
-import { listen } from '../meta/event.js';
-import { getDomRect, transform } from '../meta/element.js';
-
-import type { ActionReturn } from 'svelte/action';
 import { noop } from '$lib/meta/fn.js';
+import { listen } from '../meta/event.js';
+import { getDomRect, transform, getElement } from '../meta/element.js';
+
+import type { ElementOrSelector } from '../meta/element.js';
+import type { ActionReturn } from 'svelte/action';
 
 export interface UseRotatableOptions {
-	handle: HTMLElement;
+	handle: ElementOrSelector;
 	rotation?: number;
 	class?: string;
 }
@@ -17,7 +18,7 @@ interface Attributes {
 }
 
 /**
- * Allows rotating an element by dragging it from a handle specified using `options.handle`.
+ * Allows rotating an element by dragging it from an optional handle specified using `options.handle`.
  * Emits `!rotate:start`, `!rotate` and `!rotate:end` events on the element. Update the `options.rotation` property to programmatically rotate the element (value is in degrees).
  * When rotating the rotated element gets `options.class` (`svu-rotating` by default). Use a 'scoped global' style to add component-specific styling (see example below).
  *
@@ -32,11 +33,11 @@ interface Attributes {
  */
 export function rotatable(
 	node: HTMLElement,
-	options: UseRotatableOptions
+	options?: UseRotatableOptions
 ): ActionReturn<UseRotatableOptions, Attributes> {
-	let handle = options.handle;
-	let className = options.class || 'svu-rotating';
-	let rotation = options.rotation || 0;
+	let handle = getElement(options?.handle, node);
+	let className = options?.class || 'svu-rotating';
+	let rotation = options?.rotation || 0;
 
 	function draw() {
 		transform(node, { rotate: rotation });
@@ -102,7 +103,7 @@ export function rotatable(
 
 			if (options.handle !== handle) {
 				unlistenPointerDown();
-				handle = options.handle;
+				handle = getElement(options.handle, handle);
 				unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
 			}
 		},
