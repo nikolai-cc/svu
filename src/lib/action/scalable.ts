@@ -16,9 +16,9 @@ export interface UseScalableOptions {
 }
 
 interface Attributes {
-	'on:!scalestart'?: (event: CustomEvent<Scale>) => void;
+	'on:!scale:start'?: (event: CustomEvent<Scale>) => void;
 	'on:!scale'?: (event: CustomEvent<Scale>) => void;
-	'on:!scaleend'?: (event: CustomEvent<Scale>) => void;
+	'on:!scale:end'?: (event: CustomEvent<Scale>) => void;
 }
 
 /**
@@ -41,13 +41,13 @@ export function scalable(
 	node: HTMLElement,
 	options?: UseScalableOptions
 ): ActionReturn<UseScalableOptions, Attributes> {
-	const margin = options?.margin || 10;
-	const scale = options?.scale || { scaleX: 1, scaleY: 1 };
-	const className = options?.class || 'svu-scaling';
-	const aspect = options?.aspect || false;
+	let margin = options?.margin || 10;
+	let scale = options?.scale || { scaleX: 1, scaleY: 1 };
+	let className = options?.class || 'svu-scaling';
+	let aspect = options?.aspect || false;
 
-	const min = options?.min || { scaleX: 0.5, scaleY: 0.5 };
-	const max = options?.max || { scaleX: 3, scaleY: 3 };
+	let min = options?.min || { scaleX: 0.5, scaleY: 0.5 };
+	let max = options?.max || { scaleX: 3, scaleY: 3 };
 
 	let borders = {
 		top: 0,
@@ -136,7 +136,12 @@ export function scalable(
 
 	return {
 		update(options: UseScalableOptions) {
-			console.log(options);
+			scale = options.scale || scale;
+			min = options.min || min;
+			max = options.max || max;
+			margin = options.margin || margin;
+			aspect = options.aspect || aspect;
+			className = options.class || className;
 		},
 		destroy() {
 			unlistenPointerDown();

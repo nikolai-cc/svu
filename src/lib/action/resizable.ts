@@ -46,9 +46,9 @@ export function resizable(
 
 	let position = options?.position || { x: 0, y: 0 };
 
-	const size = options?.size || { width: nodeRect.width, height: nodeRect.height };
-	const margin = options?.margin || 10;
-	const className = options?.class || 'svu-resizing';
+	let size = options?.size || { width: nodeRect.width, height: nodeRect.height };
+	let margin = options?.margin || 10;
+	let className = options?.class || 'svu-resizing';
 
 	let borders = {
 		top: 0,
@@ -155,6 +155,12 @@ export function resizable(
 	const unlistenPointerDown = listen(node, 'pointerdown', handlePointerDown as EventListener);
 
 	return {
+		update(options: UseDraggableOptions) {
+			className = options.class || className;
+			size = options.size || size;
+			margin = options.margin || margin;
+			position = options.position || position;
+		},
 		destroy() {
 			unlistenSensor();
 			unlistenPointerDown();
