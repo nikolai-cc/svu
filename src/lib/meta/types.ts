@@ -20,6 +20,15 @@ export interface Size3D extends Size {
 	depth: number;
 }
 
+export interface Scale {
+	scaleX: number;
+	scaleY: number;
+}
+
+export interface Scale3D extends Scale {
+	scaleZ: number;
+}
+
 export interface Rect extends Coords, Size {}
 
 export interface Cuboid extends Coords3D, Size3D {}
