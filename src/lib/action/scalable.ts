@@ -78,6 +78,8 @@ export function scalable(
 		// continue only if sensor is active
 		if (!Object.values(sensor).some((value) => value)) return;
 
+		const origin = { ...scale };
+
 		const handlePointerMove = (event: PointerEvent) => {
 			event.preventDefault();
 			event.stopPropagation();
@@ -85,19 +87,19 @@ export function scalable(
 			const { clientX, clientY } = event;
 
 			if (sensor.top) {
-				scale.scaleY = 1 - 2 * ((clientY - borders.top) / node.clientHeight);
+				scale.scaleY = origin.scaleY - 2 * ((clientY - borders.top) / node.clientHeight);
 			}
 
 			if (sensor.right) {
-				scale.scaleX = 1 + 2 * ((clientX - borders.right) / node.clientWidth);
+				scale.scaleX = origin.scaleX + 2 * ((clientX - borders.right) / node.clientWidth);
 			}
 
 			if (sensor.bottom) {
-				scale.scaleY = 1 + 2 * ((clientY - borders.bottom) / node.clientHeight);
+				scale.scaleY = origin.scaleY + 2 * ((clientY - borders.bottom) / node.clientHeight);
 			}
 
 			if (sensor.left) {
-				scale.scaleX = 1 - 2 * ((clientX - borders.left) / node.clientWidth);
+				scale.scaleX = origin.scaleX - 2 * ((clientX - borders.left) / node.clientWidth);
 			}
 
 			scale.scaleY = clamp(scale.scaleY, min.scaleY, max.scaleY);
