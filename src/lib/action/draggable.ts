@@ -1,6 +1,6 @@
 import { clamp } from '../meta/math.js';
 import { listen } from '../meta/event.js';
-import { getElement, getDomRect, getTransformCoords } from '../meta/element.js';
+import { getElement, getDomRect, getTransformCoords, transform } from '../meta/element.js';
 
 import type { Coords } from '../meta/types.js';
 import type { ActionReturn } from 'svelte/action';
@@ -133,7 +133,7 @@ export function draggable(
 	}
 
 	function draw() {
-		node.style.transform = `translate(${position.x}px, ${position.y}px)`;
+		transform(node, position);
 	}
 
 	let unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);

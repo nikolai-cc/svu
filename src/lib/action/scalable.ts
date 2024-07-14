@@ -1,5 +1,5 @@
 import { listen } from '../meta/event.js';
-import { getDomRect, getBorderCursor, getBorderSensor } from '../meta/element.js';
+import { getDomRect, getBorderCursor, getBorderSensor, transform } from '../meta/element.js';
 
 import type { BorderSensor } from '../meta/element.js';
 import type { Scale } from '../meta/types.js';
@@ -71,7 +71,7 @@ export function scalable(
 	}
 
 	function draw() {
-		node.style.transform = `scale(${scale.scaleX}, ${scale.scaleY})`;
+		transform(node, scale);
 	}
 
 	const handlePointerDown = () => {

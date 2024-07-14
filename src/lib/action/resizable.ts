@@ -3,7 +3,8 @@ import {
 	getDomRect,
 	getTransformCoords,
 	getBorderCursor,
-	getBorderSensor
+	getBorderSensor,
+	transform
 } from '../meta/element.js';
 
 import type { BorderSensor } from '../meta/element.js';
@@ -79,7 +80,7 @@ export function resizable(
 	function draw() {
 		node.style.width = size.width + 'px';
 		node.style.height = size.height + 'px';
-		node.style.transform = `translate(${position.x}px, ${position.y}px)`;
+		transform(node, position);
 	}
 
 	function handlePointerDown(event: PointerEvent) {

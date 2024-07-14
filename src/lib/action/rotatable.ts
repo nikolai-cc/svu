@@ -1,5 +1,5 @@
 import { listen } from '../meta/event.js';
-import { getDomRect } from '../meta/element.js';
+import { getDomRect, transform } from '../meta/element.js';
 
 import type { ActionReturn } from 'svelte/action';
 import { noop } from '$lib/meta/fn.js';
@@ -39,7 +39,7 @@ export function rotatable(
 	let rotation = options.rotation || 0;
 
 	function draw() {
-		node.style.transform = `rotate(${rotation}deg)`;
+		transform(node, { rotate: rotation });
 	}
 
 	function handlePointerDown(event: PointerEvent) {

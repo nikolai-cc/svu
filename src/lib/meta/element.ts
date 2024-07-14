@@ -48,6 +48,9 @@ export function getDomRect(node: HTMLElement) {
 	};
 }
 
+/**
+ * Returns the computed transform coordinates of the target node.
+ */
 export function getTransformCoords(node: HTMLElement) {
 	const style = window.getComputedStyle(node);
 	const transform = style.transform;
@@ -60,6 +63,44 @@ export function getTransformCoords(node: HTMLElement) {
 	const [x, y] = matrix[1].split(',').slice(4).map(parseFloat);
 
 	return { x, y };
+}
+
+/**
+ * Returns all transform values (translation, scale, rotation) of the target node.
+ */
+export function getTransform(node: HTMLElement): Transform {
+	const style = window.getComputedStyle(node);
+	const transform = style.transform;
+
+	if (transform === 'none') return { x: 0, y: 0, scaleX: 1, scaleY: 1, rotate: 0 };
+
+	const matrix = transform.match(/^matrix\((.+)\)$/);
+	if (!matrix) return { x: 0, y: 0, scaleX: 1, scaleY: 1, rotate: 0 };
+
+	const [a, b, c, d, x, y] = matrix[1].split(',').map(parseFloat);
+	const scaleX = Math.sqrt(a * a + b * b);
+	const scaleY = (a * d - b * c) / scaleX;
+	const rotate = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+
+	return { x, y, scaleX, scaleY, rotate };
+}
+
+/**
+ * Transforms the target node (translation, scale, rotation) without affecting other transforms.
+ */
+type Transform = { x?: number; y?: number; scaleX?: number; scaleY?: number; rotate?: number };
+
+export function transform(node: HTMLElement, transform: Transform) {
+	const current = getTransform(node);
+	const {
+		x = current.x,
+		y = current.y,
+		scaleX = current.scaleX,
+		scaleY = current.scaleY,
+		rotate = current.rotate
+	} = transform;
+
+	node.style.transform = `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY}) rotate(${rotate}deg)`;
 }
 
 // This list originates from: https://stackoverflow.com/a/30753870
