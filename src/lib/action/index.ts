@@ -11,6 +11,8 @@ export { portal } from './portal.js';
 export { press } from './press.js';
 export { resize } from './resize.js';
 export { resizable } from './resizable.js';
+export { rotatable } from './rotatable.js';
+export { scalable } from './scalable.js';
 export { select } from './select.js';
 export { themetoggle } from './themetoggle.js';
 export { timedclick } from './timedclick.js';
