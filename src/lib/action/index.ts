@@ -3,6 +3,7 @@ export { clickoutside } from './clickoutside.js';
 export { copy, cut, paste } from './clipboard.js';
 export { download } from './download.js';
 export { draggable } from './draggable.js';
+export { dropzone } from './dropzone.js';
 export { focus } from './focus.js';
 export { focustrap } from './focustrap.js';
 export { keydown, keyup } from './keyboard.js';
