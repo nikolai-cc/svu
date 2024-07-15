@@ -24,9 +24,9 @@ export interface UseDropzoneOptions {
 }
 
 export interface Attributes {
-	'on:!drop'?: (event: CustomEvent<FileList>) => void;
+	'on:!drop'?: (event: CustomEvent<File[]>) => void;
 	'on:!drop:invalid'?: (event: CustomEvent<DropZoneError>) => void;
-	'on:!drop:limit'?: (event: CustomEvent<FileList>) => void;
+	'on:!drop:limit'?: (event: CustomEvent<File[]>) => void;
 }
 
 function setupButton(node: HTMLElement, action: EventListener) {
