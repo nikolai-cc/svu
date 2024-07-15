@@ -1,4 +1,3 @@
-import { noop } from '$lib/meta/fn.js';
 import { listen } from '../meta/event.js';
 import { getDomRect, transform, getElement } from '../meta/element.js';
 
@@ -92,9 +91,8 @@ export function rotatable(
 		const unlistenPointerUp = listen(window, 'pointerup', handlePointerUp as EventListener);
 	}
 
-	let unlistenPointerDown = handle
-		? listen(handle, 'pointerdown', handlePointerDown as EventListener)
-		: noop;
+	let unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
+	let unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
 
 	return {
 		update(options) {
@@ -105,10 +103,12 @@ export function rotatable(
 				unlistenPointerDown();
 				handle = getElement(options.handle, handle);
 				unlistenPointerDown = listen(handle, 'pointerdown', handlePointerDown as EventListener);
+				unlistenTouchStart = listen(handle, 'touchstart', (e) => e.preventDefault());
 			}
 		},
 		destroy() {
 			unlistenPointerDown();
+			unlistenTouchStart();
 		}
 	};
 }

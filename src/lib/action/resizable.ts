@@ -84,6 +84,8 @@ export function resizable(
 	}
 
 	function handlePointerDown(event: PointerEvent) {
+		// make sure sensor is up to date
+		checkBorderSensor(event);
 		// continue only if sensor is active
 		if (!Object.values(sensor).some((value) => value)) return;
 
