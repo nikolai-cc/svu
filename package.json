@@ -1,7 +1,7 @@
 {
 	"name": "svu",
 	"description": "Svelte development, supercharged.",
-	"version": "0.3.11",
+	"version": "0.3.12",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/nikolai-cc/svu.git"
